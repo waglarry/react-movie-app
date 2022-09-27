@@ -1,0 +1,8 @@
+.navLinks{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navLinks .navLink{
+    padding: 0 1rem;
+}
