@@ -18,7 +18,7 @@ header .navBtn{
         visibility: visible;
         opacity: 1;
         font-size: 1.5rem;
-        display: block;
+        display: block; 
     }
     header .navBar{
         position: fixed;
