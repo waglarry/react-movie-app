@@ -25,7 +25,7 @@ const Navbar = (props) => {
           <NavLinks showNavbar={showNavbar}/>
         </nav>
         <Switch className='switch' onChange={props.toggleTheme} checked={props.theme === "dark"}/>
-        <button className='navBtn'>
+        <button className='navBtn' onClick={showNavbar}>
             <FaBars />
         </button>
       </header>

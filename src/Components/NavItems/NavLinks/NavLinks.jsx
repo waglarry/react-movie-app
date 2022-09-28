@@ -20,7 +20,7 @@ const NavLinks = (props) => {
               <NavLink to="/tvshows" className='navLink' style={NavLinkStyle} onClick={props.showNavbar}>
                 Tv Shows
               </NavLink>
-              <button className='navBtn navCloseBtn'>
+              <button className='navBtn navCloseBtn' onClick={props.showNavbar}>
                 <FaTimes />
               </button>
           </div>
