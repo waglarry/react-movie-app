@@ -8,3 +8,36 @@ header{
 header .navBtn{
     display: none;
 }
+@media only screen and (min-width:321px) and (max-width:768px){
+    header .switch{
+        visibility: hidden;
+        opacity: 0;
+        font-size: 1.5rem;
+    }
+    header .navBtn{
+        visibility: visible;
+        opacity: 1;
+        font-size: 1.5rem;
+        display: block;
+    }
+    header .navBar{
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        background: #222;
+        transition: .75s;
+        transform: translateY(-100vh);
+        z-index: 999;
+      }
+
+      header .reponsiveNav{
+        transform: none;
+      }
+}
