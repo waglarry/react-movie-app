@@ -4,3 +4,9 @@
     box-sizing: border-box;
     text-decoration: none;
 }
+#light{
+    background: #fff;
+}
+#dark{
+    background: #222;
+}

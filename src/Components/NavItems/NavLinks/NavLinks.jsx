@@ -1,34 +1,23 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { NavLink } from "react-router-dom";
 import { FaTimes } from 'react-icons/fa';
 // import { FaSearch } from 'react-icons/fa';
-import './NavLinks.css'
+// import './NavLinks.css'
 
-const NavLinks = () => {
-    window.addEventListener('scroll',function(){
-        const navbar = document.getElementById("header");
-        navbar.classList.toggle("sticky", window.scrollY > 0);
-    });
-
+const NavLinks = (props) => {
     const NavLinkStyle = ({ isActive }) =>{
       return {
         color: isActive ? 'dodgerblue' : '#fff'
       }
     }
 
-    const navRef = useRef()
-
-    const showNavbar = () => {
-      navRef.current.classList.toggle("reponsiveNav")
-    }
-
   return (
     <div>
         <div className="navLinks">
-              <NavLink to="/movies" className='navLink' style={NavLinkStyle} onClick={showNavbar}>
+              <NavLink to="/movies" className='navLink' style={NavLinkStyle} onClick={props.showNavbar}>
                 Movies
               </NavLink>
-              <NavLink to="/tvshows" className='navLink' style={NavLinkStyle} onClick={showNavbar}>
+              <NavLink to="/tvshows" className='navLink' style={NavLinkStyle} onClick={props.showNavbar}>
                 Tv Shows
               </NavLink>
               <button className='navBtn navCloseBtn'>
