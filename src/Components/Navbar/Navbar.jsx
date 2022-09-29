@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import './Navbar.css';
 import Logo from '../NavItems/Logo/Logo';
 import { FaBars } from 'react-icons/fa';
-import { SiNintendoswitch } from 'react-icons/all';
+import { FaSearch } from 'react-icons/fa';
 import NavLinks from '../NavItems/NavLinks/NavLinks';
 
 const Navbar = (props) => {
@@ -24,7 +24,9 @@ const Navbar = (props) => {
         <nav className='navBar' ref={navRef}>
           <NavLinks showNavbar={showNavbar}/>
         </nav>
-        <SiNintendoswitch className='switch' onClick={props.toggleTheme}/>
+        <div className='searchBtn'>
+          <FaSearch/>
+        </div>
         <button className='navBtn' onClick={showNavbar}>
             <FaBars />
         </button>

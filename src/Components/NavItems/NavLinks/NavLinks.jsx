@@ -1,13 +1,12 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
 import { FaTimes } from 'react-icons/fa';
-// import { FaSearch } from 'react-icons/fa';
 import './NavLinks.css'
 
 const NavLinks = (props) => {
     const NavLinkStyle = ({ isActive }) =>{
       return {
-        color: isActive ? 'crimson' : '#fff',
+        color: isActive ? 'dodgerblue' : '#fff',
         margin: "0 1rem",
       }
     }

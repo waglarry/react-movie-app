@@ -6,7 +6,7 @@ const Logo = () => {
     <div>
       <label htmlFor="logo" className='navLogo' onClick={() => window.scroll(0,0)}>
         <NavLink style={{
-          color: "crimson",
+          color: "dodgerblue",
           fontWeight: "700",
           fontSize: "1.1rem",
         }} to="/">

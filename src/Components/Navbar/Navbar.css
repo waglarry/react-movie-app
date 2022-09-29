@@ -1,5 +1,5 @@
 :root{
-    --main-color: crimson;
+    --main-color: dodgerblue;
     --bg-color: #222;
 }
 
@@ -23,15 +23,15 @@ header .navBtn{
     font-size: 1.8rem;
   }
 
-  header .switch{
+  header .searchBtn{
     color: #ccc;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 @media only screen and (min-width:321px) and (max-width:768px){
     header{
         padding: 1rem;
     }
-    header .switch{
+    header .searchBtn{
         visibility: hidden;
         opacity: 0;
         font-size: 1.5rem;
