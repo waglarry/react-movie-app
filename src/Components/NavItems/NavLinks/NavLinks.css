@@ -1,8 +1,16 @@
 .navLinks{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    text-align: center;
+    font-weight: 900;
+    font-size: 1.2rem;
 }
-.navLinks .navLink{
-    padding: 0 1rem;
+
+@media only screen and (min-width:321px) and (max-width:768px){
+    .navLinks{
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+        font-weight: 900;
+        font-size: 1.5rem;
+    }
 }

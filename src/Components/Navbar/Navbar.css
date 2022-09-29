@@ -1,14 +1,36 @@
+:root{
+    --main-color: crimson;
+    --bg-color: #222;
+}
+
 header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #222;
+    background: var(--bg-color);
     padding: 1.5rem 1rem;
 }
 header .navBtn{
     display: none;
+    padding: 0.313rem;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--main-color);
+    visibility: hidden;
+    opacity: 0;
+    font-size: 1.8rem;
+  }
+
+  header .switch{
+    color: #ccc;
+    font-size: 1.5rem;
 }
 @media only screen and (min-width:321px) and (max-width:768px){
+    header{
+        padding: 1rem;
+    }
     header .switch{
         visibility: hidden;
         opacity: 0;
@@ -26,12 +48,10 @@ header .navBtn{
         left: 0;
         height: 100%;
         width: 100%;
-        display: flex;
-        flex-direction: column;
+        display: grid;
         align-items: center;
         justify-content: center;
-        gap: 1.5rem;
-        background: #222;
+        background: var(--bg-color);
         transition: .75s;
         transform: translateY(-100vh);
         z-index: 999;

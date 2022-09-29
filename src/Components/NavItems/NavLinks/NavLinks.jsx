@@ -2,12 +2,13 @@ import React from 'react';
 import { NavLink } from "react-router-dom";
 import { FaTimes } from 'react-icons/fa';
 // import { FaSearch } from 'react-icons/fa';
-// import './NavLinks.css'
+import './NavLinks.css'
 
 const NavLinks = (props) => {
     const NavLinkStyle = ({ isActive }) =>{
       return {
-        color: isActive ? 'dodgerblue' : '#fff'
+        color: isActive ? 'crimson' : '#fff',
+        margin: "0 1rem",
       }
     }
 
@@ -20,7 +21,11 @@ const NavLinks = (props) => {
               <NavLink to="/tvshows" className='navLink' style={NavLinkStyle} onClick={props.showNavbar}>
                 Tv Shows
               </NavLink>
-              <button className='navBtn navCloseBtn' onClick={props.showNavbar}>
+              <button className='navBtn' onClick={props.showNavbar} style={{
+                position: "absolute",
+                top: "2rem",
+                right: "2rem",
+              }}>
                 <FaTimes />
               </button>
           </div>

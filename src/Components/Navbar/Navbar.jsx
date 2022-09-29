@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
-import Switch from "react-switch";
 import './Navbar.css';
 import Logo from '../NavItems/Logo/Logo';
 import { FaBars } from 'react-icons/fa';
+import { SiNintendoswitch } from 'react-icons/all';
 import NavLinks from '../NavItems/NavLinks/NavLinks';
 
 const Navbar = (props) => {
@@ -24,7 +24,7 @@ const Navbar = (props) => {
         <nav className='navBar' ref={navRef}>
           <NavLinks showNavbar={showNavbar}/>
         </nav>
-        <Switch className='switch' onChange={props.toggleTheme} checked={props.theme === "dark"}/>
+        <SiNintendoswitch className='switch' onClick={props.toggleTheme}/>
         <button className='navBtn' onClick={showNavbar}>
             <FaBars />
         </button>
