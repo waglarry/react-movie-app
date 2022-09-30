@@ -6,10 +6,10 @@ import { FaSearch } from 'react-icons/fa';
 import NavLinks from '../NavItems/NavLinks/NavLinks';
 
 const Navbar = (props) => {
-  window.addEventListener('scroll',function(){
-    const navbar = document.getElementById("header");
-    navbar.classList.toggle("sticky", window.scrollY > 0);
-  });
+  // window.addEventListener('scroll',function(){
+  //   const navbar = document.getElementById("header");
+  //   navbar.classList.toggle("sticky", window.scrollY > 0);
+  // });
 
   const navRef = useRef()
 

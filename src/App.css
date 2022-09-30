@@ -4,9 +4,8 @@
     box-sizing: border-box;
     text-decoration: none;
 }
-#light{
-    background: #fff;
-}
-#dark{
-    background: #222;
+.mainContentBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

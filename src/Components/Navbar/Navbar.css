@@ -9,6 +9,8 @@ header{
     align-items: center;
     background: var(--bg-color);
     padding: 1.5rem 1rem;
+    position: fixed;
+    width: 100%;
 }
 header .navBtn{
     display: none;
