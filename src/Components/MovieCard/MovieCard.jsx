@@ -1,12 +1,15 @@
 import React from 'react'
+import './MovieCard.css'
 import { API_IMG } from '../API/URL'
 
 const MovieCard = ({title, released, overview, poster, rate, wallpaper}) => {
   return (
-    <div>
-      <img src={API_IMG+wallpaper} alt="" />
-      <h3>Title: {title}</h3>
-      <span>Released: {released}</span>
+    <div className='movieCard'>
+      <img className='poster' src={API_IMG+poster} alt="" />
+      <div className='details'>
+        <h4 className='title'>Title: {title}</h4>
+        <span className='date'>Released: {released}</span>
+      </div>
     </div>
   )
 }
