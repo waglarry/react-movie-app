@@ -16,7 +16,5 @@
     gap: .5rem;
 }
 @media only screen and (min-width:321px) and (max-width:768px){
-    .contentBox{
-        /* gap: 1rem; */
-    }
+
 }
