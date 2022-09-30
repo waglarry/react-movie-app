@@ -1,8 +1,11 @@
 import React from 'react'
+import GetMoviesData from '../../API/GetMoviesData'
 
 const Movies = () => {
   return (
-    <div>Movies</div>
+    <div>
+      <GetMoviesData />
+    </div>
   )
 }
 
