@@ -1,10 +1,14 @@
 import React from 'react'
-import MovieCard from '../../Cards/MovieCard/MovieCard'
+import { GetPopularMovies } from '../../API/GetPopularMovies'
+import GetTopRatedMovies from '../../API/GetTopRatedMovies'
+import GetTrendingMovies from '../../API/GetTrendingMovies'
 
 const Home = () => {
   return (
     <div>
-      <MovieCard />
+      {/* <GetPopularMovies /> */}
+      <GetTrendingMovies />
+      <GetTopRatedMovies />
     </div>
   )
 }

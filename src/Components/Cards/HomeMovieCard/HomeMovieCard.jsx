@@ -1,14 +1,12 @@
 import React from 'react'
-import './MovieCard.css'
 import { API_IMG, unavailable } from '../../API/URL'
 
-const MovieCard = ({title, released, overview, poster, rate}) => {
+const HomeMovieCard = ({title, released, overview, poster, rate}) => {
   return (
     <div className='movieCard'>
       <div className='posterBox'>
         <img className='poster' src={ poster ? API_IMG+poster : unavailable} alt="" />
         <div className='overview'>Overview <p>{overview}</p></div>
-        {/* <div className='overview'><button>View</button></div> */}
         <span className='rate'>Rating - {rate}</span>
       </div>
       <div className='details'>
@@ -19,4 +17,4 @@ const MovieCard = ({title, released, overview, poster, rate}) => {
   )
 }
 
-export default MovieCard
+export default HomeMovieCard
