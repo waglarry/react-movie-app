@@ -1,14 +1,14 @@
 import React from 'react'
 import './MovieCard.css'
-import { API_IMG } from '../../API/URL'
+import { API_IMG, unavailable } from '../../API/URL'
 
-const MovieCard = ({title, released, overview, poster, rate, wallpaper, name, known_for}) => {
+const MovieCard = ({title, released, overview, poster, rate, wallpaper}) => {
   return (
     <div className='movieCard'>
       <div className='posterBox'>
-        <img className='poster' src={API_IMG+poster} alt="" />
-        {/* <span className='overview'>{overview}</span> */}
-        <span className='rate'>Rating {rate.toFixed(1)}</span>
+        <img className='poster' src={ poster ? API_IMG+poster : unavailable} alt="" />
+        <div className='overview'>Overview <p>{overview}</p></div>
+        <span className='rate'>Rating {rate}</span>
       </div>
       <div className='details'>
         <h4 className='title'>{title}</h4>

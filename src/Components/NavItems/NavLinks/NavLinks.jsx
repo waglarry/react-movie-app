@@ -20,6 +20,9 @@ const NavLinks = (props) => {
               <NavLink to="/tvshows" className='navLink' style={NavLinkStyle} onClick={props.showNavbar}>
                 Tv Shows
               </NavLink>
+              <NavLink to="/people" className='navLink' style={NavLinkStyle} onClick={props.showNavbar}>
+                People
+              </NavLink>
               <button className='navBtn' onClick={props.showNavbar} style={{
                 position: "absolute",
                 top: "2rem",

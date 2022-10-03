@@ -2,6 +2,7 @@ import Axios from "axios";
 
 export const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=3b92f42dd5e2d7a9ab0a778973611246&language=en-US&page=1`;
 export const API_IMG = "https://image.tmdb.org/t/p/w500"
+export const unavailable = "https://www.movienewz.com/img/films/poster-holder.jpg";
 
 export   const fetchMovies = () => {
     return Axios.get(

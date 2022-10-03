@@ -9,27 +9,41 @@
     max-width: 100%;
     display: block;
     border-radius: .5rem;
+    position: relative;
 }
-/* ::-webkit-scrollbar{
-    width: 0;
+.movieCard .overview{
+    color: dodgerblue;
+}
+.movieCard .overview p{
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: .8rem;
 }
 .movieCard .overview{
     position: absolute;
-    top: .5rem;
-    bottom: 0;
+    top: 0;
+    left: 0;
+    background: #222;
     max-height: 100%;
-    border-radius: 1rem;
-    width: 94%;
-    color: #000;
+    height: 100%;
+    width: 100%;
     box-sizing: border-box;
+    border-radius: .5rem;
     padding: 1rem;
-    transition: all .3s ease-in-out;
+    transition: all .3s ease;
     overflow-y: auto;
-    transform: translateY(110%);
+    transform: translateY(-100%);
+    visibility: hidden;
+    opacity: 0;
 }
-.movieCard:hover .overview{
+.posterBox:hover .overview{
     transform: translateY(0%);
-} */
+    visibility: visible;
+    opacity: 1;
+}
+::-webkit-scrollbar{
+    width: 0;
+}
 .posterBox{
     position: relative;
 }
@@ -38,7 +52,7 @@
     color: #fff;
     font-size: .7rem;
     font-family: 'Poppins', sans-serif;
-    width: 5rem;
+    /* width: 5rem; */
     padding: .1rem .4rem;
     border-radius: .2rem;
     display: flex;
@@ -58,6 +72,9 @@
     }
     .movieCard .poster{
         width: 110px;
+    }
+    .movieCard .overview{
+        padding: .5rem;
     }
     .movieCard .rate{
         font-size: .5rem;

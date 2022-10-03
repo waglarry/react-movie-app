@@ -1,7 +1,8 @@
 import React from 'react'
 import { useQuery } from "@tanstack/react-query";
-import MovieContent from "../Cards/MovieCard/MovieCard";
+import MovieCard from "../Cards/MovieCard/MovieCard";
 import { fetchPopularPeople } from './URL';
+import PeopleCard from '../Cards/PeopleCard/PeopleCard';
 
 const GetPeopleData = () => {
   const { data, isLoading, isError } = useQuery(["content"], fetchPopularPeople);
@@ -19,10 +20,11 @@ const GetPeopleData = () => {
     <div className="mainContentBox">
       <div className="contentBox">
         {data.data.results.map((e) => (
-          <MovieContent
+          <PeopleCard
             key={e.id}
             name={e.name}
             known_for={e.known_for_department}
+            poster={e.profile_path}
           />
         ))}
       </div>

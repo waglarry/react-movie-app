@@ -6,6 +6,7 @@ import Navbar from './Components/Navbar/Navbar';
 import Home from './Components/Pages/Home/home';
 import Movies from './Components/Pages/Movies/movies';
 import TvShows from './Components/Pages/TvShows/tvShows';
+import People from './Components/Pages/People/people';
 import Error from './Components/Pages/Error/error';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
                     <Route path='/' element={<Home />} exact/>
                     <Route path='/movies' element={<Movies />} />
                     <Route path='/tvShows' element={<TvShows />} />
+                    <Route path='/people' element={<People />} />
                     <Route path='*' element={<Error />} />
                 </Routes>
             </Router>

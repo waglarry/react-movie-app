@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchPopularTvshows } from "./URL";
-import MovieContent from "../Cards/MovieCard/MovieCard";
+import MovieCard from "../Cards/MovieCard/MovieCard";
 
 const GetTvshowsData = () => {
   const { data, isLoading, isError } = useQuery(["content"], fetchPopularTvshows);
@@ -20,7 +20,7 @@ const GetTvshowsData = () => {
       <div className="mainContentBox">
         <div className="contentBox">
           {data.data.results.map((e) => (
-            <MovieContent
+            <MovieCard
               key={e.id}
               title={e.name}
               released={e.first_air_date || e.release_date}
