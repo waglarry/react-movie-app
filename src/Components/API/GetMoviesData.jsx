@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchPopularMovies } from "./URL";
-import MovieContent from "../MovieCard/MovieCard";
+import MovieContent from "../Cards/MovieCard/MovieCard";
 
 const GetMoviesData = () => {
   const { data, isLoading, isError } = useQuery(

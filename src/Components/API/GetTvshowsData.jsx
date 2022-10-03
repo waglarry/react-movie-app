@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import { API_IMG, fetchPopularTvshows, fetchTvShows } from "./URL";
-import MovieContent from "../MovieCard/MovieCard";
+import { fetchPopularTvshows } from "./URL";
+import MovieContent from "../Cards/MovieCard/MovieCard";
 
 const GetTvshowsData = () => {
   const { data, isLoading, isError } = useQuery(["content"], fetchPopularTvshows);

@@ -26,3 +26,9 @@ export const fetchPopularTvshows = () => {
         `https://api.themoviedb.org/3/tv/popular?api_key=3b92f42dd5e2d7a9ab0a778973611246&language=en-US&page=1`
     );
 };
+
+export const fetchPopularPeople = () => {
+    return Axios.get(
+        `https://api.themoviedb.org/3/person/popular?api_key=3b92f42dd5e2d7a9ab0a778973611246&language=en-US&page=1`
+    );
+};
