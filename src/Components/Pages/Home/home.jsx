@@ -1,12 +1,14 @@
 import React from 'react'
-import GetMovieContent from '../../API/HomeMovieContent/GetMovieContent'
+import GetTopRatedMovies from '../../API/HomeMovieContent/GetTopRatedMovies'
+import GetTrendingMovies from '../../API/HomeMovieContent/GetTrendingMovies'
+import HomePage from '../TopMainPages/HomePage/HomePage'
 
 const Home = () => {
   return (
     <div>
-      <br /><br /><br /><br /><br /><br /><br /><br />
-      Home
-      <GetMovieContent />
+      <HomePage />
+      <GetTrendingMovies />
+      <GetTopRatedMovies />
     </div>
   )
 }

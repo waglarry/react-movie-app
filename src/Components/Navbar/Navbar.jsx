@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import './Navbar.css';
+import './Navbar.css'
 import Logo from '../NavItems/Logo/Logo';
 import { FaBars } from 'react-icons/fa';
 import { FaSearch } from 'react-icons/fa';

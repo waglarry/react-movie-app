@@ -8,7 +8,7 @@ const MovieCard = ({title, released, overview, poster, rate}) => {
       <div className='posterBox'>
         <img className='poster' src={ poster ? API_IMG+poster : unavailable} alt="" />
         <div className='overview'>Overview <p>{overview}</p></div>
-        <span className='rate'>Rating - {rate}</span>
+        <span className='rate'>Rated - {rate}</span>
       </div>
       <div className='details'>
         <h4 className='title'>{title}</h4>

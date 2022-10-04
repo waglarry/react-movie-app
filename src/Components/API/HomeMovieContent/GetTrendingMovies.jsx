@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import HomeMovieCard from '../../Cards/HomeMovieCard/HomeMovieCard';
 import { fetchTrendingMovies } from '../URL';
 
-const GetMovieContent = () => {
+const GetTrendingMovies = () => {
     const { data, isLoading, isError } = useQuery(
         ["content"], fetchTrendingMovies);
 
@@ -28,4 +28,4 @@ const GetMovieContent = () => {
   )
 }
 
-export default GetMovieContent
+export default GetTrendingMovies

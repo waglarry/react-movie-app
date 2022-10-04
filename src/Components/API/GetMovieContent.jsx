@@ -22,7 +22,7 @@ const GetMovieContent = ({content, filter}) => {
         {data.map((e) => (
           <MovieCard
             key={e.id}
-            title={e.name}
+            title={e.title || e.name}
             released={e.first_air_date || e.release_date}
             poster={e.poster_path}
             rate={e.vote_average}

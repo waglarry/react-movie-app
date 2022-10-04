@@ -25,6 +25,6 @@ export const fetchTrendingMovies = () => {
 
 export const fetchTopRatedMovies = () => {
     return Axios.get(
-        `https://api.themoviedb.org/3/movie/top_rated?api_key=3b92f42dd5e2d7a9ab0a778973611246&language=en-US&page=1`
+        `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}`
     );
 };
