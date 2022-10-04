@@ -1,10 +1,12 @@
 import React from 'react'
 import { FaSearch } from 'react-icons/fa'
+import Slider from '../../../Slider/Slider'
 import './HomePage.css'
 
 const HomePage = () => {
   return (
     <section className='homePage'>
+      {/* <Slider /> */}
             <div className="homePageBox">
               <div className="coat">
                 <h1>Unlimited movies, TV shows, and more.</h1>
