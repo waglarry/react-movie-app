@@ -1,11 +1,13 @@
 import React from 'react'
 import GetMovieContent from '../../API/GetMovieContent'
+import NavPage from '../TopMainPages/NavPage/NavPage'
 
 const tvShows = () => {
   return (
     <div>
-      <br /><br /><br /><br /><br /><br /><br /><br />
-      Tv Shows
+      <div className="TvShowsPageTopContent">
+        <NavPage contentTitle={'Tv Shows'} filter={['Popular','Airing Today', 'On Tv', 'Top Rated']} />
+      </div>
       <GetMovieContent content={'tv'} filter={'popular'} />
     </div>
   )
