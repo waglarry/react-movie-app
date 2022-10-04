@@ -3,10 +3,13 @@ import { API_IMG, unavailable } from '../../API/URL'
 
 const HomeMovieCard = ({title, released, overview, poster, rate}) => {
   return (
-    <div className='movieCard'>
-      <div className='posterBox'>
-        <img className='poster' src={ poster ? API_IMG+poster : unavailable} alt="" />
-        <div className='overview'>Overview <p>{overview}</p></div>
+    <div className='HomeMovieCard'>
+      <div className='HomePosterBox'>
+        <img 
+          className='poster' 
+          src={ poster ? API_IMG+poster : unavailable} 
+          alt={title} 
+           />
         <span className='rate'>Rating - {rate}</span>
       </div>
       <div className='details'>

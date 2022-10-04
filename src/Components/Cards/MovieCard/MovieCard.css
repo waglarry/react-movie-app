@@ -1,3 +1,9 @@
+.HomeMovieCard{
+    width: 200px;
+}
+.HomeMovieCard .poster{
+    width: 200px;
+}
 .movieCard{
     width: 200px;
     box-shadow: 0px 1px 3px #222;
@@ -32,16 +38,12 @@
     padding: 1rem;
     overflow-y: auto;
     transition: all .5s ease;
-    /* transform: translateY(-100%); */
     visibility: hidden;
     opacity: 0;
-    /* display: none; */
 }
 .posterBox:hover .overview{
-    /* transform: translateY(0%); */
     visibility: visible;
     opacity: 1;
-    /* display: block; */
 }
 ::-webkit-scrollbar{
     width: 0;

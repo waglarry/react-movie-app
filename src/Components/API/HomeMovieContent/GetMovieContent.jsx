@@ -1,36 +1,28 @@
 import React from 'react';
-import Axios from "axios";
 import { useQuery } from "@tanstack/react-query";
-import MovieCard from "../Cards/MovieCard/MovieCard";
-import { API_KEY } from './URL';
+import HomeMovieCard from '../../Cards/HomeMovieCard/HomeMovieCard';
+import { fetchTrendingMovies } from '../URL';
 
-const GetMovieContent = ({content, filter}) => {
+const GetMovieContent = () => {
     const { data, isLoading, isError } = useQuery(
-        ["content"],
-        () => {
-            return Axios.get(`https://api.themoviedb.org/3/${content}/${filter}?api_key=${API_KEY}&language=en-US&page=1`).then((response) => response.data.results)
-        }
-      );
+        ["content"], fetchTrendingMovies);
 
     if(isLoading) return <h1>Loading...</h1>
     if(isError) return <h1>Error...</h1>
 
   return (
     <div>
-    <div className="mainContentBox">
-      <div className="contentBox">
+      <div className="HomeContentBox">
         {data.map((e) => (
-          <MovieCard
+          <HomeMovieCard
             key={e.id}
             title={e.name}
             released={e.first_air_date || e.release_date}
             poster={e.poster_path}
             rate={e.vote_average}
-            overview={e.overview}
             wallpaper={e.backdrop_path}
         />
         ))}
-      </div>
     </div>
   </div>
   )

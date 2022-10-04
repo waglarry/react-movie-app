@@ -2,12 +2,13 @@ import React from 'react'
 import Axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import PeopleCard from '../Cards/PeopleCard/PeopleCard';
+import { API_KEY } from './URL';
 
 const GetPeopleContent = ({content, filter}) => {
     const { data, isLoading, isError } = useQuery(
         ["content"],
         () => {
-            return Axios.get(`https://api.themoviedb.org/3/${content}/${filter}?api_key=3b92f42dd5e2d7a9ab0a778973611246&language=en-US&page=1`).then((response) => response.data.results)
+            return Axios.get(`https://api.themoviedb.org/3/${content}/${filter}?api_key=${API_KEY}&language=en-US&page=1`).then((response) => response.data.results)
         }
       );
 
