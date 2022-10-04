@@ -1,10 +1,12 @@
 import React from 'react'
-import GetPeopleData from '../../API/GetPeopleData'
+import GetPeopleContent from '../../API/GetPeopleContent'
 
 const people = () => {
   return (
     <div>
-        <GetPeopleData />
+      <br /><br /><br /><br /><br /><br /><br /><br />
+        People
+        <GetPeopleContent content={'person'} filter={'popular'} />
     </div>
   )
 }

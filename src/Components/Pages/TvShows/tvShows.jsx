@@ -1,10 +1,12 @@
 import React from 'react'
-import GetTvshowsData from '../../API/GetTvshowsData'
+import GetMovieContent from '../../API/GetMovieContent'
 
 const tvShows = () => {
   return (
     <div>
-      <GetTvshowsData />
+      <br /><br /><br /><br /><br /><br /><br /><br />
+      Tv Shows
+      <GetMovieContent content={'tv'} filter={'popular'} />
     </div>
   )
 }

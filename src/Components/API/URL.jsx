@@ -47,9 +47,3 @@ export const fetchPopularPeople = () => {
         `https://api.themoviedb.org/3/person/popular?api_key=3b92f42dd5e2d7a9ab0a778973611246&language=en-US&page=1`
     );
 };
-
-export const fetchMovieContent = ({filter, content, page}) => {
-    return Axios.get(
-        `https://api.themoviedb.org/3/${content}/${filter}?api_key=${API_KEY}{&language=en-US&page=${page}`
-    );
-};

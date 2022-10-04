@@ -1,10 +1,12 @@
 import React from 'react'
-import GetMoviesData from '../../API/GetMoviesData'
+import GetMovieContent from '../../API/GetMovieContent'
 
 const Movies = () => {
   return (
     <div>
-      <GetMoviesData />
+      <br /><br /><br /><br /><br /><br /><br /><br />
+      Movies
+      <GetMovieContent content={'movie'} filter={'popular'} />
     </div>
   )
 }
