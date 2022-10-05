@@ -1,6 +1,5 @@
 import React from 'react'
 import { FaSearch } from 'react-icons/fa'
-import Slider from '../../../Slider/Slider'
 import './HomePage.css'
 
 const HomePage = () => {

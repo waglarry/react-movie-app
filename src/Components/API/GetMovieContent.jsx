@@ -5,6 +5,8 @@ import MovieCard from "../Cards/MovieCard/MovieCard";
 import { API_KEY } from "./URL";
 import { Link } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
+import Spinner from "../Spinner/Spinner";
+import ErrorIcon from "../ErrorIcon/ErrorIcon";
 
 const GetMovieContent = ({ content, contentTitle, filter }) => {
   const [currentPageNumber, setCurrentPageNumber] = useState(1);
@@ -24,8 +26,8 @@ const GetMovieContent = ({ content, contentTitle, filter }) => {
     { onSuccess: setMovies }
   );
 
-  if (isLoading) return <h1>Loading...</h1>;
-  if (isError) return <h1>Error...</h1>;
+  if (isLoading) return <Spinner />;
+  if (isError) return <ErrorIcon />;
 
   const setMovieType = (movieType) => {
     if (movieType === "Now Playing") {
@@ -57,19 +59,22 @@ const GetMovieContent = ({ content, contentTitle, filter }) => {
 
   const searchMovie = (event) =>{
     if(event.key==="Enter"){
-    const { isLoading, isError } = useQuery(
-      ["content"],
-      () => {
-        return Axios.get(
-          `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&query=${searchKeyword}`,
-          { keepPreviousData: true }
-        ).then((response) => response.data);
-      },
-      { onSuccess: setMovies }
-    );
-  
-    if (isLoading) return <h1>Loading...</h1>;
-    if (isError) return <h1>Error...</h1>;
+      const { isLoading, isError } = useQuery(
+        ["content"],
+        () => {
+          return Axios.get(
+            `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&query=${searchKeyword}`,
+            { keepPreviousData: true }
+          ).then((response) => response.data);
+        },
+        { onSuccess: setMovies }
+      );
+    
+      if (isLoading) return <Spinner />;
+      if (isError) return <h1>Error...</h1>;
+      return (
+        setMovies
+      )
     }
   }
 
@@ -163,7 +168,7 @@ const GetMovieContent = ({ content, contentTitle, filter }) => {
           type="button"
           className="downButton"
           disabled={
-            currentPageNumber !== movies.total_pages ? isDisabled : !isDisabled
+            currentPageNumber !== movies.total_pages ? isDisabled : setDisabled(!isDisabled)
           }
           onClick={nextPage}
         >

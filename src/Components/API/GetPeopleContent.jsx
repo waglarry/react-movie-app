@@ -5,6 +5,8 @@ import PeopleCard from '../Cards/PeopleCard/PeopleCard';
 import { API_KEY } from './URL';
 import { Link } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
+import Spinner from "../Spinner/Spinner";
+import ErrorIcon from "../ErrorIcon/ErrorIcon";
 
 const GetPeopleContent = ({content,contentTitle, filter}) => {
   const [currentPageNumber, setCurrentPageNumber] = useState(1);
@@ -23,8 +25,8 @@ const GetPeopleContent = ({content,contentTitle, filter}) => {
     { onSuccess: setPeople }
   );
 
-      if(isLoading) return <h1>Loading...</h1>
-      if(isError) return <h1>Error...</h1>
+  if (isLoading) return <Spinner />;
+  if (isError) return <ErrorIcon />;
 
       const setMovieType = (movieType) => {
           setMovieFilter(movieType.toLowerCase());
@@ -79,6 +81,26 @@ const GetPeopleContent = ({content,contentTitle, filter}) => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="ControlsTopDiv">
+        <button
+          type="button"
+          className="topButton"
+          disabled={currentPageNumber === 1 ? !isDisabled : isDisabled}
+          onClick={previousPage}
+        >
+          Previous
+        </button>
+        <button
+          type="button"
+          className="topButton"
+          disabled={
+            currentPageNumber !== people.total_pages ? isDisabled : setDisabled(!isDisabled)
+          }
+          onClick={nextPage}
+        >
+          Next
+        </button>
       </div>
     <div className="mainContentBox">
       <div className="contentBox">
