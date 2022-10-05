@@ -22,7 +22,7 @@ const Navbar = (props) => {
       <header>
         <Logo className="logo"/>
         <nav className='navBar' ref={navRef}>
-          <NavLinks showNavbar={showNavbar}/>
+          <NavLinks showNavbar={showNavbar} />
         </nav>
         <div className='searchBtn'>
           <FaSearch/>

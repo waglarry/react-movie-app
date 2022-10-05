@@ -7,6 +7,9 @@ const NavLinks = (props) => {
     const NavLinkStyle = ({ isActive }) =>{
       return {
         color: isActive ? 'dodgerblue' : '#fff',
+        paddingBottom: isActive ? '.15rem' : '0',
+        borderBottom: isActive ? '.15rem solid dodgerblue' : 'none',
+        transition: 'all .3s ease',
         margin: "0 1rem",
       }
     }

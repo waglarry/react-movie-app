@@ -8,7 +8,7 @@ import { FaSearch } from "react-icons/fa";
 import Spinner from "../Spinner/Spinner";
 import ErrorIcon from "../ErrorIcon/ErrorIcon";
 
-const GetPeopleContent = ({content,contentTitle, filter}) => {
+const GetPeopleContent = ({content, contentTitle, filter}) => {
   const [currentPageNumber, setCurrentPageNumber] = useState(1);
   const [isDisabled, setDisabled] = useState(false);
   const [movieFilter, setMovieFilter] = useState("popular");
