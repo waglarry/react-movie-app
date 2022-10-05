@@ -12,7 +12,8 @@ const ErrorIcon = () => {
         left: "50%",
         transform: "translate(-50%, -50%)",
     }}>
-        <TbFaceIdError size={90} />
+        <TbFaceIdError size={80} />
+        <p>Could not load movies</p>
     </div>
   )
 }
