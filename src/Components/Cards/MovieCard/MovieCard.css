@@ -1,15 +1,15 @@
 .HomeMovieCard{
-    width: 200px;
+    width: 250px;
 }
 .HomeMovieCard .poster{
-    width: 200px;
+    width: 250px;
 }
 .movieCard{
-    width: 200px;
+    width: 250px;
     box-shadow: 0px 1px 3px #222;
 }
 .movieCard .poster{
-    width: 200px;
+    width: 250px;
     box-sizing: border-box;
     max-width: 100%;
     display: block;
@@ -68,10 +68,10 @@
 }
 @media only screen and (min-width:321px) and (max-width:768px){
     .movieCard{
-        width: 110px;
+        width: 150px;
     }
     .movieCard .poster{
-        width: 110px;
+        width: 150px;
     }
     .movieCard .overview{
         padding: .5rem;

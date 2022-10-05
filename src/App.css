@@ -166,7 +166,7 @@
 
 @media only screen and (min-width:321px) and (max-width:768px){
     .contentBox{
-        gap: .7rem;
+        gap: 1rem;
     }
     .NavTopPage{
         padding: 20% 5% 5%;
