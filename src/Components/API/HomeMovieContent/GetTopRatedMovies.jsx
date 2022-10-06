@@ -2,6 +2,7 @@ import React from 'react'
 import { useQuery } from "@tanstack/react-query";
 import HomeMovieCard from '../../Cards/HomeMovieCard/HomeMovieCard';
 import { fetchTopRatedMovies } from '../URL';
+import { Link } from 'react-router-dom'
 
 const GetTopRatedMovies = () => {
     const { data, isLoading, isError } = useQuery(
@@ -12,15 +13,22 @@ const GetTopRatedMovies = () => {
 
   return (
         <div>
+                  <div className="FlexMoviesContentDiv">
+            <div className="FlexMoviesContentTitle">
+              <p>Top Rated</p>
+              <span>Best Movies</span>
+            </div>
+            <Link to='/movies' className='viewMore'>View More</Link>
+        </div>
       <div className="HomeContentBox">
-        {data.map((e) => (
+        {data.map((c) => (
           <HomeMovieCard
-            key={e.id}
-            title={e.name}
-            released={e.first_air_date || e.release_date}
-            poster={e.poster_path}
-            rate={e.vote_average}
-            wallpaper={e.backdrop_path}
+            key={c.id}
+            title={c.title}
+            released={c.first_air_date || c.release_date}
+            poster={c.poster_path}
+            rate={c.vote_average}
+            wallpaper={c.backdrop_path}
         />
         ))}
     </div>

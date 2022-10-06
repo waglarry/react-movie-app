@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import Spinner from "../Spinner/Spinner";
 import ErrorIcon from "../ErrorIcon/ErrorIcon";
+import { GrFormNext, GrFormPrevious } from 'react-icons/gr'
 
 const GetPeopleContent = ({content, contentTitle, filter}) => {
   const [currentPageNumber, setCurrentPageNumber] = useState(1);
@@ -83,13 +84,17 @@ const GetPeopleContent = ({content, contentTitle, filter}) => {
         </div>
       </div>
       <div className="ControlsTopDiv">
+        <div>
+          There are no genres
+        </div>
+        <div>
         <button
           type="button"
           className="topButton"
           disabled={currentPageNumber === 1 ? !isDisabled : isDisabled}
           onClick={previousPage}
         >
-          Previous
+          <GrFormPrevious />
         </button>
         <button
           type="button"
@@ -99,8 +104,9 @@ const GetPeopleContent = ({content, contentTitle, filter}) => {
           }
           onClick={nextPage}
         >
-          Next
+          <GrFormNext />
         </button>
+        </div>
       </div>
     <div className="mainContentBox">
       <div className="contentBox">

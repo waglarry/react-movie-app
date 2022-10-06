@@ -1,11 +1,11 @@
 .movieCard{
-    width: 200px;
-    min-width: 200px;
+    width: 220px;
+    min-width: 220px;
     box-shadow: 0px 1px 3px #222;
     border-radius: .5rem;
 }
 .movieCard .poster{
-    width: 200px;
+    width: 220px;
     box-sizing: border-box;
     max-width: 100%;
     display: block;

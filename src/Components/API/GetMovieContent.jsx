@@ -120,13 +120,17 @@ const GetMovieContent = ({ content, contentTitle, filter }) => {
         </div>
       </div>
       <div className="ControlsTopDiv">
+        <div className="genresDiv">
+          Genres here
+        </div>
+        <div>
         <button
           type="button"
           className="topButton"
           disabled={currentPageNumber === 1 ? !isDisabled : isDisabled}
           onClick={previousPage}
         >
-          Previous
+          <GrFormPrevious />
         </button>
         <button
           type="button"
@@ -136,13 +140,15 @@ const GetMovieContent = ({ content, contentTitle, filter }) => {
           }
           onClick={nextPage}
         >
-          Next
+          <GrFormNext />
         </button>
+        </div>
       </div>
       <div className="mainContentBox">
         <div className="contentBox">
           {movies.results &&
             movies.results.map((e) => (
+              (e.length > 18 ? e.slice(0, 18) :
               <MovieCard
                 key={e.id}
                 title={e.title || e.name}
@@ -151,7 +157,7 @@ const GetMovieContent = ({ content, contentTitle, filter }) => {
                 rate={e.vote_average}
                 overview={e.overview}
                 wallpaper={e.backdrop_path}
-              />
+              />)
             ))}
         </div>
       </div>
@@ -162,7 +168,7 @@ const GetMovieContent = ({ content, contentTitle, filter }) => {
           disabled={currentPageNumber === 1 ? !isDisabled : isDisabled}
           onClick={previousPage}
         >
-          <GrFormPrevious />
+          Previous
         </button>
         <span className="CurrentPageNumber">{currentPageNumber}</span>
         <button
@@ -173,7 +179,7 @@ const GetMovieContent = ({ content, contentTitle, filter }) => {
           }
           onClick={nextPage}
         >
-          <GrFormNext />
+          Next
         </button>
       </div>
       {isFetching ? <span> Loading...</span> : null}{" "}
