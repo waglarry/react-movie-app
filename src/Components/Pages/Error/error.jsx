@@ -2,7 +2,7 @@ import React from 'react'
 
 const Error = () => {
   return (
-    <div>Page Not Found</div>
+    <div style={{marginTop: "30%"}}>Page Not Found</div>
   )
 }
 
