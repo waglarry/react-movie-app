@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import './Navbar.css'
 import Logo from '../NavItems/Logo/Logo';
 import { FaBars } from 'react-icons/fa';
-import { FaSearch } from 'react-icons/fa';
+import { RiSwitchFill } from 'react-icons/ri'
 import NavLinks from '../NavItems/NavLinks/NavLinks';
 
 const Navbar = () => {
@@ -22,7 +22,7 @@ const Navbar = () => {
       windowHeight > 0 ? setStickyClass('headerNavbar') : setStickyClass('relative');
     }
   };
-  
+
   const navRef = useRef()
 
   const showNavbar = () => {
@@ -36,8 +36,8 @@ const Navbar = () => {
         <nav className='navBar' ref={navRef}>
           <NavLinks showNavbar={showNavbar} />
         </nav>
-        <div className='searchBtn'>
-          <FaSearch/>
+        <div className='switchBtn'>
+          <RiSwitchFill />
         </div>
         <button className='navBtn' onClick={showNavbar}>
             <FaBars />
