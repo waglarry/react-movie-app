@@ -8,6 +8,7 @@ import { FaSearch } from "react-icons/fa";
 import { GrFormNext, GrFormPrevious } from 'react-icons/gr'
 import Spinner from "../Spinner/Spinner";
 import ErrorIcon from "../ErrorIcon/ErrorIcon";
+import Error from "../Pages/Error/error";
 
 const GetMovieContent = ({ content, contentTitle, filter }) => {
   const [currentPageNumber, setCurrentPageNumber] = useState(1);
@@ -58,36 +59,35 @@ const GetMovieContent = ({ content, contentTitle, filter }) => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
-  const searchMovie = (event) =>{
+  const searchMovie = async (event) =>{
     if(event.key==="Enter"){
-      const { isLoading, isError } = useQuery(
-        ["content"],
-        () => {
-          return Axios.get(
-            `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&query=${searchKeyword}`,
-            { keepPreviousData: true }
-          ).then((response) => response.data);
-        },
-        { onSuccess: setMovies }
-      );
-    
-      if (isLoading) return <Spinner />;
-      if (isError) return <h1>Error...</h1>;
-      return (
-        setMovies
-      )
+      try {
+        setSearchKeyword("");
+        const {data} = await Axios.get(`https://api.themoviedb.org/3/search/${content}?api_key=${API_KEY}&query=${searchKeyword}`)
+        console.log(data.results);
+        setMovies(data)
+      } catch (error) {
+        return <h1>{error}</h1>
+      }
     }
   }
 
-  // console.log(searchKeyword);
+  const backgroundImage = (content) => {
+    switch(content){
+      case "movie":
+        return "MoviePageTopContent"
+      case "tv": 
+        return "TvShowsPageTopContent"
+      default:
+        return ""
+    }
+  }
+
+  // console.log(searchKeyword.split(" "));
 
   return (
     <div>
-      <div
-        className="TopPageBG"
-        style={{
-          backgroundColor: "#ccc",
-        }}
+      <div className={backgroundImage(content)}
       >
         <div className="NavTopPage">
           <h1 className="contentTitle">{contentTitle}</h1>
@@ -110,12 +110,15 @@ const GetMovieContent = ({ content, contentTitle, filter }) => {
                 );
               })}
             </ul>
-            <div className="navSearchBox">
+            <form className="navSearchBox"       
+                onSubmit={(event) => {
+                event.preventDefault();
+              }}>
               <input className="textBox" type="text" placeholder="Search" onChange={(e) => {setSearchKeyword(e.target.value)}} value={searchKeyword} onKeyPress={searchMovie}/>
               <button className="searchBtn">
                 <FaSearch />
               </button>
-            </div>
+            </form>
           </div>
         </div>
       </div>
@@ -146,7 +149,7 @@ const GetMovieContent = ({ content, contentTitle, filter }) => {
       </div>
       <div className="mainContentBox">
         <div className="contentBox">
-          {movies.results &&
+          {(movies.length === 0) ? <Error /> : movies.results &&
             movies.results.map((e) => (
               (e.length > 18 ? e.slice(0, 18) :
               <MovieCard

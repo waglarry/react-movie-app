@@ -48,11 +48,7 @@ const GetPeopleContent = ({content, contentTitle, filter}) => {
   return (
     <div>
         <div
-        className="TopPageBG"
-        style={{
-          backgroundColor: "#ccc",
-        }}
-      >
+        className="PeoplePageTopContent">
         <div className="NavTopPage">
           <h1 className="contentTitle">{contentTitle}</h1>
           <div className="contentDetails">
