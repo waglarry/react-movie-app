@@ -5,6 +5,7 @@ import MovieCard from "../Cards/MovieCard/MovieCard";
 import { API_KEY } from "./URL";
 import { Link } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
+import { GrFormNext, GrFormPrevious } from 'react-icons/gr'
 import Spinner from "../Spinner/Spinner";
 import ErrorIcon from "../ErrorIcon/ErrorIcon";
 
@@ -161,7 +162,7 @@ const GetMovieContent = ({ content, contentTitle, filter }) => {
           disabled={currentPageNumber === 1 ? !isDisabled : isDisabled}
           onClick={previousPage}
         >
-          Previous
+          <GrFormPrevious />
         </button>
         <span className="CurrentPageNumber">{currentPageNumber}</span>
         <button
@@ -172,7 +173,7 @@ const GetMovieContent = ({ content, contentTitle, filter }) => {
           }
           onClick={nextPage}
         >
-          Next
+          <GrFormNext />
         </button>
       </div>
       {isFetching ? <span> Loading...</span> : null}{" "}

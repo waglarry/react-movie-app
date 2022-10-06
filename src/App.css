@@ -21,7 +21,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: .5rem;
+    gap: .7rem;
     max-width: 1500px;
 }
 .NavTopPage{
@@ -126,7 +126,7 @@
 .ControlsTopDiv{
     display: flex;
     justify-content: space-between;
-    padding: 3rem 4rem;
+    padding: 1rem 4rem;
   }
   .topButton{
     border: 1px solid #222;
@@ -136,10 +136,11 @@
     background: transparent;
     transition: all .5s ease;
     cursor: pointer;
+    border-radius: .3rem;
   }
   .topButton:hover{
     background-color: #222;
-    color: #222;
+    color: #fff;
   }
 .paginationControl{
     display: flex;
@@ -156,11 +157,14 @@
   
   .downButton{
     padding: .5rem;
-    background: dodgerblue;
+    /* background: dodgerblue; */
+    color: #fff;
+    /* font-size: 1rem; */
+    font-weight: 900;
     border: none;
     outline: none;
     border-radius: .3rem;
-    width: 5rem;
+    width: 3rem;
     cursor: pointer;
   }
 
