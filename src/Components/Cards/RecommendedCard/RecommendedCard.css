@@ -1,0 +1,54 @@
+.RecommendedMovieCard{
+    width: 400px;
+    min-width: 400px;
+    box-shadow: 0px 1px 3px #222;
+    border-radius: .5rem;
+}
+.RecommendedMovieCard .poster{
+    width: 400px;
+    box-sizing: border-box;
+    max-width: 100%;
+    display: block;
+    position: relative;
+    border-radius: .5rem;
+}
+.posterBox{
+    position: relative;
+}
+.RecommendedMovieCard .overview{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.7);
+    max-height: 100%;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1rem;
+    overflow-y: auto;
+    transition: all .5s ease;
+    visibility: hidden;
+    opacity: 0;
+}
+.RecommendedMovieCard:hover .overview{
+    visibility: visible;
+    opacity: 1;
+}
+
+@media only screen and (min-width:321px) and (max-width:768px){
+    .RecommendedMovieCard{
+        width: 200px;
+        min-width: 200px;
+    }
+    .RecommendedMovieCard .poster{
+        width: 200px;
+    }
+    .RecommendedMovieCard .overview{
+        font-size: 1rem;
+    }
+}

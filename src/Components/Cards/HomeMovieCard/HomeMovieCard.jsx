@@ -7,7 +7,6 @@ const HomeMovieCard = ({title, released, poster, rate}) => {
     <div className='HomeMovieCard'>
       <div className='posterBox'>
         <img className='poster' src={ poster ? API_IMG+poster : unavailable} alt={title} />
-        {/* <div className='overview'>Overview <p>{overview}</p></div> */}
         <span className='rate'>Rated - {rate.toFixed(1)}</span>
       </div>
       <div className='details'>
