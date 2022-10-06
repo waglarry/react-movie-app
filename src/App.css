@@ -5,12 +5,15 @@
     text-decoration: none;
     scroll-behavior: smooth;
 }
+/* body{
+    background: #ccc;
+} */
 .HomeContentBox{
     display: flex;
     gap: .5rem;
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
-    scroll-padding: 50rem;
+    padding: 1rem;
 }
 .mainContentBox{
     display: flex;
@@ -126,13 +129,15 @@
 .ControlsTopDiv{
     display: flex;
     justify-content: space-between;
-    padding: 1rem 4rem;
+    align-items: center;
+    padding: 1rem 7rem;
   }
   .topButton{
     border: 1px solid #222;
     padding: .5rem;
+    margin-left: 1rem;
     color: #222;
-    width: 5rem;
+    width: 2.5rem;
     background: transparent;
     transition: all .5s ease;
     cursor: pointer;
@@ -157,17 +162,39 @@
   
   .downButton{
     padding: .5rem;
-    /* background: dodgerblue; */
     color: #fff;
-    /* font-size: 1rem; */
-    font-weight: 900;
+    background-color: dodgerblue;
+    /* font-weight: 700; */
     border: none;
     outline: none;
     border-radius: .3rem;
-    width: 3rem;
+    width: 5rem;
     cursor: pointer;
   }
-
+.FlexMoviesContentDiv{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.1rem 0;
+}
+.FlexMoviesContentTitle p{
+    font-size: 2rem;
+}
+.FlexMoviesContentTitle span{
+    color: #333;
+    border-bottom: 1px solid #333;
+}
+.viewMore{
+    border: 1px solid #222;
+    padding: .5rem;
+    color: #222;
+    border-radius: .3rem;
+    transition: all .3s ease;
+}
+.viewMore:hover{
+    background: #222;
+    color: #fff;
+}
 @media only screen and (min-width:321px) and (max-width:768px){
     .contentBox{
         gap: 1rem;
@@ -193,4 +220,7 @@
     .navSearchBox{
         width: 100%;
     }
+    .ControlsTopDiv{
+        padding: 1rem 2rem;
+      }
 }
