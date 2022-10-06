@@ -1,0 +1,51 @@
+.HomeMovieCard{
+    width: 200px;
+    min-width: 200px;
+    box-shadow: 0px 1px 3px #222;
+    border-radius: .5rem;
+}
+.HomeMovieCard .poster{
+    width: 200px;
+    box-sizing: border-box;
+    max-width: 100%;
+    display: block;
+    position: relative;
+    border-radius: .5rem;
+}
+.posterBox{
+    position: relative;
+}
+.HomeMovieCard .rate{
+    background: dodgerblue;
+    color: #fff;
+    font-size: .7rem;
+    font-family: 'Poppins', sans-serif;
+    padding: .1rem .4rem;
+    border-radius: .2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: -6%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.HomeMovieCard .details{
+    padding: 1rem .3rem .2rem;
+}
+.HomeMovieCard .details .title{
+    font-size: .8rem;
+}
+.HomeMovieCard .details .date{
+    font-size: .8rem;
+}
+
+@media only screen and (min-width:321px) and (max-width:768px){
+    .HomeMovieCard{
+        width: 150px;
+        min-width: 150px;
+    }
+    .HomeMovieCard .poster{
+        width: 150px;
+    }
+}
