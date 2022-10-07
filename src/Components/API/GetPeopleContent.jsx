@@ -14,6 +14,7 @@ const GetPeopleContent = ({content, contentTitle, filter}) => {
   const [isDisabled, setDisabled] = useState(false);
   const [movieFilter, setMovieFilter] = useState("popular");
   const [people, setPeople] = useState({});
+  const [searchKeyword, setSearchKeyword] = useState("")
 
   const { isLoading, isError, isFetching } = useQuery(
     ["content", currentPageNumber, movieFilter],
@@ -35,22 +36,32 @@ const GetPeopleContent = ({content, contentTitle, filter}) => {
 
       const nextPage = () => {
         setCurrentPageNumber(currentPageNumber + 1);
-        // window.scroll(0,0)
         window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
       };
     
       const previousPage = () => {
         setCurrentPageNumber(currentPageNumber - 1);
-        // window.scroll(0,0)
         window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
       };
+
+      const searchMovie = async (event) =>{
+        if(event.key==="Enter"){
+          try {
+            setSearchKeyword("");
+            const {data} = await Axios.get(`https://api.themoviedb.org/3/search/${content}?api_key=${API_KEY}&query=${searchKeyword}`)
+            setPeople(data)
+          } catch (error) {
+            return <h1>{error}</h1>
+          }
+        }
+      }
       
   return (
     <div>
         <div
         className="PeoplePageTopContent">
         <div className="NavTopPage">
-          <h1 className="contentTitle">{contentTitle}</h1>
+          <h1 className="contentTitle" style={{ color: "#fff"}}>{contentTitle}</h1>
           <div className="contentDetails">
             <ul className="filterControls">
               {filter.map((filt, id) => {
@@ -63,6 +74,7 @@ const GetPeopleContent = ({content, contentTitle, filter}) => {
                       onClick={(e) => {
                         setMovieType(e.target.name);
                       }}
+                      style={{ color: "#fff"}}
                     >
                       {filt}
                     </Link>
@@ -70,12 +82,15 @@ const GetPeopleContent = ({content, contentTitle, filter}) => {
                 );
               })}
             </ul>
-            <div className="navSearchBox">
-              <input className="textBox" type="text" placeholder="Search" />
+            <form className="navSearchBox"       
+                onSubmit={(event) => {
+                event.preventDefault();
+              }}>
+              <input className="textBox" type="text" placeholder="Search" onChange={(e) => {setSearchKeyword(e.target.value)}} value={searchKeyword} onKeyPress={searchMovie}/>
               <button className="searchBtn">
                 <FaSearch />
               </button>
-            </div>
+            </form>
           </div>
         </div>
       </div>
@@ -106,7 +121,7 @@ const GetPeopleContent = ({content, contentTitle, filter}) => {
       </div>
     <div className="mainContentBox">
       <div className="contentBox">
-        {people.results && people.results.map((e) => (
+        {people.results === 0 ? <p>No data</p> : people.results && people.results.map((e) => (
           <PeopleCard
             key={e.id}
             poster={e.profile_path}
