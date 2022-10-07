@@ -1,7 +1,9 @@
 footer{
     background: linear-gradient(to left, rgba(0, 0, 255, 0.918), dodgerblue);
     width: 100%;
-    border-top: 1rem solid #ccc;
+    border-top: .5rem solid #222;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
     display: flex;
     justify-content: center;
 }
@@ -13,8 +15,10 @@ footer{
     display: flex;
     flex-wrap: wrap;
     column-gap: 9rem;
-    /* align-items: center; */
-    padding: 2rem 0 6rem 0;
+    padding: 2rem 0 5rem 0;
+}
+.footerLogo{
+    color: #000;
 }
 .footerTitle{
     color: #000;
@@ -32,7 +36,9 @@ footer{
 .Links{
     list-style: none;
     padding-bottom: .7rem;
-    color: #222;
+}
+.footerLinks{
+    color: #000;
 }
 .footerLinks:hover{
     text-decoration: underline;
@@ -43,6 +49,13 @@ footer{
     color: #ccc;
     border-top: 1px solid #ccc;
     padding-top: 1.5rem;
+}
+.logoContent{
+    padding-top: 1rem;
+    width: 200px;
+    color: #000;
+    font-size: 1rem;
+    opacity: .8;
 }
 @media only screen and (max-width: 786px){
     footer{
@@ -56,6 +69,15 @@ footer{
         position: absolute;
         right: 0;
         top: 15%;
-        transform: translate(-50%, -50%);
+        transform: translate(-80%, -50%);
+    }
+    .footerLogoH1{
+        font-size: 1.5rem;
+    }
+    .containerBox{
+        padding: 0;
+    }
+    .logoContent{
+        display: none;
     }
 }
