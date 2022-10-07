@@ -55,9 +55,7 @@ const Themes = () => {
         alignItems: "center",
         justifyContent: "space-between",
     }}>
-        <span style={{
-            color: "#fff",
-        }}>{toggleText(togglemode)}</span>
+        <span className='toggleText'>{toggleText(togglemode)}</span>
         <button 
             className={theme === "dark" ? clickedClass : ""}
             id="darkMode"

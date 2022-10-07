@@ -1,6 +1,6 @@
 #darkMode{
-    /* background: transparent; */
-    font-size: 2rem;
+    font-size: 1.5rem;
+    padding: .2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,5 +11,4 @@
 }
 #darkMode:hover{
     border: .1rem solid #000;
-    transform: scale(1.1);
 }
