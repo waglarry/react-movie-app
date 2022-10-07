@@ -4,6 +4,7 @@ import Logo from '../NavItems/Logo/Logo';
 import { FaBars } from 'react-icons/fa';
 import { RiSwitchFill } from 'react-icons/ri'
 import NavLinks from '../NavItems/NavLinks/NavLinks';
+import Themes from '../Themes/Themes';
 
 const Navbar = () => {
   const [stickyClass, setStickyClass] = useState('relative');
@@ -37,7 +38,7 @@ const Navbar = () => {
           <NavLinks showNavbar={showNavbar} />
         </nav>
         <div className='switchBtn'>
-          <RiSwitchFill />
+          <Themes />
         </div>
         <button className='navBtn' onClick={showNavbar}>
             <FaBars />
