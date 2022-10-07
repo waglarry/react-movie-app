@@ -64,7 +64,6 @@ const GetMovieContent = ({ content, contentTitle, filter }) => {
       try {
         setSearchKeyword("");
         const {data} = await Axios.get(`https://api.themoviedb.org/3/search/${content}?api_key=${API_KEY}&query=${searchKeyword}`)
-        console.log(data.results);
         setMovies(data)
       } catch (error) {
         return <h1>{error}</h1>
@@ -83,7 +82,6 @@ const GetMovieContent = ({ content, contentTitle, filter }) => {
     }
   }
 
-  // console.log(searchKeyword.split(" "));
 
   return (
     <div>
