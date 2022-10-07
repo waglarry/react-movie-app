@@ -3,7 +3,6 @@ import Axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import RecommendedCard from '../../Cards/RecommendedCard/RecommendedCard';
 import { API_KEY } from '../URL';
-import ErrorIcon from '../../ErrorIcon/ErrorIcon';
 import Spinner from '../../Spinner/Spinner';
 import { Link } from 'react-router-dom'
 
@@ -19,7 +18,7 @@ const GetRecommendedMovieContent = () => {
       );
     
       if (isLoading) return <Spinner />;
-      if (isError) return <ErrorIcon />;
+      if (isError) return "";
 
   return (
     <div>

@@ -3,13 +3,15 @@ import { useQuery } from "@tanstack/react-query";
 import HomeMovieCard from '../../Cards/HomeMovieCard/HomeMovieCard';
 import { fetchTrendingMovies } from '../URL';
 import { Link } from 'react-router-dom'
+import Spinner from '../../Spinner/Spinner';
+import Error from '../../Pages/Error/error';
 
 const GetTrendingMovies = () => {
     const { data, isLoading, isError } = useQuery(
         ["content"], fetchTrendingMovies);
 
-    if(isLoading) return <h1>Loading...</h1>
-    if(isError) return <h1>Error...</h1>
+    if(isLoading) return <Spinner />
+    if(isError) return <Error />
 
   return (
     <div>
