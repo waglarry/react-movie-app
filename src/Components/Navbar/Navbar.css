@@ -30,7 +30,7 @@ header .navBtn{
   }
 
   header .switchBtn{
-    width: 3rem;
+    width: 5rem;
 }
 @media only screen and (min-width:321px) and (max-width:768px){
     header{

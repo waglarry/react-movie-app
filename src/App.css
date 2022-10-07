@@ -7,7 +7,7 @@
 }
 
 :root{
-    --dark: rgb(51, 51, 51);
+    --dark: rgb(0, 0, 0);
     --light: rgb(204, 204, 204);
     --text-light-color: rgb(255, 255, 255);
     --text-dark-color: rgb(0, 0, 0);
@@ -56,21 +56,26 @@ body.dark {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
 }
 .TvShowsPageTopContent{
     background: linear-gradient(rgba(0,0,0,0.9),rgb(30, 144, 255, 0.5)), url(../src/Components/images/bg.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
 }
 .PeoplePageTopContent{
     background: linear-gradient(rgba(0,0,0,0.9),rgb(30, 144, 255, 0.5)), url(../src/Components/images/spiderman.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
 }
 .contentTitle{
-    /* color: #fff; */
     font-size: 4rem;
 }
 .contentDetails{
@@ -150,6 +155,7 @@ body.dark {
   }
   .topButton{
     border: 1px solid #222;
+    color: #fff;
     padding: .5rem;
     margin-left: 1rem;
     width: 2.5rem;
@@ -160,6 +166,7 @@ body.dark {
   }
   .topButton:hover{
     background-color: #222;
+    color: #fff;
   }
 .paginationControl{
     display: flex;
@@ -176,6 +183,7 @@ body.dark {
   .downButton{
     padding: .5rem;
     background-color: dodgerblue;
+    /* color: #000; */
     border: none;
     outline: none;
     border-radius: .3rem;
@@ -196,12 +204,14 @@ body.dark {
 }
 .viewMore{
     border: 1px solid #222;
+    color: #222;
     padding: .5rem;
     border-radius: .3rem;
     transition: all .3s ease;
 }
 .viewMore:hover{
     background: #222;
+    color: #fff;
 }
 @media only screen and (min-width:321px) and (max-width:768px){
     .contentBox{

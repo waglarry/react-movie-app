@@ -14,7 +14,7 @@ const GetTopRatedMovies = () => {
 
   return (
         <div>
-                  <div className="FlexMoviesContentDiv">
+        <div className="FlexMoviesContentDiv">
             <div className="FlexMoviesContentTitle">
               <p>Top Rated</p>
               <span>Best Movies</span>

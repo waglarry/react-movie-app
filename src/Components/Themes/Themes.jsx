@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { RiSwitchFill } from 'react-icons/ri'
 import './Themes.css'
 
@@ -8,6 +8,7 @@ const Themes = () => {
     const lightTheme = "light";
     const darkTheme = "dark";
     let theme;
+
 
     if(localStorage){
         theme = localStorage.getItem("theme")
@@ -25,16 +26,38 @@ const Themes = () => {
             e.target.classList.remove(clickedClass);
             localStorage.setItem("theme", "light");
             theme = lightTheme;
+            setToggleMode(theme)
         } else {
             body.classList.replace(lightTheme, darkTheme);
             e.target.classList.remove(clickedClass);
             localStorage.setItem("theme", "dark");
             theme = darkTheme; 
+            setToggleMode(theme)
+        }
+    }
+
+    const [togglemode, setToggleMode] = useState(theme)
+
+    const toggleText = (mode) => {
+        switch (mode) {
+            case "light":
+                return "Light"
+            case "dark":
+                return "Dark"
+            default:
+                return ""
         }
     }
 
   return (
-    <div>
+    <div style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+    }}>
+        <span style={{
+            color: "#fff",
+        }}>{toggleText(togglemode)}</span>
         <button 
             className={theme === "dark" ? clickedClass : ""}
             id="darkMode"
