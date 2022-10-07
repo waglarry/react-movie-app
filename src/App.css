@@ -5,9 +5,26 @@
     text-decoration: none;
     scroll-behavior: smooth;
 }
-/* body{
-    background: #ccc;
-} */
+
+:root{
+    --dark: rgb(51, 51, 51);
+    --light: rgb(204, 204, 204);
+    --text-light-color: rgb(255, 255, 255);
+    --text-dark-color: rgb(0, 0, 0);
+}
+body{
+    background: var(--background-color);
+    color: var(--color);
+}
+
+body.light {
+    --background-color: var(--light);
+    --color: var(--text-dark-color)
+}
+body.dark {
+    --background-color: var(--dark);
+    --color: var(--text-light-color)
+}
 .HomeContentBox{
     display: flex;
     gap: .5rem;
@@ -53,7 +70,7 @@
     background-repeat: no-repeat;
 }
 .contentTitle{
-    color: #fff;
+    /* color: #fff; */
     font-size: 4rem;
 }
 .contentDetails{
@@ -72,7 +89,6 @@
     font-size: 1rem;
     position: relative;
     display: inline-block;
-    color: #fff;
     font-weight: 600;
 }
 .filterLink::before,
@@ -136,7 +152,6 @@
     border: 1px solid #222;
     padding: .5rem;
     margin-left: 1rem;
-    color: #222;
     width: 2.5rem;
     background: transparent;
     transition: all .5s ease;
@@ -145,7 +160,6 @@
   }
   .topButton:hover{
     background-color: #222;
-    color: #fff;
   }
 .paginationControl{
     display: flex;
@@ -156,14 +170,12 @@
   }
   .CurrentPageNumber{
     padding: 0 2rem;
-    color: #ccc;
+    font-weight: 900;
   }
   
   .downButton{
     padding: .5rem;
-    color: #fff;
     background-color: dodgerblue;
-    /* font-weight: 700; */
     border: none;
     outline: none;
     border-radius: .3rem;
@@ -180,19 +192,16 @@
     font-size: 2rem;
 }
 .FlexMoviesContentTitle span{
-    color: #333;
     border-bottom: 1px solid #333;
 }
 .viewMore{
     border: 1px solid #222;
     padding: .5rem;
-    color: #222;
     border-radius: .3rem;
     transition: all .3s ease;
 }
 .viewMore:hover{
     background: #222;
-    color: #fff;
 }
 @media only screen and (min-width:321px) and (max-width:768px){
     .contentBox{
