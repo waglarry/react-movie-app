@@ -2,7 +2,6 @@ import React, { useRef, useState, useEffect } from 'react';
 import './Navbar.css'
 import Logo from '../NavItems/Logo/Logo';
 import { FaBars } from 'react-icons/fa';
-import { RiSwitchFill } from 'react-icons/ri'
 import NavLinks from '../NavItems/NavLinks/NavLinks';
 import Themes from '../Themes/Themes';
 
