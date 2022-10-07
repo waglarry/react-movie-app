@@ -33,10 +33,9 @@ const Footer = () => {
                 <div className="contact">
                     <h3 className="footerTitle">Contact Us</h3>
                     <ul className="Links">
-                        <li className='footerLinks'>Facebook</li>
-                        <li className='footerLinks'>Instagram</li>
-                        <li className='footerLinks'>Twitter</li>
-                        <li className='footerLinks'>Telegram</li>
+                        <li><a className='footerLinks' target="_blank" href="https://instagram.com/iamkofi.emma?igshid=YmMyMTA2M2Y=">Instagram</a></li>
+                        <li><a className='footerLinks' target="_blank" href="https://twitter.com/kofi_waga?s=21">Twitter</a></li>
+                        <li><a className='footerLinks' target="_blank" href="https://t.me/joinchat/uqaW_ETwe1g1MDZk">Telegram</a></li>
                     </ul>
                 </div>
                 </div>
