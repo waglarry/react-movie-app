@@ -49,13 +49,11 @@ const GetMovieContent = ({ content, contentTitle, filter }) => {
 
   const nextPage = () => {
     setCurrentPageNumber(currentPageNumber + 1);
-    // window.scroll(0,0)
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
   const previousPage = () => {
     setCurrentPageNumber(currentPageNumber - 1);
-    // window.scroll(0,0)
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
@@ -85,10 +83,9 @@ const GetMovieContent = ({ content, contentTitle, filter }) => {
 
   return (
     <div>
-      <div className={backgroundImage(content)}
-      >
+      <div className={backgroundImage(content)}>
         <div className="NavTopPage">
-          <h1 className="contentTitle">{contentTitle}</h1>
+          <h1 className="contentTitle" style={{ color: "#fff"}}>{contentTitle}</h1>
           <div className="contentDetails">
             <ul className="filterControls">
               {filter.map((filt, id) => {
@@ -101,6 +98,7 @@ const GetMovieContent = ({ content, contentTitle, filter }) => {
                       onClick={(e) => {
                         setMovieType(e.target.name);
                       }}
+                      style={{ color: "#fff"}}
                     >
                       {filt}
                     </Link>
