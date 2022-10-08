@@ -1,13 +1,3 @@
-/* .homePage{
-    width: 100%;
-    height: 100vh;
-    background: linear-gradient(rgb(0, 0, 0, 0.9),rgb(30, 144, 255, 0.2)),url(../../../images/Pima.webp);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    border-bottom: 1rem solid #222;
-    transition: all 1s ease;
-} */
 .homePageBox{
     text-align: center;
     position: absolute;
