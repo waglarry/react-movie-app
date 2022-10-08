@@ -4,7 +4,7 @@ import './Footer.css'
 
 const Footer = () => {
   return (
-    <div>
+    <div style={{position: "absolute", bottom: "0",top: "100%" ,width: "100%"}}>
         <footer>
             <div className="footerContainer">
                 <div className="containerBox">
@@ -33,9 +33,9 @@ const Footer = () => {
                 <div className="contact">
                     <h3 className="footerTitle">Contact Us</h3>
                     <ul className="Links">
-                        <li><a className='footerLinks' target="_blank" href="https://instagram.com/iamkofi.emma?igshid=YmMyMTA2M2Y=">Instagram</a></li>
-                        <li><a className='footerLinks' target="_blank" href="https://twitter.com/kofi_waga?s=21">Twitter</a></li>
-                        <li><a className='footerLinks' target="_blank" href="https://t.me/joinchat/uqaW_ETwe1g1MDZk">Telegram</a></li>
+                        <li><a className='footerLinks' target="_blank" href="https://instagram.com/iamkofi.emma?igshid=YmMyMTA2M2Y=" rel="noopener noreferrer">Instagram</a></li>
+                        <li><a className='footerLinks' target="_blank" href="https://twitter.com/kofi_waga?s=21" rel="noopener noreferrer">Twitter</a></li>
+                        <li><a className='footerLinks' target="_blank" href="https://t.me/joinchat/uqaW_ETwe1g1MDZk" rel="noopener noreferrer">Telegram</a></li>
                     </ul>
                 </div>
                 </div>

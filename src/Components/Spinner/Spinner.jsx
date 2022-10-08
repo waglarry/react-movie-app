@@ -12,7 +12,7 @@ const Spinner = () => {
         left: "50%",
         transform: "translate(-50%, -50%)",
     }}>
-        <GridLoader color={'dodgerblue'} loading={true}  size={10} aria-label="Loading Spinner" />
+        <GridLoader color={'crimson'} loading={true}  size={10} aria-label="Loading Spinner" />
     </div>
   )
 }

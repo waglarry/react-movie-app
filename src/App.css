@@ -8,7 +8,7 @@
 
 :root{
     --dark: rgb(0, 0, 0);
-    --light: rgb(204, 204, 204);
+    --light: rgb(255, 255, 255);
     --text-light-color: rgb(255, 255, 255);
     --text-dark-color: rgb(0, 0, 0);
 }
@@ -24,6 +24,14 @@ body.light {
 body.dark {
     --background-color: var(--dark);
     --color: var(--text-light-color)
+}
+.toggleText{
+    color: var(--color);
+    background: var(--background-color);
+    padding: .2rem 1rem .2rem .3rem;
+    margin-right: -.5rem;
+    border-radius: .3rem 0 0 .3rem;
+    border: 1px solid #fff;
 }
 .HomeContentBox{
     display: flex;
@@ -52,7 +60,8 @@ body.dark {
     border-bottom-right-radius: 1rem;
 }
 .MoviePageTopContent{
-    background: linear-gradient(rgb(0, 0, 0, 0.5),rgb(30, 144, 255, 0.2)), url(../src/Components/images/movie.jpg);
+    background: linear-gradient(rgb(0, 0, 0, 0.5),
+    rgb(30, 144, 255, 0.2)), url(../src/Components/images/movie.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -60,7 +69,8 @@ body.dark {
     border-bottom-right-radius: 1rem;
 }
 .TvShowsPageTopContent{
-    background: linear-gradient(rgba(0,0,0,0.9),rgb(30, 144, 255, 0.5)), url(../src/Components/images/bg.jpg);
+    background: linear-gradient(rgba(0,0,0,0.9),
+    rgb(30, 144, 255, 0.5)), url(../src/Components/images/bg.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -68,7 +78,8 @@ body.dark {
     border-bottom-right-radius: 1rem;
 }
 .PeoplePageTopContent{
-    background: linear-gradient(rgba(0,0,0,0.9),rgb(30, 144, 255, 0.5)), url(../src/Components/images/spiderman.jpg);
+    background: linear-gradient(rgba(0,0,0,0.9),
+    rgb(30, 144, 255, 0.5)), url(../src/Components/images/spiderman.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -103,7 +114,7 @@ body.dark {
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: dodgerblue;
+    background-color: crimson;
     transform: scaleX(0);
     transition: transform .7s;
 }
@@ -119,7 +130,7 @@ body.dark {
 .filterLink:hover::after,
 .filterLink:hover{
     transform: scaleX(1);
-    color: dodgerblue;
+    color: crimson;
 }
 .navSearchBox .textBox{
     border: none;
@@ -129,7 +140,8 @@ body.dark {
     font-weight: 600;
     border-radius: 2rem 0 0 2rem;
     width: calc(100% - 3rem);
-    box-shadow: inset 0 3px 3px 0 rgb(0, 0, 0, 0.3), inset 0 0 3px 3px rgb(0, 0, 0, 0.3);
+    box-shadow: inset 0 3px 3px 0 rgb(0, 0, 0, 0.3), 
+    inset 0 0 3px 3px rgb(0, 0, 0, 0.3);
 }
 .navSearchBoxm .textBox::placeholder{
     opacity: .6;
@@ -142,8 +154,9 @@ body.dark {
     font-size: .75rem;
     font-weight: 900;
     border-radius: 0 2rem 2rem 0;
-    background-color: dodgerblue;
-    box-shadow: inset 0 3px 3px 0 rgb(0, 0, 0, 0.3), inset 0 0 3px 3px rgb(0, 0, 0, 0.3);
+    background-color: crimson;
+    box-shadow: inset 0 3px 3px 0 rgb(0, 0, 0, 0.3), 
+    inset 0 0 3px 3px rgb(0, 0, 0, 0.3);
 }
 
 
@@ -182,7 +195,7 @@ body.dark {
   
   .downButton{
     padding: .5rem;
-    background-color: dodgerblue;
+    background-color: crimson;
     /* color: #000; */
     border: none;
     outline: none;
@@ -213,6 +226,31 @@ body.dark {
     background: #222;
     color: #fff;
 }
+
+.posterImageOverlay{
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.posterImageDetails{
+    background: rgba(0,0,0,0.5);
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+}
+.detailsContent{
+    text-align: left;
+    width: 30%;
+}
+.posterImageOverview{
+    width: 80%;
+    text-align: left;
+}
+.detailTitle{
+    color: #ccc;
+}
+
 @media only screen and (min-width:321px) and (max-width:768px){
     .contentBox{
         gap: 1rem;
@@ -240,5 +278,23 @@ body.dark {
     }
     .ControlsTopDiv{
         padding: 1rem 2rem;
-      }
+    }
+    .posterImageOverlay{
+        position: relative;
+        padding-top: 50%;
+        max-height: 50vh;
+    }
+    .posterImageDetails{
+        background: none;
+        padding: 1rem;
+        display: block;
+    }
+    .detailsContent{
+        text-align: left;
+        width: 100%;
+    }
+    .posterImageOverview{
+        width: 100%;
+        text-align: left;
+    }
 }

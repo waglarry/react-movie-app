@@ -1,4 +1,4 @@
-.homePage{
+/* .homePage{
     width: 100%;
     height: 100vh;
     background: linear-gradient(rgb(0, 0, 0, 0.9),rgb(30, 144, 255, 0.2)),url(../../../images/Pima.webp);
@@ -7,7 +7,7 @@
     background-repeat: no-repeat;
     border-bottom: 1rem solid #222;
     transition: all 1s ease;
-}
+} */
 .homePageBox{
     text-align: center;
     position: absolute;
@@ -49,7 +49,7 @@
     font-size: .7rem;
     width: 3rem;
     border-radius: 0 2rem 2rem 0;
-    background-color: dodgerblue;
+    background-color: crimson;
     box-shadow: inset 0 3px 3px 0 rgb(0, 0, 0, 0.3), inset 0 0 3px 3px rgb(0, 0, 0, 0.3);
 }
 @media only screen and (min-width:321px) and (max-width:768px){

@@ -6,9 +6,9 @@ import './NavLinks.css'
 const NavLinks = (props) => {
     const NavLinkStyle = ({ isActive }) =>{
       return {
-        color: isActive ? 'dodgerblue' : '#fff',
+        color: isActive ? 'crimson' : '#fff',
         paddingBottom: isActive ? '.15rem' : '0',
-        borderBottom: isActive ? '.15rem solid dodgerblue' : 'none',
+        borderBottom: isActive ? '.15rem solid crimson' : 'none',
         transition: 'all .3s ease',
         margin: "0 1rem",
       }

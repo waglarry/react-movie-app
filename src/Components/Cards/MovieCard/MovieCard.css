@@ -13,7 +13,7 @@
     border-radius: .5rem;
 }
 .movieCard .overview{
-    color: dodgerblue;
+    color: crimson;
     border-radius: .5rem;
 }
 .movieCard .overview p{
@@ -47,7 +47,7 @@
     position: relative;
 }
 .movieCard .rate{
-    background: dodgerblue;
+    background: crimson;
     color: #fff;
     font-size: .7rem;
     font-family: 'Poppins', sans-serif;
