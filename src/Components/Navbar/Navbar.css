@@ -1,6 +1,7 @@
 :root{
     --main-color: crimson;
     --bg-color: #222;
+    /* --bg-color: #ED355A; */
 }
 header{
     display: flex;
