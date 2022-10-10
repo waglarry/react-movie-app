@@ -4,7 +4,7 @@ import './Footer.css'
 
 const Footer = () => {
   return (
-    <div style={{position: "absolute", bottom: "0",top: "100%" ,width: "100%"}}>
+    <div>
         <footer>
             <div className="footerContainer">
                 <div className="containerBox">
