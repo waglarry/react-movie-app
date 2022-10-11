@@ -64,6 +64,7 @@
 .movieCard .details{
     padding: 1rem .3rem .2rem;
 }
+
 @media only screen and (min-width:321px) and (max-width:768px){
     .movieCard{
         width: 150px;

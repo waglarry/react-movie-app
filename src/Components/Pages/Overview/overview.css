@@ -1,0 +1,48 @@
+.hero{
+    min-height: 30rem;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 2rem;
+}
+.heroContentBox{
+    display: flex;
+    justify-content: space-between;
+    padding: 8% 10%;
+    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.9));
+}
+.heroPoster .poster{
+    width: 300px;
+    border-radius: .5rem;
+}
+.heroContent{
+    padding-top: 2rem;
+    padding-left: 1rem;
+}
+.heroContent h1{
+    font-size: 4rem;
+    color: crimson;
+}
+.overviewTitle{
+    color: #fff;
+    font-size: 1.5rem;
+}
+.heroContent p{
+    color: #fff;
+    font-size: 1rem;
+}
+
+@media only screen and (min-width:321px) and (max-width:768px){
+    .hero{
+        min-height: 10vh;
+    }
+    .heroPoster .poster{
+        display: none;
+    }
+    .heroContentBox{
+        padding: 8% 5%;
+    }
+    .heroContent h1{
+        font-size: 2rem;
+    }
+}

@@ -1,13 +1,12 @@
 footer{
-    background: linear-gradient(to left, rgba(0, 0, 255, 0.918), crimson);
+    background: linear-gradient(to left, #222, #333);
     width: 100%;
     border-top: .5rem solid #222;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
     display: flex;
     justify-content: center;
-    /* position: absolute;
-    bottom: 0; */
+    z-index: 999;
 }
 .footerContainer{
     display: flex;
