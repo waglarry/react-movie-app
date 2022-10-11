@@ -9,6 +9,9 @@ import { GrFormNext, GrFormPrevious } from 'react-icons/gr'
 import Spinner from "../Spinner/Spinner";
 import ErrorIcon from "../ErrorIcon/ErrorIcon";
 import Error from "../Pages/Error/error";
+import Genres from "../Genres/Genres";
+import GenresIDs from "../Genres/GenresIDs";
+import RenderMovies from "./RenderMovies/RenderMovies";
 
 const GetMovieContent = ({ content, contentTitle, filter }) => {
   const [currentPageNumber, setCurrentPageNumber] = useState(1);
@@ -16,12 +19,15 @@ const GetMovieContent = ({ content, contentTitle, filter }) => {
   const [movieFilter, setMovieFilter] = useState("popular");
   const [movies, setMovies] = useState({});
   const [searchKeyword, setSearchKeyword] = useState("")
+  const [genres, setGenres] = useState([])
+  const [selectedGenres, setSelectedGenres] = useState([])
+  const genresId = GenresIDs(selectedGenres);
 
   const { isLoading, isError, isFetching } = useQuery(
-    ["content", currentPageNumber, movieFilter],
+    ["content", currentPageNumber, movieFilter, selectedGenres],
     () => {
       return Axios.get(
-        `https://api.themoviedb.org/3/${content}/${movieFilter}?api_key=${API_KEY}&language=en-US&page=${currentPageNumber}`,
+        `https://api.themoviedb.org/3/${content}/${movieFilter}?api_key=${API_KEY}&language=en-US&page=${currentPageNumber}&with_genres=${genresId}`,
         { keepPreviousData: true }
       ).then((response) => response.data);
     },
@@ -120,16 +126,17 @@ const GetMovieContent = ({ content, contentTitle, filter }) => {
       </div>
       <div className="ControlsTopDiv">
         <div className="genresDiv">
-          Genres here
+          <span>Filter By Genres</span>
+          <Genres genres={genres} setGenres={setGenres} selectedGenres={selectedGenres} setSelectedGenres={setSelectedGenres} />
         </div>
-        <div>
+        <div className="topButtons">
         <button
           type="button"
           className="topButton"
           disabled={currentPageNumber === 1 ? !isDisabled : isDisabled}
           onClick={previousPage}
         >
-          <GrFormPrevious />
+          &#60;
         </button>
         <button
           type="button"
@@ -139,25 +146,13 @@ const GetMovieContent = ({ content, contentTitle, filter }) => {
           }
           onClick={nextPage}
         >
-          <GrFormNext />
+          &#62;
         </button>
         </div>
       </div>
       <div className="mainContentBox">
         <div className="contentBox">
-          {(movies.length === 0) ? <Error /> : movies.results &&
-            movies.results.map((e) => (
-              (e.length > 18 ? e.slice(0, 18) :
-              <MovieCard
-                key={e.id}
-                title={e.title || e.name}
-                released={e.first_air_date || e.release_date}
-                poster={e.poster_path}
-                rate={e.vote_average}
-                overview={e.overview}
-                wallpaper={e.backdrop_path}
-              />)
-            ))}
+          <RenderMovies movies={movies} />
         </div>
       </div>
       <div className="paginationControl">
