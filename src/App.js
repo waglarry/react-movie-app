@@ -8,6 +8,7 @@ import Movies from './Components/Pages/Movies/movies';
 import TvShows from './Components/Pages/TvShows/tvShows';
 import People from './Components/Pages/People/people';
 import Error from './Components/Pages/Error/error';
+import Overview from './Components/Pages/Overview/overview';
 
 function App() {
   const client = new QueryClient({
@@ -27,6 +28,7 @@ function App() {
                     <Route path='/movies' element={<Movies />} />
                     <Route path='/tvShows' element={<TvShows />} />
                     <Route path='/people' element={<People />} />
+                    <Route path='/overview' element={<Overview />} />
                     <Route path='*' element={<Error />} />
                 </Routes>
             </Router>
