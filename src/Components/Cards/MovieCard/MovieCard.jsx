@@ -1,13 +1,14 @@
 import React from 'react'
 import './MovieCard.css'
 import { API_IMG, unavailable } from '../../API/URL'
+import { Link } from 'react-router-dom'
 
 const MovieCard = ({title, released, overview, poster, rate}) => {
   return (
     <div className='movieCard'>
       <div className='posterBox'>
         <img className='poster' src={ poster ? API_IMG+poster : unavailable} alt={title} />
-        <div className='overview'>Overview <p>{overview}</p></div>
+        <div className='overview'>Overview <p>{overview}</p> <span><Link to={`/overview`}><button>View</button></Link></span></div>
         <span className='rate'>Rated - {rate.toFixed(1)}</span>
       </div>
       <div className='details'>
