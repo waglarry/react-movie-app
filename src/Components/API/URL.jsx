@@ -1,20 +1,10 @@
 import Axios from "axios";
 
 export const API_IMG = "https://image.tmdb.org/t/p/w500"
+export const API_BGImage = "https://image.tmdb.org/t/p/original"
+// export const API_OverViewBG = "https://image.tmdb.org/t/p/w1280"
 export const unavailable = "https://www.movienewz.com/img/films/poster-holder.jpg";
 export const API_KEY = process.env.REACT_APP_API_KEY
-
-export   const fetchMovies = () => {
-    return Axios.get(
-      `https://api.themoviedb.org/3/movie/2?api_key=${API_KEY}&language=en-US`
-    );
-  };
-
-  export   const fetchTvShows = () => {
-    return Axios.get(
-        `https://api.themoviedb.org/3/tv/1?api_key=${API_KEY}&language=en-US`
-    );
-  };
 
 
 export const fetchTrendingMovies = () => {
@@ -26,5 +16,11 @@ export const fetchTrendingMovies = () => {
 export const fetchTopRatedMovies = () => {
     return Axios.get(
         `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}`
+    );
+};
+
+export const fetchPopularMovies = () => {
+    return Axios.get(
+        `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`
     );
 };
