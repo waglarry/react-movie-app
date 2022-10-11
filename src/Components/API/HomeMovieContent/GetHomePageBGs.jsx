@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Axios from "axios";
 import { useQuery } from "@tanstack/react-query";
-import { API_IMG, API_KEY } from "../URL";
+import { API_BGImage, API_KEY } from "../URL";
 import ErrorIcon from "../../ErrorIcon/ErrorIcon";
 import Spinner from "../../Spinner/Spinner";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 
 const GetHomePageBGs = ({ content, movieFilter }) => {
@@ -43,7 +43,7 @@ const GetHomePageBGs = ({ content, movieFilter }) => {
             movies.results.map((movie) => (
               <div key={movie.id}>
               <div className="posterImage">
-                <img src={`${API_IMG}${movie && movie.backdrop_path}`} alt="" />
+                <img src={`${API_BGImage}${movie && movie.backdrop_path}`} alt="" />
               </div>
               <div className="posterImageOverlay">
                   <h1 className="posterImageTitle">{movie ? movie.original_title || movie.title : ""}</h1>
