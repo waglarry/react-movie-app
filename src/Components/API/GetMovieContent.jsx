@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import Axios from "axios";
 import { useQuery } from "@tanstack/react-query";
-import MovieCard from "../Cards/MovieCard/MovieCard";
 import { API_KEY } from "./URL";
 import { Link } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import { GrFormNext, GrFormPrevious } from 'react-icons/gr'
 import Spinner from "../Spinner/Spinner";
 import ErrorIcon from "../ErrorIcon/ErrorIcon";
-import Error from "../Pages/Error/error";
 import Genres from "../Genres/Genres";
 import GenresIDs from "../Genres/GenresIDs";
 import RenderMovies from "./RenderMovies/RenderMovies";
@@ -153,7 +151,7 @@ const GetMovieContent = ({ content, contentTitle, filter }) => {
       </div>
       <div className="mainContentBox">
         <div className="contentBox">
-          <RenderMovies movies={movies} />
+          <RenderMovies movies={movies} content={content} />
         </div>
       </div>
         <PaginationButton
