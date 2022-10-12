@@ -8,6 +8,7 @@ import { FaSearch } from "react-icons/fa";
 import Spinner from "../Spinner/Spinner";
 import ErrorIcon from "../ErrorIcon/ErrorIcon";
 import { GrFormNext, GrFormPrevious } from 'react-icons/gr'
+import PaginationButton from "../PaginationButton/PaginationButton";
 
 const GetPeopleContent = ({content, contentTitle, filter}) => {
   const [currentPageNumber, setCurrentPageNumber] = useState(1);
@@ -131,27 +132,14 @@ const GetPeopleContent = ({content, contentTitle, filter}) => {
         ))}
       </div>
     </div>
-    <div className="paginationControl">
-        <button
-          type="button"
-          className="downButton"
-          disabled={currentPageNumber === 1 ? !isDisabled : isDisabled}
-          onClick={previousPage}
-        >
-          Previous
-        </button>
-        <span className="CurrentPageNumber">{currentPageNumber}</span>
-        <button
-          type="button"
-          className="downButton"
-          disabled={
-            currentPageNumber !== people.total_pages ? isDisabled : !isDisabled
-          }
-          onClick={nextPage}
-        >
-          Next
-        </button>
-      </div>
+    <PaginationButton
+          previousPage={previousPage}
+          nextPage={nextPage}
+          currentPageNumber={currentPageNumber}
+          isDisabled={isDisabled}
+          movies={people}
+          setDisabled={setDisabled}
+        />
       {isFetching ? <span> Loading...</span> : null}{" "}
   </div>
   )

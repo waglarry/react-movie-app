@@ -12,6 +12,7 @@ import Error from "../Pages/Error/error";
 import Genres from "../Genres/Genres";
 import GenresIDs from "../Genres/GenresIDs";
 import RenderMovies from "./RenderMovies/RenderMovies";
+import PaginationButton from "../PaginationButton/PaginationButton";
 
 const GetMovieContent = ({ content, contentTitle, filter }) => {
   const [currentPageNumber, setCurrentPageNumber] = useState(1);
@@ -155,27 +156,14 @@ const GetMovieContent = ({ content, contentTitle, filter }) => {
           <RenderMovies movies={movies} />
         </div>
       </div>
-      <div className="paginationControl">
-        <button
-          type="button"
-          className="downButton"
-          disabled={currentPageNumber === 1 ? !isDisabled : isDisabled}
-          onClick={previousPage}
-        >
-          Previous
-        </button>
-        <span className="CurrentPageNumber">{currentPageNumber}</span>
-        <button
-          type="button"
-          className="downButton"
-          disabled={
-            currentPageNumber !== movies.total_pages ? isDisabled : setDisabled(!isDisabled)
-          }
-          onClick={nextPage}
-        >
-          Next
-        </button>
-      </div>
+        <PaginationButton
+          previousPage={previousPage}
+          nextPage={nextPage}
+          currentPageNumber={currentPageNumber}
+          isDisabled={isDisabled}
+          movies={movies}
+          setDisabled={setDisabled}
+        />
       {isFetching ? <span> Loading...</span> : null}{" "}
     </div>
   );
