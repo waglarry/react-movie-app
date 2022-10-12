@@ -4,15 +4,19 @@ import axios from 'axios';
 import OverviewCard from '../../Cards/OverviewCard/OverviewCard';
 import './overview.css'
 import YouTube from 'react-youtube';
-
+import { FaArrowAltCircleUp } from 'react-icons/fa'
+import PaginationButton from '../../PaginationButton/PaginationButton';
+import Footer from '../../Footer/Footer'
 
 const overview = () => {
       const [movies, setMovies] = useState({});
       const [selectedCard, setSelectedCard] = useState([])
       const [playTrailer, setPlayTrailer] = useState(false)
+      const [currentPageNumber, setCurrentPageNumber] = useState(1);
+      const [isDisabled, setDisabled] = useState(false);
 
         const fetchMovies = async () => {
-            const { data } = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`);
+            const { data } = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=${currentPageNumber}`);
             setMovies(data);
             await selectCard(data.results[0]);
          }
@@ -55,7 +59,28 @@ const overview = () => {
     
          useEffect(() => {
             fetchMovies();
-         }, [])
+         }, [currentPageNumber])
+
+
+         const nextPage = () => {
+          setCurrentPageNumber(currentPageNumber + 1);
+          window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+        };
+      
+        const previousPage = () => {
+          setCurrentPageNumber(currentPageNumber - 1);
+          window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+        };
+
+         window.addEventListener("scroll", function () {
+          var scroll = document.querySelector(".scrollTop");
+          scroll && scroll.classList.toggle("active", window.scrollY > 200);
+        });
+         function scrollToTop() {
+          window.scrollTo({
+            top: 0,
+          });
+        }
 
   return (
     <>
@@ -89,7 +114,19 @@ const overview = () => {
           />
         ))}
     </div>
-  </div>    
+  </div>   
+  <PaginationButton
+          previousPage={previousPage}
+          nextPage={nextPage}
+          currentPageNumber={currentPageNumber}
+          isDisabled={isDisabled}
+          movies={movies}
+          setDisabled={setDisabled}
+        />
+        <Footer />
+  <span className=" scrollTop" onClick={() => scrollToTop()}>
+        <FaArrowAltCircleUp fontSize="large" style={{ color: "white" }} />
+      </span> 
     </>
   )
 }
