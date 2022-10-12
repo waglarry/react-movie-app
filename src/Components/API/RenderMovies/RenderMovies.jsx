@@ -2,7 +2,7 @@ import React from 'react'
 import MovieCard from '../../Cards/MovieCard/MovieCard'
 import ErrorIcon from '../../ErrorIcon/ErrorIcon'
 
-const RenderMovies = ({movies}) => {
+const RenderMovies = ({movies, content}) => {
   return (
     <>
     {(movies.length === 0) ? <ErrorIcon /> : movies.results &&
@@ -15,6 +15,7 @@ const RenderMovies = ({movies}) => {
         rate={e.vote_average}
         overview={e.overview}
         wallpaper={e.backdrop_path}
+        content={content}
       />
     ))}
     </>
