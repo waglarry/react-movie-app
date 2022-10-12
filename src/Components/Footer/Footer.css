@@ -1,7 +1,7 @@
 footer{
     background: linear-gradient(to left, #222, #333);
+    color: #fff;
     width: 100%;
-    border-top: .5rem solid #222;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
     display: flex;
@@ -18,16 +18,12 @@ footer{
     column-gap: 9rem;
     padding: 2rem 0 5rem 0;
 }
-.footerLogo{
-    color: #000;
-}
 .footerTitle{
-    color: #000;
     margin-bottom: .7rem;
 }
 .footerTitle::after{
     content: '';
-    background: #000;
+    background: #fff;
     height: .2rem;
     width: 2.5rem;
     display: block;
@@ -39,10 +35,12 @@ footer{
     padding-bottom: .7rem;
 }
 .footerLinks{
-    color: #000;
+    color: #fff;
+    opacity: .6;
+    cursor: pointer;
 }
 .footerLinks:hover{
-    text-decoration: underline;
+    color: crimson;
 }
 .copyRight{
     text-align: center;
@@ -54,7 +52,6 @@ footer{
 .logoContent{
     padding-top: 1rem;
     width: 200px;
-    color: #000;
     font-size: 1rem;
     opacity: .8;
 }
