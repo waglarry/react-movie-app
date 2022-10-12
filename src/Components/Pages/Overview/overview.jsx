@@ -4,7 +4,7 @@ import axios from 'axios';
 import OverviewCard from '../../Cards/OverviewCard/OverviewCard';
 import './overview.css'
 import YouTube from 'react-youtube';
-import { FaArrowAltCircleUp } from 'react-icons/fa'
+import { FaArrowAltCircleUp, FaSearch } from 'react-icons/fa'
 import PaginationButton from '../../PaginationButton/PaginationButton';
 import Footer from '../../Footer/Footer'
 
@@ -14,15 +14,17 @@ const overview = () => {
       const [playTrailer, setPlayTrailer] = useState(false)
       const [currentPageNumber, setCurrentPageNumber] = useState(1);
       const [isDisabled, setDisabled] = useState(false);
+      const [searchKeyword, setSearchKeyword] = useState("")
+      const [content, setContent] = useState('movie')
 
         const fetchMovies = async () => {
-            const { data } = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=${currentPageNumber}`);
+            const { data } = await axios.get(`https://api.themoviedb.org/3/${content}/popular?api_key=${API_KEY}&language=en-US&page=${currentPageNumber}`);
             setMovies(data);
             await selectCard(data.results[0]);
          }
 
          const fetchMovie = async (id) => {
-          const { data } = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&append_to_response=videos`);
+          const { data } = await axios.get(`https://api.themoviedb.org/3/${content}/${id}?api_key=${API_KEY}&append_to_response=videos`);
 
           return data
         }
@@ -59,8 +61,19 @@ const overview = () => {
     
          useEffect(() => {
             fetchMovies();
-         }, [currentPageNumber])
+         }, [currentPageNumber, content])
 
+         const searchMovie = async (event) =>{
+          if(event.key==="Enter"){
+            try {
+              setSearchKeyword("");
+              const {data} = await axios.get(`https://api.themoviedb.org/3/search/${content}?api_key=${API_KEY}&query=${searchKeyword}`)
+              return setMovies(data)
+            } catch (error) {
+              return <h1>{error}</h1>
+            }
+          }
+        }
 
          const nextPage = () => {
           setCurrentPageNumber(currentPageNumber + 1);
@@ -82,12 +95,29 @@ const overview = () => {
           });
         }
 
+
   return (
     <>
         <div className="hero" style={{ backgroundImage: `url('${API_BGImage}${selectedCard.backdrop_path}')`}}>
             {playTrailer ? <button className='VideoCloseBtn' onClick={() => setPlayTrailer(false)}>X</button> : null}
             {selectedCard.videos && playTrailer ? renderTrailer(selectedCard) : null}
             <div className="heroContentBox" id={playTrailer ? "hideContent" : ""}>
+            <div className="overViewTopBar">
+            <div className="switchContent">
+              <button onClick={() => setContent('movie')} className="switchContentBtn">Movies</button>
+              <button onClick={() => setContent('tv')} className="switchContentBtn">Tv Shows</button>
+            </div>
+            <form className="navSearchBox"       
+                onSubmit={(event) => {
+                event.preventDefault();
+              }}>
+              <input className="textBox" type="text" placeholder="Search" onChange={(e) => {setSearchKeyword(e.target.value)}} value={searchKeyword} onKeyPress={searchMovie}/>
+              <button className="searchBtn">
+                <FaSearch />
+              </button>
+            </form>
+          </div>
+            <div className='heroContentDetails'>
             <div className="heroPoster">
                 <img className='poster' src={`${API_IMG}${selectedCard.poster_path}`} alt="" />
             </div>
@@ -100,6 +130,7 @@ const overview = () => {
                 <span>Popularity: {selectedCard.popularity}</span> <br />
                 <span>Rated: {selectedCard.vote_average}</span> <br />
                 <span>Vote Count: {selectedCard.vote_count}</span>
+            </div>
             </div>
             </div>
         </div>
