@@ -24,6 +24,7 @@
 .heroContent{
     padding-top: 2rem;
     padding-left: 1rem;
+    color: #fff;
 }
 .heroContent h1{
     font-size: 4rem;
@@ -34,7 +35,6 @@
     font-size: 1.5rem;
 }
 .heroContent p{
-    color: #fff;
     font-size: 1rem;
 }
 .overViewTopBar{
@@ -82,6 +82,7 @@
     outline: none;
     background: crimson;
     color: #fff;
+    border-radius: .5rem;
     padding: 1rem;
     margin-top: 1rem;
 }
