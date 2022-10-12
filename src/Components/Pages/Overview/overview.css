@@ -1,9 +1,10 @@
 .hero{
-    min-height: 30rem;
+    /* min-height: 30rem; */
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     margin-bottom: 2rem;
+    position: relative;
 }
 .heroContentBox{
     display: flex;
@@ -31,7 +32,50 @@
     color: #fff;
     font-size: 1rem;
 }
-
+#hideContent{
+    display: none;
+    margin-top: 3rem;
+    position: absolute;
+    top: 50%;
+}
+.VideoContainer{
+    position: relative;
+    height: 100vh;
+    width: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+}
+.youtubeContainer{
+    position: absolute;
+    top: 5rem;
+    left: 0;
+    bottom: 3rem;
+    right: 0;
+}
+.VideoPlayBtn{
+    border: none;
+    outline: none;
+    background: crimson;
+    color: #fff;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+.VideoCloseBtn{
+    position: absolute;
+    top: 10%;
+    right: 25%;
+    z-index: 999;
+    background: #000;
+    color: #fff;
+    padding: .2rem;
+    width: 2rem;
+    border: none;
+    outline: none;
+}
+.VideoCloseBtn:hover{
+    background: red;
+}
 @media only screen and (min-width:321px) and (max-width:768px){
     .hero{
         min-height: 10vh;
@@ -44,5 +88,22 @@
     }
     .heroContent h1{
         font-size: 2rem;
+    }
+    .VideoContainer{
+        height: 50vh;
+        width: 100%;
+    }
+    .youtubeContainer{
+        top: 0;
+        bottom: 0;
+    }
+    .VideoCloseBtn{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        padding: .2rem;
+        width: 2rem;
+        height: 2rem;
+        z-index: 999;
     }
 }

@@ -24,21 +24,32 @@ const overview = () => {
         }
 
         const selectCard = async (movie) => {
+          setPlayTrailer(false)
           const data = await fetchMovie(movie.id)
           setSelectedCard(data)
         }
 
         const renderTrailer = (selectedCard) => {
           const trailer = selectedCard.videos.results.find((vid) => vid.name === "Official Trailer")
+          const key = trailer ? trailer.key : selectedCard.videos.results[0].key
+
           return (
-            <YouTube 
-              videoId={trailer.key}
-              containerClassname={'youtubeContainer'}
+            <div className="VideoContainer">
+              <YouTube 
+              videoId={key}
+              className={'youtubeContainer'}
+              iframeClassName={'iframeContainer'}
+              title={'WagaTrendz'}
               opts={{
                 width: "100%",
-                height: "100%"
+                height: "100%",
+                playerVars: {
+                  autoplay: 1,
+                  // controls: 0
+                }
               }}
             />
+            </div>
           )
         }
     
@@ -49,6 +60,7 @@ const overview = () => {
   return (
     <>
         <div className="hero" style={{ backgroundImage: `url('${API_BGImage}${selectedCard.backdrop_path}')`}}>
+            {playTrailer ? <button className='VideoCloseBtn' onClick={() => setPlayTrailer(false)}>X</button> : null}
             {selectedCard.videos && playTrailer ? renderTrailer(selectedCard) : null}
             <div className="heroContentBox" id={playTrailer ? "hideContent" : ""}>
             <div className="heroPoster">
@@ -56,12 +68,13 @@ const overview = () => {
             </div>
             <div className="heroContent">
                 <h1>{selectedCard.title}</h1>
+                <button className='VideoPlayBtn' onClick={() => setPlayTrailer(true)}>Watch Trailer</button> <br /> <br />
+                
+                <p><p className='overviewTitle'>Overview</p>{selectedCard.overview}</p> <br />
                 <span>Language: {selectedCard.original_language === "en" ? "English" : ""}</span> <br />
                 <span>Popularity: {selectedCard.popularity}</span> <br />
                 <span>Rated: {selectedCard.vote_average}</span> <br />
                 <span>Vote Count: {selectedCard.vote_count}</span>
-                <p><p className='overviewTitle'>Overview</p>{selectedCard.overview}</p>
-                <button onClick={() => setPlayTrailer(true)}>Play Trailer</button>
             </div>
             </div>
         </div>
