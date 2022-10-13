@@ -29,7 +29,7 @@ const NavLinks = (props) => {
               <button className='navBtn' onClick={props.showNavbar} style={{
                 position: "absolute",
                 top: "2rem",
-                right: "2rem",
+                left: "2rem",
               }}>
                 <FaTimes />
               </button>
