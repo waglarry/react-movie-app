@@ -1,10 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { API_IMG, unavailable } from '../../API/URL'
 import './HomeMovieCard.css'
 
 const HomeMovieCard = ({title, released, poster, rate}) => {
   return (
-    <div className='HomeMovieCard'>
+    <Link to={`/overview`} style={{textDecoration: "none"}}>
+      <div className='HomeMovieCard'>
       <div className='posterBox'>
         <img className='poster' src={ poster ? API_IMG+poster : unavailable} alt={title} />
         <span className='rate'>Rated - {rate.toFixed(1)}</span>
@@ -14,6 +16,7 @@ const HomeMovieCard = ({title, released, poster, rate}) => {
         <span className='date'>Released: {released}</span>
       </div>
     </div>
+    </Link>
   )
 }
 
