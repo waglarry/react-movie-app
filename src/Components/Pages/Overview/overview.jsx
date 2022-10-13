@@ -110,15 +110,20 @@ const overview = () => {
                 <img className='poster' src={`${API_IMG}${selectedCard.poster_path}`} alt="" />
             </div>
             <div className="heroContent">
-                <h1>{selectedCard.title}</h1>
-                <button className='VideoPlayBtn' onClick={() => setPlayTrailer(true)}>Watch Trailer</button>
-                <button className='VideoPlayBtn'><a href={`https://www.google.com/search?q=%?intitle:index.of? mkv ${selectedCard.original_title || selectedCard.title}`} target="_blank">Download</a></button>
+                <h1>{selectedCard.title || selectedCard.original_title}</h1>
+                <button className='videoBtn' onClick={() => setPlayTrailer(true)}>Watch Trailer</button> 
+                <a className='videoBtn downloadBtn' href={`https://www.google.com/search?q=https://www.sabishare.com/file/${selectedCard.original_title || selectedCard.original_name}-netnaija-mp4`} target="_blank">Download</a>
                 
-                <p><p className='overviewTitle'>Overview</p>{selectedCard.overview}</p> <br />
-                <span>Language: {selectedCard.original_language === "en" ? "English" : ""}</span> <br />
-                <span>Popularity: {selectedCard.popularity}</span> <br />
-                <span>Rated: {selectedCard.vote_average}</span> <br />
-                <span>Vote Count: {selectedCard.vote_count}</span>
+                <div className="overviewInfo">
+                <p className='date'>Release Date: {selectedCard.release_date}</p>
+                <p className='overviewText'><p className='overviewTitle'>Overview</p>{selectedCard.overview}</p>
+                <div className="otherOverviewInfo">
+                <p>Popularity: {selectedCard.popularity}</p>
+                <p>Rated: {selectedCard.vote_average}</p>
+                <p>Vote Count: {selectedCard.vote_count}</p>
+                <p>Language: {selectedCard.original_language ? selectedCard.original_language === "en" ? "English" : "" : ""}</p>
+                </div>
+                </div>
             </div>
             </div>
             </div>

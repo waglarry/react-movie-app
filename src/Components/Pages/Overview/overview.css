@@ -10,7 +10,8 @@
     display: flex;
     flex-direction: column;
     padding: 8% 10%;
-    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.9));
+    background: rgba(0,0,0,0.1);
+    backdrop-filter: blur(15px);
 }
 .heroContentDetails{
     display: flex;
@@ -18,17 +19,16 @@
     padding: 1rem 0;
 }
 .heroPoster .poster{
-    width: 300px;
+    width: 250px;
     border-radius: .5rem;
 }
 .heroContent{
-    padding-top: 2rem;
     padding-left: 1rem;
     color: #fff;
 }
 .heroContent h1{
-    font-size: 4rem;
-    color: crimson;
+    font-size: 3rem;
+    color: #fff;
 }
 .overviewTitle{
     color: #fff;
@@ -77,14 +77,23 @@
     bottom: 3rem;
     right: 0;
 }
-.VideoPlayBtn{
+.videoBtn{
     border: none;
     outline: none;
-    background: crimson;
-    color: #fff;
-    border-radius: .5rem;
-    padding: 1rem;
-    margin-top: 1rem;
+    color: #000;
+    background: #ccc;
+    padding: .4rem;
+    font-size: 1rem;
+    border: .1rem solid #ccc;
+}
+.downloadBtn{
+    background: none;
+    margin-left: 1rem;
+    color: #ccc;
+}
+.downloadBtn:hover{
+    background: #ccc;
+    color: #000;
 }
 .VideoCloseBtn{
     position: absolute;
@@ -101,6 +110,22 @@
 .VideoCloseBtn:hover{
     background: red;
     border-radius: .1rem;
+}
+.overviewTitle{
+    color: crimson;
+    font-weight: 900;
+}
+.overviewText{
+    color: #fff;
+}
+.overviewInfo{
+    margin-top: 1rem;
+}
+.overviewInfo .date{
+    margin-bottom: .5rem;
+}
+.otherOverviewInfo{
+    margin-top: 1rem;
 }
 @media only screen and (min-width:321px) and (max-width:768px){
     .hero{
@@ -131,7 +156,7 @@
         width: 100%;
     }
     .youtubeContainer{
-        top: 0;
+        top: 1;
         bottom: 0;
     }
     .VideoCloseBtn{
