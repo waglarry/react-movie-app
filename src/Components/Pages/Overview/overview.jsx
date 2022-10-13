@@ -98,7 +98,7 @@ const overview = () => {
             <div className="overViewTopBar">
             <div className="switchContent">
               <button onClick={() => setContent('movie')} className="switchContentBtn">Movies</button>
-              <button onClick={() => setContent('tv')} className="switchContentBtn">Tv Shows</button>
+              <button onClick={() => setContent('tv')} className="switchContentBtn">Series</button>
             </div>
             <form className="search"
               onSubmit={(event) => {
@@ -120,13 +120,14 @@ const overview = () => {
                 <a className='videoBtn downloadBtn' href={`https://www.google.com/search?q=https://www.sabishare.com/file/${selectedCard.original_title || selectedCard.original_name}-netnaija-mp4`} target="_blank">Download</a>
                 
                 <div className="overviewInfo">
-                <p className='date'>Release Date: {selectedCard.release_date}</p>
+                <p className='date'>Release Date: {selectedCard.release_date || selectedCard.first_air_date}</p>
                 <p className='overviewText'><p className='overviewTitle'>Overview</p>{selectedCard.overview}</p>
                 <div className="otherOverviewInfo">
                 <p><MdOutlineTagFaces /> Popularity: <span>{selectedCard.popularity}</span></p>
                 <p><AiTwotoneStar /> Rated: <span>{selectedCard.vote_average}</span></p>
                 <p><MdOutlineHowToVote /> Vote Count: <span>{selectedCard.vote_count}</span></p>
-                <p><TbMessageLanguage /> Language: <span>{selectedCard.original_language ? selectedCard.original_language === "en" ? "English" : "" : ""}</span></p>
+                <p><TbMessageLanguage /> Language: <span>{selectedCard.original_language ? selectedCard.original_language === "en" ? "English" : selectedCard.original_language : "No language found"}</span></p>
+                <p>{content === "tv" ? `${<MdOutlineHowToVote />}Country: ` : ""} <span>{selectedCard.origin_country ? selectedCard.origin_country : ""}</span></p>
                 </div>
                 </div>
             </div>
