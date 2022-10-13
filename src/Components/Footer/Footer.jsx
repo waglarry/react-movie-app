@@ -40,7 +40,7 @@ const Footer = () => {
                 </div>
                 </div>
             <div className="copyRight">
-                Copyright © 2022, Waga'sDesign
+                &copy; Copyright {new Date().getFullYear()}, All Rights Reserved.
             </div>
         </div>
         </footer>
