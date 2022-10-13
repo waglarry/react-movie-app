@@ -19,6 +19,7 @@ const overview = () => {
       const [isDisabled, setDisabled] = useState(false);
       const [searchKeyword, setSearchKeyword] = useState("")
       const [content, setContent] = useState('movie')
+      const [status, setStatus] = useState(false)
 
         const fetchMovies = async () => {
             const { data } = await axios.get(`https://api.themoviedb.org/3/${content}/popular?api_key=${API_KEY}&language=en-US&page=${currentPageNumber}`);
@@ -97,8 +98,8 @@ const overview = () => {
             <div className="heroContentBox" id={playTrailer ? "hideContent" : ""}>
             <div className="overViewTopBar">
             <div className="switchContent">
-              <button onClick={() => setContent('movie')} className="switchContentBtn">Movies</button>
-              <button onClick={() => setContent('tv')} className="switchContentBtn">Series</button>
+              <button onClick={() => setContent('movie')} id={content === "movie" ? "activeContetnt" : ""} className="switchContentBtn">Movies</button>
+              <button onClick={() => setContent('tv')} id={content === "tv" ? "activeContetnt" : ""} className="switchContentBtn">Series</button>
             </div>
             <form className="search"
               onSubmit={(event) => {
