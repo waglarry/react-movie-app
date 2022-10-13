@@ -7,6 +7,9 @@ import YouTube from 'react-youtube';
 import { FaSearch } from 'react-icons/fa'
 import PaginationButton from '../../PaginationButton/PaginationButton';
 import Footer from '../../Footer/Footer'
+import { AiTwotoneStar } from 'react-icons/ai'
+import { MdOutlineHowToVote, MdOutlineTagFaces } from 'react-icons/md'
+import { TbMessageLanguage } from 'react-icons/tb'
 
 const overview = () => {
       const [movies, setMovies] = useState({});
@@ -27,6 +30,7 @@ const overview = () => {
           const { data } = await axios.get(`https://api.themoviedb.org/3/${content}/${id}?api_key=${API_KEY}&append_to_response=videos`);
           return data
         }
+
 
         const selectCard = async (movie) => {
           setPlayTrailer(false)
@@ -67,6 +71,7 @@ const overview = () => {
             try {
               setSearchKeyword("");
               const {data} = await axios.get(`https://api.themoviedb.org/3/search/${content}?api_key=${API_KEY}&query=${searchKeyword}`)
+              await selectCard(data.results[0]);
               return setMovies(data)
             } catch (error) {
               return <h1>{error}</h1>
@@ -95,22 +100,22 @@ const overview = () => {
               <button onClick={() => setContent('movie')} className="switchContentBtn">Movies</button>
               <button onClick={() => setContent('tv')} className="switchContentBtn">Tv Shows</button>
             </div>
-            <form className="navSearchBox"       
-                onSubmit={(event) => {
+            <form className="search"
+              onSubmit={(event) => {
                 event.preventDefault();
               }}>
-              <input className="textBox" type="text" placeholder="Search" onChange={(e) => {setSearchKeyword(e.target.value)}} value={searchKeyword} onKeyPress={searchMovie}/>
-              <button className="searchBtn">
-                <FaSearch />
-              </button>
-            </form>
+                <input type="text" className='overviewSearchInput' placeholder='Movies, Tv Shows, People...' onChange={(e) => {setSearchKeyword(e.target.value)}} value={searchKeyword} onKeyPress={searchMovie} />
+                <button type='button' className='overviewSearchBtn'>
+                  <FaSearch />
+                </button>
+              </form>
           </div>
             <div className='heroContentDetails'>
             <div className="heroPoster">
                 <img className='poster' src={`${API_IMG}${selectedCard.poster_path}`} alt="" />
             </div>
             <div className="heroContent">
-                <h1>{selectedCard.title || selectedCard.original_title}</h1>
+                <h1>{selectedCard.title || selectedCard.original_title || selectedCard.original_name || selectedCard.name}</h1>
                 <button className='videoBtn' onClick={() => setPlayTrailer(true)}>Watch Trailer</button> 
                 <a className='videoBtn downloadBtn' href={`https://www.google.com/search?q=https://www.sabishare.com/file/${selectedCard.original_title || selectedCard.original_name}-netnaija-mp4`} target="_blank">Download</a>
                 
@@ -118,10 +123,10 @@ const overview = () => {
                 <p className='date'>Release Date: {selectedCard.release_date}</p>
                 <p className='overviewText'><p className='overviewTitle'>Overview</p>{selectedCard.overview}</p>
                 <div className="otherOverviewInfo">
-                <p>Popularity: {selectedCard.popularity}</p>
-                <p>Rated: {selectedCard.vote_average}</p>
-                <p>Vote Count: {selectedCard.vote_count}</p>
-                <p>Language: {selectedCard.original_language ? selectedCard.original_language === "en" ? "English" : "" : ""}</p>
+                <p><MdOutlineTagFaces /> Popularity: <span>{selectedCard.popularity}</span></p>
+                <p><AiTwotoneStar /> Rated: <span>{selectedCard.vote_average}</span></p>
+                <p><MdOutlineHowToVote /> Vote Count: <span>{selectedCard.vote_count}</span></p>
+                <p><TbMessageLanguage /> Language: <span>{selectedCard.original_language ? selectedCard.original_language === "en" ? "English" : "" : ""}</span></p>
                 </div>
                 </div>
             </div>
