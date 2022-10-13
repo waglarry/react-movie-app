@@ -4,7 +4,7 @@ import axios from 'axios';
 import OverviewCard from '../../Cards/OverviewCard/OverviewCard';
 import './overview.css'
 import YouTube from 'react-youtube';
-import { FaArrowAltCircleUp, FaSearch } from 'react-icons/fa'
+import { FaSearch } from 'react-icons/fa'
 import PaginationButton from '../../PaginationButton/PaginationButton';
 import Footer from '../../Footer/Footer'
 
@@ -25,7 +25,6 @@ const overview = () => {
 
          const fetchMovie = async (id) => {
           const { data } = await axios.get(`https://api.themoviedb.org/3/${content}/${id}?api_key=${API_KEY}&append_to_response=videos`);
-
           return data
         }
 
@@ -85,20 +84,9 @@ const overview = () => {
           window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
         };
 
-         window.addEventListener("scroll", function () {
-          var scroll = document.querySelector(".scrollTop");
-          scroll && scroll.classList.toggle("active", window.scrollY > 200);
-        });
-         function scrollToTop() {
-          window.scrollTo({
-            top: 0,
-          });
-        }
-
-
   return (
     <>
-        <div className="hero" style={{ backgroundImage: `url('${API_BGImage}${selectedCard.backdrop_path}')`}}>
+        <div className="hero" style={{ backgroundImage: `url('${API_BGImage}${selectedCard ? selectedCard.backdrop_path : ""}')`}}>
             {playTrailer ? <button className='VideoCloseBtn' onClick={() => setPlayTrailer(false)}>X</button> : null}
             {selectedCard.videos && playTrailer ? renderTrailer(selectedCard) : null}
             <div className="heroContentBox" id={playTrailer ? "hideContent" : ""}>
@@ -123,7 +111,8 @@ const overview = () => {
             </div>
             <div className="heroContent">
                 <h1>{selectedCard.title}</h1>
-                <button className='VideoPlayBtn' onClick={() => setPlayTrailer(true)}>Watch Trailer</button> <br /> <br />
+                <button className='VideoPlayBtn' onClick={() => setPlayTrailer(true)}>Watch Trailer</button>
+                <button className='VideoPlayBtn'><a href={`https://www.google.com/search?q=%?intitle:index.of? mkv ${selectedCard.original_title || selectedCard.title}`} target="_blank">Download</a></button>
                 
                 <p><p className='overviewTitle'>Overview</p>{selectedCard.overview}</p> <br />
                 <span>Language: {selectedCard.original_language === "en" ? "English" : ""}</span> <br />
@@ -155,9 +144,6 @@ const overview = () => {
           setDisabled={setDisabled}
         />
         <Footer />
-  <span className=" scrollTop" onClick={() => scrollToTop()}>
-        <FaArrowAltCircleUp fontSize="large" style={{ color: "white" }} />
-      </span> 
     </>
   )
 }
