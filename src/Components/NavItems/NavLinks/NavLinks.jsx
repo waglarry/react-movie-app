@@ -6,7 +6,7 @@ import './NavLinks.css'
 const NavLinks = (props) => {
     const NavLinkStyle = ({ isActive }) =>{
       return {
-        color: isActive ? 'crimson' : '#222',
+        color: isActive ? 'crimson' : '#ccc',
         paddingBottom: isActive ? '.15rem' : '0',
         borderBottom: isActive ? '.15rem solid crimson' : 'none',
         transition: 'all .3s ease',
@@ -29,7 +29,7 @@ const NavLinks = (props) => {
               <button className='navBtn' onClick={props.showNavbar} style={{
                 position: "absolute",
                 top: "2rem",
-                left: "2rem",
+                right: "2rem",
               }}>
                 <FaTimes />
               </button>
