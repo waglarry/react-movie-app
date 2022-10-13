@@ -49,14 +49,11 @@
     padding: .5rem;
     border-radius:  .5rem 0 0 .5rem;
 }
-#activeContetnt{
-    background: crimson;
-}
 .switchContentBtn:last-child{
     border-radius: 0 .5rem .5rem 0;
 }
 .switchContentBtn:hover{
-    background: rgb(204, 204, 204, 0.6);
+    background: crimson;
 }
 .search{
     padding: .5rem .8rem;
