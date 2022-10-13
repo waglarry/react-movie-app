@@ -33,6 +33,10 @@ body.dark {
     border-radius: .3rem 0 0 .3rem;
     border: 1px solid var(--color);
 }
+.cardLinks{
+    text-decoration: none;
+    color: var(--color);
+}
 .navLogo span{
     color: var(--color);
 }

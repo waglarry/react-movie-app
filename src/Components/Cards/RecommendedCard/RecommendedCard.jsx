@@ -5,7 +5,7 @@ import './RecommendedCard.css'
 
 const RecommendedCard = ({title, wallpaper}) => {
   return (
-    <Link to={`/overview`} style={{textDecoration: "none"}}>
+    <Link to={`/overview`} className="cardLinks">
     <div className='RecommendedMovieCard'>
     <div className='posterBox'>
       <img className='poster' src={ wallpaper ? API_IMG+wallpaper : unavailable} alt={title} />

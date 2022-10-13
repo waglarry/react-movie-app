@@ -5,7 +5,7 @@ import './HomeMovieCard.css'
 
 const HomeMovieCard = ({title, released, poster, rate}) => {
   return (
-    <Link to={`/overview`} style={{textDecoration: "none"}}>
+    <Link to={`/overview`} className="cardLinks">
       <div className='HomeMovieCard'>
       <div className='posterBox'>
         <img className='poster' src={ poster ? API_IMG+poster : unavailable} alt={title} />
