@@ -62,7 +62,7 @@ const GetPeopleContent = ({content, contentTitle, filter}) => {
         <div
         className="PeoplePageTopContent">
         <div className="NavTopPage">
-          <h1 className="contentTitle" style={{ color: "#fff"}}>{contentTitle}</h1>
+          <h1 className="contentTitle">{contentTitle}</h1>
           <div className="contentDetails">
             <ul className="filterControls">
               {filter.map((filt, id) => {
@@ -74,9 +74,7 @@ const GetPeopleContent = ({content, contentTitle, filter}) => {
                       name={filt}
                       onClick={(e) => {
                         setMovieType(e.target.name);
-                      }}
-                      style={{ color: "#fff"}}
-                    >
+                      }}>
                       {filt}
                     </Link>
                   </li>
