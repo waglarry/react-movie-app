@@ -10,6 +10,7 @@ import Footer from '../../Footer/Footer'
 import { AiTwotoneStar } from 'react-icons/ai'
 import { MdOutlineHowToVote, MdOutlineTagFaces } from 'react-icons/md'
 import { TbMessageLanguage } from 'react-icons/tb'
+import ReadMore from '../../ReadMore/ReadMore';
 
 const overview = () => {
       const [movies, setMovies] = useState({});
@@ -19,7 +20,6 @@ const overview = () => {
       const [isDisabled, setDisabled] = useState(false);
       const [searchKeyword, setSearchKeyword] = useState("")
       const [content, setContent] = useState('movie')
-      const [status, setStatus] = useState(false)
 
         const fetchMovies = async () => {
             const { data } = await axios.get(`https://api.themoviedb.org/3/${content}/popular?api_key=${API_KEY}&language=en-US&page=${currentPageNumber}`);
@@ -38,6 +38,9 @@ const overview = () => {
           const data = await fetchMovie(movie.id)
           setSelectedCard(data)
         }
+        
+        console.log(selectedCard)
+
 
         const renderTrailer = (selectedCard) => {
           const trailer = selectedCard.videos.results.find((vid) => vid.name === "Official Trailer")
@@ -90,9 +93,20 @@ const overview = () => {
           window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
         };
 
+        const MovieButtons = () => {
+          if(content !== "person"){
+            return (
+              <>
+                <button className='videoBtn' onClick={() => setPlayTrailer(true)}>Watch Trailer</button> 
+                  <a className='videoBtn downloadBtn' href={`https://www.google.com/search?q=https://www.sabishare.com/file/${selectedCard.original_title || selectedCard.original_name}-netnaija-mp4`} target="_blank">Download</a>
+              </>
+            )
+          }
+        }
+
   return (
     <>
-        <div className="hero" style={{ backgroundImage: `url('${API_BGImage}${selectedCard ? selectedCard.backdrop_path : ""}')`}}>
+        <div className="hero" style={{ backgroundImage: `url('${API_BGImage}${selectedCard ? selectedCard.backdrop_path || selectedCard.profile_path : ""}')`}}>
             {playTrailer ? <button className='VideoCloseBtn' onClick={() => setPlayTrailer(false)}>X</button> : null}
             {selectedCard.videos && playTrailer ? renderTrailer(selectedCard) : null}
             <div className="heroContentBox" id={playTrailer ? "hideContent" : ""}>
@@ -100,6 +114,7 @@ const overview = () => {
             <div className="switchContent">
               <button onClick={() => setContent('movie')} id={content === "movie" ? "activeContetnt" : ""} className="switchContentBtn">Movies</button>
               <button onClick={() => setContent('tv')} id={content === "tv" ? "activeContetnt" : ""} className="switchContentBtn">Series</button>
+              <button onClick={() => setContent('person')} id={content === "person" ? "activeContetnt" : ""} className="switchContentBtn">People</button>
             </div>
             <form className="search"
               onSubmit={(event) => {
@@ -113,22 +128,21 @@ const overview = () => {
           </div>
             <div className='heroContentDetails'>
             <div className="heroPoster">
-                <img className='poster' src={`${API_IMG}${selectedCard.poster_path}`} alt="" />
+                <img className='poster' src={`${API_IMG}${selectedCard.poster_path || selectedCard.profile_path}`} alt="" />
             </div>
             <div className="heroContent">
-                <h1>{selectedCard.title || selectedCard.original_title || selectedCard.original_name || selectedCard.name}</h1>
-                <button className='videoBtn' onClick={() => setPlayTrailer(true)}>Watch Trailer</button> 
-                <a className='videoBtn downloadBtn' href={`https://www.google.com/search?q=https://www.sabishare.com/file/${selectedCard.original_title || selectedCard.original_name}-netnaija-mp4`} target="_blank">Download</a>
+                <h1>{selectedCard.title || selectedCard.original_title || selectedCard.original_name || selectedCard.name ? selectedCard.title || selectedCard.original_title || selectedCard.original_name || selectedCard.name : ""}</h1>
+                {MovieButtons()}
                 
                 <div className="overviewInfo">
-                <p className='date'>Release Date: {selectedCard.release_date || selectedCard.first_air_date}</p>
-                <p className='overviewText'><p className='overviewTitle'>Overview</p>{selectedCard.overview}</p>
+                <p className='date'>{content !== 'person' ? "Release Date: " : "Birthday: "} {selectedCard.release_date || selectedCard.first_air_date || selectedCard.birthday ? selectedCard.release_date || selectedCard.first_air_date || selectedCard.birthday : ""}</p>
+                <p className='overviewText'><p className='overviewTitle'>{content !== 'person' ? "Overview" : "Biography"}</p><ReadMore>{selectedCard.overview || selectedCard.biography ? selectedCard.overview || selectedCard.biography : ""}</ReadMore></p>
                 <div className="otherOverviewInfo">
-                <p><MdOutlineTagFaces /> Popularity: <span>{selectedCard.popularity}</span></p>
-                <p><AiTwotoneStar /> Rated: <span>{selectedCard.vote_average}</span></p>
-                <p><MdOutlineHowToVote /> Vote Count: <span>{selectedCard.vote_count}</span></p>
-                <p><TbMessageLanguage /> Language: <span>{selectedCard.original_language ? selectedCard.original_language === "en" ? "English" : selectedCard.original_language : "No language found"}</span></p>
-                <p>{content === "tv" ? `Country: ` : ""} <span>{selectedCard.origin_country ? selectedCard.origin_country : ""}</span></p>
+                <p><MdOutlineTagFaces /> Popularity: <span>{selectedCard.popularity ? selectedCard.popularity : ""}</span></p>
+                <p><AiTwotoneStar /> {content !== 'person'? "Rated: " : "Known for: "} <span>{selectedCard.vote_average || selectedCard.known_for_department ? selectedCard.vote_average || selectedCard.known_for_department : ""}</span></p>
+                <p><MdOutlineHowToVote /> {content !== "person" ? "Vote Count: " : "Place of Birth: "} <span>{selectedCard.vote_count || selectedCard.place_of_birth ? selectedCard.vote_count || selectedCard.place_of_birth : ""}</span></p>
+                <p><TbMessageLanguage /> Language: <span>{selectedCard.original_language ? selectedCard.original_language ? selectedCard.original_language === "en" ? "English" : selectedCard.original_language : "No language found" : ""}</span></p>
+                <p>{content !== "tv" ? "" : "Country: "} <span>{selectedCard.origin_country ? selectedCard.origin_country : ""}</span></p>
                 </div>
                 </div>
             </div>
