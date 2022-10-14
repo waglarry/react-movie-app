@@ -128,7 +128,7 @@ const overview = () => {
                 <p><AiTwotoneStar /> Rated: <span>{selectedCard.vote_average}</span></p>
                 <p><MdOutlineHowToVote /> Vote Count: <span>{selectedCard.vote_count}</span></p>
                 <p><TbMessageLanguage /> Language: <span>{selectedCard.original_language ? selectedCard.original_language === "en" ? "English" : selectedCard.original_language : "No language found"}</span></p>
-                <p>{content === "tv" ? `${<MdOutlineHowToVote />}Country: ` : ""} <span>{selectedCard.origin_country ? selectedCard.origin_country : ""}</span></p>
+                <p>{content === "tv" ? `Country: ` : ""} <span>{selectedCard.origin_country ? selectedCard.origin_country : ""}</span></p>
                 </div>
                 </div>
             </div>

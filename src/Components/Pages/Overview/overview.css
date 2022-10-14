@@ -53,12 +53,16 @@
     border-radius: 0 .5rem .5rem 0;
 }
 .switchContentBtn:hover{
-    background: crimson;
+    background: #ccc;
+}
+#activeContetnt{
+    background: #222;
+    color: #fff;
 }
 .search{
     padding: .5rem .8rem;
-    color: crimson;
-    background: #ccc;
+    color: #222;
+    background: rgba(204, 204, 204, 0.57);
     border-radius: .5rem;
     display: flex;
     align-items: center;
@@ -81,7 +85,7 @@
     cursor: pointer;
   }
   .search:focus-within input{
-    width: 12.5rem;
+    width: 49.5rem;
   }
   ::placeholder{
     color: inherit;
@@ -189,24 +193,20 @@
         padding-top: 0;
     }
     .switchContent{
-        display: flex;
-        flex-direction: column;
+        margin-bottom: .5rem;
     }
     .overViewTopBar{
         display: flex;
-        padding: 3rem 1rem 1rem;
+        flex-direction: column;
+        padding: 3rem 0 1rem;
     }
-    .switchContentBtn{
-        margin-bottom: 1rem;
-        border-radius: .5rem .5rem 0 0;
-        margin-bottom: 0;
-        padding: .4rem;
-        font-size: .5rem;
-        width: 4rem;
-    }
-    .switchContentBtn:last-child{
-        border-radius: 0 0 .5rem .5rem;
-    } 
+    .search:focus-within input{
+        width: 18.5rem;
+      }
+      .overviewSearchInput{
+        width: 19.5rem;
+        transition: width .5s;
+      }
     .VideoContainer{
         height: 50vh;
         width: 100%;
