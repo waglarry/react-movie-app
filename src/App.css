@@ -4,6 +4,7 @@
     box-sizing: border-box;
     text-decoration: none;
     scroll-behavior: smooth;
+    font-family: 'Lato', sans-serif;
 }
 
 :root{
@@ -65,11 +66,13 @@ body.dark {
 .NavTopPage{
     padding: 10% 10% 5%;
     text-align: left;
-    border-bottom: .3rem solid var(--color);
+    border-bottom: .3rem solid #222;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
 }
 .MoviePageTopContent{
+    background: linear-gradient(rgb(0, 0, 0, 0.5),
+    rgb(220, 20, 60, 0.2)), url(../src/Components/images/movie.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -77,6 +80,8 @@ body.dark {
     border-bottom-right-radius: 1rem;
 }
 .TvShowsPageTopContent{
+    background: linear-gradient(rgba(0,0,0,0.9),
+    rgb(220, 20, 60, 0.2)), url(../src/Components/images/bg.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -85,6 +90,8 @@ body.dark {
     backdrop-filter: blur(20px);
 }
 .PeoplePageTopContent{
+    background: linear-gradient(rgba(0,0,0,0.9),
+    rgb(220, 20, 60, 0.2)), url(../src/Components/images/spiderman.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -93,10 +100,10 @@ body.dark {
 }
 .contentTitle{
     font-size: 4rem;
-    color: var(--color);
+    color: #fff;
 }
 .filterLink{
-    color: var(--color);
+    color: #fff;
 }
 .contentDetails{
     display: flex;
