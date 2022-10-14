@@ -36,6 +36,12 @@
     visibility: hidden;
     opacity: 0;
 }
+.movieCard .overview .posterViewBtn{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 .posterBox:hover .overview{
     visibility: visible;
     opacity: 1;
