@@ -128,21 +128,30 @@ const overview = () => {
           </div>
             <div className='heroContentDetails'>
             <div className="heroPoster">
-                <img className='poster' src={`${API_IMG}${selectedCard.poster_path || selectedCard.profile_path}`} alt="" />
+                <img className='poster' src={`${API_IMG}${selectedCard.poster_path || selectedCard.profile_path}`} alt={selectedCard.title || selectedCard.original_title || selectedCard.original_name || selectedCard.name} />
             </div>
             <div className="heroContent">
                 <h1>{selectedCard.title || selectedCard.original_title || selectedCard.original_name || selectedCard.name ? selectedCard.title || selectedCard.original_title || selectedCard.original_name || selectedCard.name : ""}</h1>
+                <h4>{selectedCard.tagline ? selectedCard.tagline : ""}</h4>
                 {MovieButtons()}
                 
                 <div className="overviewInfo">
                 <p className='date'>{content !== 'person' ? "Release Date: " : "Birthday: "} {selectedCard.release_date || selectedCard.first_air_date || selectedCard.birthday ? selectedCard.release_date || selectedCard.first_air_date || selectedCard.birthday : ""}</p>
                 <p className='overviewText'><p className='overviewTitle'>{content !== 'person' ? "Overview" : "Biography"}</p><ReadMore>{selectedCard.overview || selectedCard.biography ? selectedCard.overview || selectedCard.biography : ""}</ReadMore></p>
                 <div className="otherOverviewInfo">
+                <div className="right-col">
                 <p><MdOutlineTagFaces /> Popularity: <span>{selectedCard.popularity ? selectedCard.popularity : ""}</span></p>
                 <p><AiTwotoneStar /> {content !== 'person'? "Rated: " : "Known for: "} <span>{selectedCard.vote_average || selectedCard.known_for_department ? selectedCard.vote_average || selectedCard.known_for_department : ""}</span></p>
                 <p><MdOutlineHowToVote /> {content !== "person" ? "Vote Count: " : "Place of Birth: "} <span>{selectedCard.vote_count || selectedCard.place_of_birth ? selectedCard.vote_count || selectedCard.place_of_birth : ""}</span></p>
-                <p><TbMessageLanguage /> Language: <span>{selectedCard.original_language ? selectedCard.original_language ? selectedCard.original_language === "en" ? "English" : selectedCard.original_language : "No language found" : ""}</span></p>
+                <p><TbMessageLanguage /> {content === "person" ? "" : "Language: "} <span>{selectedCard.original_language ? selectedCard.original_language ? selectedCard.original_language === "en" ? "English" : selectedCard.original_language : "No language found" : ""}</span></p>
                 <p>{content !== "tv" ? "" : "Country: "} <span>{selectedCard.origin_country ? selectedCard.origin_country : ""}</span></p>
+                </div>
+                <div className="left-col">
+                <p>{content === "person" ? "" : "Status: "} <span>{selectedCard.status ? selectedCard.status : ""}</span></p>
+                <p>{content !== "tv" ? "" : "Type: "} <span>{selectedCard.type ? selectedCard.type : ""}</span></p>
+                <p>{content !== "tv" ? "" : "Number of Seasons: "} <span>{selectedCard.number_of_seasons ? selectedCard.number_of_seasons : ""}</span></p>
+                <p>{content !== "tv" ? "" : "Number of Episodes: "} <span>{selectedCard.number_of_episodes ? selectedCard.number_of_episodes : ""}</span></p>
+                </div>
                 </div>
                 </div>
             </div>
