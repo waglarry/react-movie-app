@@ -1,0 +1,22 @@
+.mainStepDiv{
+    padding: 7rem 1rem;
+}
+.stepHeaderText{
+    color: crimson;
+}
+.stepImageBox{
+    border: 1px solid red;
+    width: 100%;
+    height: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@media only screen and (min-width:321px) and (max-width:768px){
+    .mainStepDiv{
+        width: 100%;
+    }
+    .stepImageBox{
+        height: 15rem;
+    }
+}
