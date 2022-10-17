@@ -50,15 +50,11 @@ const Themes = () => {
     }
 
   return (
-    <div style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-    }}>
+    <div className='ToggleBox'>
         <span className='toggleText'>{toggleText(togglemode)}</span>
         <button 
             className={theme === "dark" ? clickedClass : ""}
-            id="darkMode"
+            id="darkModeBtn"
             onClick={(e) => switchTheme(e)}
             ><RiSwitchFill /></button>
     </div>
