@@ -9,6 +9,9 @@ import TvShows from './Components/Pages/TvShows/tvShows';
 import People from './Components/Pages/People/people';
 import Error from './Components/Pages/Error/error';
 import Overview from './Components/Pages/Overview/overview';
+import HowToDownload from './Components/Pages/HowTo/HowToDownload/howToDownload';
+import HowToWatchTrailer from './Components/Pages/HowTo/HowToWatchTrailer/howToWatchTrailer';
+
 
 function App() {
   const client = new QueryClient({
@@ -29,6 +32,8 @@ function App() {
                     <Route path='/tvShows' element={<TvShows />} />
                     <Route path='/people' element={<People />} />
                     <Route path='/overview' element={<Overview />} />
+                    <Route path='/howToDownload' element={<HowToDownload />} />
+                    <Route path='/howToWatchTrailer' element={<HowToWatchTrailer />} />
                     <Route path='*' element={<Error />} />
                 </Routes>
             </Router>
