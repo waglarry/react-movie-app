@@ -11,8 +11,9 @@ import { AiTwotoneStar } from 'react-icons/ai'
 import { MdOutlineHowToVote, MdOutlineTagFaces } from 'react-icons/md'
 import { TbMessageLanguage } from 'react-icons/tb'
 import ReadMore from '../../ReadMore/ReadMore';
+import OverviewPeopleCard from '../../Cards/OverviewPeopleCard/OverviewPeopleCard';
 
-const overview = () => {
+const Overview = () => {
       const [movies, setMovies] = useState({});
       const [selectedCard, setSelectedCard] = useState([])
       const [playTrailer, setPlayTrailer] = useState(false)
@@ -22,14 +23,22 @@ const overview = () => {
       const [content, setContent] = useState('movie')
 
         const fetchMovies = async () => {
-            const { data } = await axios.get(`https://api.themoviedb.org/3/${content}/popular?api_key=${API_KEY}&language=en-US&page=${currentPageNumber}`);
-            setMovies(data);
-            await selectCard(data.results[0]);
+           try {
+              const { data } = await axios.get(`https://api.themoviedb.org/3/${content}/popular?api_key=${API_KEY}&language=en-US&page=${currentPageNumber}`);
+              setMovies(data);
+              await selectCard(data.results[0]);
+           } catch (error) {
+             console.log(error)
+           }
          }
 
          const fetchMovie = async (id) => {
-          const { data } = await axios.get(`https://api.themoviedb.org/3/${content}/${id}?api_key=${API_KEY}&append_to_response=videos`);
-          return data
+          try {
+            const { data } = await axios.get(`https://api.themoviedb.org/3/${content}/${id}?api_key=${API_KEY}&append_to_response=videos`);
+            return data
+          } catch (error) {
+            console.log(error)
+          }
         }
 
 
@@ -38,9 +47,6 @@ const overview = () => {
           const data = await fetchMovie(movie.id)
           setSelectedCard(data)
         }
-        
-        console.log(selectedCard)
-
 
         const renderTrailer = (selectedCard) => {
           const trailer = selectedCard.videos.results.find((vid) => vid.name === "Official Trailer")
@@ -78,7 +84,7 @@ const overview = () => {
               await selectCard(data.results[0]);
               return setMovies(data)
             } catch (error) {
-              return <h1>{error}</h1>
+              console.log(error);
             }
           }
         }
@@ -98,7 +104,7 @@ const overview = () => {
             return (
               <>
                 <button className='videoBtn' onClick={() => setPlayTrailer(true)}>Watch Trailer</button> 
-                  <a className='videoBtn downloadBtn' href={`https://www.google.com/search?q=https://www.sabishare.com/file/${selectedCard.original_title || selectedCard.original_name}-netnaija-mp4`} target="_blank">Download</a>
+                  <a className='videoBtn downloadBtn' href={`https://www.google.com/search?q=https://www.sabishare.com/file/${selectedCard.original_title || selectedCard.original_name}-netnaija-mp4`} target="_blank" rel="noopener noreferrer">Download</a>
               </>
             )
           }
@@ -131,8 +137,8 @@ const overview = () => {
                 <img className='poster' src={`${API_IMG}${selectedCard.poster_path || selectedCard.profile_path}`} alt={selectedCard.title || selectedCard.original_title || selectedCard.original_name || selectedCard.name} />
             </div>
             <div className="heroContent">
-                <h1>{selectedCard.title || selectedCard.original_title || selectedCard.original_name || selectedCard.name ? selectedCard.title || selectedCard.original_title || selectedCard.original_name || selectedCard.name : ""}</h1>
-                <h4>{selectedCard.tagline ? selectedCard.tagline : ""}</h4>
+                <h2>{selectedCard.title || selectedCard.original_title || selectedCard.original_name || selectedCard.name ? selectedCard.title || selectedCard.original_title || selectedCard.original_name || selectedCard.name : ""}</h2>
+                <p style={{color: "#ccc"}}>{selectedCard.tagline ? selectedCard.tagline : ""}</p>
                 {MovieButtons()}
                 
                 <div className="overviewInfo">
@@ -162,6 +168,13 @@ const overview = () => {
     <div className="contentBox">
       {movies.results &&
         movies.results.map((movie) => (
+          movie.known_for ? 
+          <OverviewPeopleCard 
+            key={movie.id}
+            movie={movie}
+            selectCard={selectCard}
+          />
+          :
           <OverviewCard
             key={movie.id}
             movie={movie}
@@ -183,4 +196,4 @@ const overview = () => {
   )
 }
 
-export default overview
+export default Overview
