@@ -20,13 +20,17 @@ const GetMovieContent = ({ content, contentTitle, filter }) => {
   const [searchKeyword, setSearchKeyword] = useState("")
   const [genres, setGenres] = useState([])
   const [selectedGenres, setSelectedGenres] = useState([])
-  const genresId = GenresIDs(selectedGenres);
+  // const genresId = GenresIDs(selectedGenres);
+
+  if(selectedGenres.length >= 3){
+    selectedGenres.splice(0,selectedGenres.length)
+  }
 
   const { isLoading, isError, isFetching } = useQuery(
     ["content", currentPageNumber, movieFilter, selectedGenres],
     () => {
       return Axios.get(
-        `https://api.themoviedb.org/3/${content}/${movieFilter}?api_key=${API_KEY}&language=en-US&page=${currentPageNumber}&with_genres=${genresId}`,
+        `https://api.themoviedb.org/3/${content}/${movieFilter}?api_key=${API_KEY}&language=en-US&page=${currentPageNumber}&with_genres=${selectedGenres}`,
         { keepPreviousData: true }
       ).then((response) => response.data);
     },
@@ -69,7 +73,7 @@ const GetMovieContent = ({ content, contentTitle, filter }) => {
         const {data} = await Axios.get(`https://api.themoviedb.org/3/search/${content}?api_key=${API_KEY}&query=${searchKeyword}`)
         setMovies(data)
       } catch (error) {
-        return <h1>{error}</h1>
+        console.log(error);
       }
     }
   }
@@ -149,7 +153,7 @@ const GetMovieContent = ({ content, contentTitle, filter }) => {
       </div>
       <div className="mainContentBox">
         <div className="contentBox">
-          <RenderMovies movies={movies} content={content} />
+          {movies ? <RenderMovies movies={movies} content={content} /> : null}
         </div>
       </div>
         <PaginationButton
