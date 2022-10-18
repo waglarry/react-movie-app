@@ -202,6 +202,11 @@
     .heroContentBox{
         padding: 8% 5%;
     }
+    .otherOverviewInfo{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
     .heroContent h1{
         font-size: 2rem;
     }
