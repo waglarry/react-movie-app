@@ -30,8 +30,8 @@ const GetRecommendedMovieContent = () => {
             <Link to='/movies' className='viewMore'>View More</Link>
         </div>
         <div className="HomeContentBox">
-          {data &&
-            data.map((e) => (
+          {data.results &&
+            data.results.map((e) => (
               <RecommendedCard
                 key={e.id}
                 title={e.title || e.name}
