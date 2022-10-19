@@ -12,25 +12,31 @@ const HowToDownload = () => {
                     Click on the Overview link in the footer to go to the overview page.
                 </p>
                 <div className='stepImageBox'>
-                    <img src="" alt="Overview Link" />
+                    <img src="/HowToImages/downloadStep0.png" alt="Overview Link" />
                 </div>
             </div>
             <div className='stepsDiv'>
                 <p className='stepText'>Step 2: Click on the download button of your selected movie.</p>
                 <div className='stepImageBox'>
-                    <img src="" alt="Download Button Image" />
+                    <img src="/HowToImages/downloadStep1.png" alt="Download Button Image" />
                 </div>
             </div>
             <div className='stepsDiv'>
                 <p className='stepText'>Step 3: Select the first Sabishare link from google search results.</p>
                 <div className='stepImageBox'>
-                    <img src="" alt="Google page with search results" />
+                    <img src="/HowToImages/downloadStep2.png" alt="Google page with search results" />
                 </div>
             </div>
             <div className='stepsDiv'>
                 <p className='stepText'>Step 4: From Sabishare page, click on the download button.</p>
                 <div className='stepImageBox'>
-                    <img src="" alt="Sabishare Page Image" />
+                    <img src="/HowToImages/downloadStep3.png" alt="Sabishare Page Image" />
+                </div>
+            </div>
+            <div className='stepsDiv'>
+                <p className='stepText'>Step 5: Success! Your file is being downloaded.</p>
+                <div className='stepImageBox'>
+                    <img src="/HowToImages/downloadStep4.png" alt="Sabishare Page Image" />
                 </div>
             </div>
         </div>
