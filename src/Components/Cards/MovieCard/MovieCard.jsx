@@ -9,10 +9,10 @@ const MovieCard = ({title, released, poster, rate}) => {
       <div className='posterBox'>
         <img className='poster' src={ poster ? API_IMG+poster : unavailable} alt={title} />
         <div className='overview'><Link to={`/overview`}><button className='posterViewBtn'>View</button></Link></div>
-        <span className='rate'>Rated - {rate.toFixed(1)}</span>
+        <span className='rate'>Rated - {rate ? rate.toFixed(1) : ""}</span>
       </div>
       <div className='details'>
-        <h4 className='title'>{title}</h4>
+        <h4 className={title.length > 28 ? 'smallTitle' : 'title'}>{title}</h4>
         <span className='date'>Released: {released}</span>
       </div>
     </div>

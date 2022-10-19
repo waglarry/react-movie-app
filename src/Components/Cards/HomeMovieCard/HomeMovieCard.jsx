@@ -12,7 +12,7 @@ const HomeMovieCard = ({title, released, poster, rate}) => {
         <span className='rate'>Rated - {rate.toFixed(1)}</span>
       </div>
       <div className='details'>
-        <h4 className='title'>{title}</h4>
+        <h4 className={title.length > 25 ? 'smallTitle' : 'title'}>{title}</h4>
         <span className='date'>Released: {released}</span>
       </div>
     </div>

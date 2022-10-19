@@ -33,7 +33,7 @@ const HomeScollMovies = ({content, filter, contentTilte, subContentTilte}) => {
     {movies.results && movies.results.map((e) => 
         <HomeMovieCard
         key={e.id}
-        title={e.name}
+        title={e.name || e.title}
         released={e.first_air_date || e.release_date}
         poster={e.poster_path}
         rate={e.vote_average}
