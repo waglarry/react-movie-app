@@ -270,12 +270,18 @@ body.dark {
     top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
+    backdrop-filter: blur(30px);
+    border-radius: 1rem;
+    min-width: 50%;
+}
+.posterImageTitle{
+    color: #fff;
 }
 .posterImageDetails{
-    background: rgba(0,0,0,0.5);
     padding: 1rem;
     display: flex;
     justify-content: center;
+    color: #fff;
 }
 .detailsContent{
     text-align: left;
@@ -284,14 +290,30 @@ body.dark {
 .posterImageOverview{
     width: 80%;
     text-align: left;
+    padding-left: 1rem;
 }
 .detailTitle{
     color: #ccc;
+}
+.noBackgroundImage{
+    padding: 20rem;
 }
 
 @media only screen and (min-width:321px) and (max-width:768px){
     header .navBar{
         background: var(--background-color);
+    }
+    .noBackgroundImage{
+        padding: 5rem;
+    }
+    .posterImageTitle{
+        color: inherit;
+    }
+    .posterImageDetails{
+        padding: 1rem;
+        display: flex;
+        justify-content: center;
+        color: inherit;
     }
     .contentBox{
         gap: 1rem;
@@ -330,6 +352,7 @@ body.dark {
         position: relative;
         padding-top: 50%;
         max-height: 50vh;
+        backdrop-filter: blur(0);
     }
     .posterImageDetails{
         background: none;
@@ -343,5 +366,6 @@ body.dark {
     .posterImageOverview{
         width: 100%;
         text-align: left;
+        padding-left: 0;
     }
 }
