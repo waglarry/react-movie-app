@@ -5,7 +5,7 @@ import GetHomePageBGs from "../../../API/HomeMovieContent/GetHomePageBGs";
 const HomePage = () => {
   return (
     <div>
-      <GetHomePageBGs content={'movie'} movieFilter={'popular'} />
+      <GetHomePageBGs />
     </div>
   )
 }
