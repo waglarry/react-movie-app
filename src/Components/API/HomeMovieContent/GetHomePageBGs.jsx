@@ -7,15 +7,15 @@ import Spinner from "../../Spinner/Spinner";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 
-const GetHomePageBGs = ({ content, movieFilter }) => {
+const GetHomePageBGs = () => {
   const [movies, setMovies] = useState({});
   // const [selectMovie, setSelectedMovie] = useState([])
 
   const { isLoading, isError } = useQuery(
-    ["content", movieFilter],
+    ["content"],
     () => {
       return Axios.get(
-        `https://api.themoviedb.org/3/${content}/${movieFilter}?api_key=${API_KEY}&language=en-US&page=1`,
+        `https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}`,
         { keepPreviousData: true }
       ).then((response) => response.data);
     },
@@ -43,17 +43,19 @@ const GetHomePageBGs = ({ content, movieFilter }) => {
             movies.results.map((movie) => (
               <div key={movie.id}>
               <div className="posterImage">
-                <img src={`${API_BGImage}${movie && movie.backdrop_path}`} alt="" />
+                <img className={movie.backdrop_path ? "" : "noBackgroundImage"} src={`${API_BGImage}${movie && movie.backdrop_path}`} alt="" />
               </div>
               <div className="posterImageOverlay">
-                  <h1 className="posterImageTitle">{movie ? movie.original_title || movie.title : ""}</h1>
+                  <h1 className="posterImageTitle">{movie ? movie.original_title || movie.title || movie.name || movie.original_name : ""}</h1>
                   <div className="posterImageDetails">
                     <div className="detailsContent">
-                      <p className="posterImageDate"><span className="detailTitle">Released: </span> {movie ? movie.release_date || movie.first_air_date : ""}</p>
-                      <p className="movieType"><span className="detailTitle">Type: </span> {movie ? movie.movie_type : ""}</p>
-                      <p className="posterImageRating"><span className="detailTitle">Rated: </span> {movie ? movie.vote_average : ""}</p>
+                      <p className="posterImageDate"><span className="detailTitl">Released: </span> {movie ? movie.release_date || movie.first_air_date : ""}</p>
+                      <p className="movieType"><span className="detailTitl">Rated: </span> {movie ? movie.vote_average : ""}</p>
+                      <p className="movieType"><span className="detailTitl">Movie Type: </span> {movie ? movie.media_type === "movie" ? "Movie" : "Tv Series" : ""}</p>
+                      <p className="posterImagePopulartity"><span className="detailTitl">Popularity: </span> {movie ? movie.popularity : ""}</p>
+                      {/* <p className="posterImageRating"><span className="detailTitle">Rated: </span> {movie ? movie.vote_average : ""}</p>
                       <p className="posterImagePopulartity"><span className="detailTitle">Popularity: </span> {movie ? movie.popularity : ""}</p>
-                      <p className="posterImageLanguage"><span className="detailTitle">Language: </span> {movie ? (movie.original_language === "en" ? "English" : "") : ""}</p>
+                      <p className="posterImageLanguage"><span className="detailTitle">Language: </span> {movie ? (movie.original_language === "en" ? "English" : "") : ""}</p> */}
                     </div>
                     <p className="posterImageOverview"><span>Overview</span> <br />{movie ? movie.overview : ""}</p>
                   </div>
