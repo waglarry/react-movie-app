@@ -74,33 +74,6 @@ const Genres = ({ genres,setGenres, selectedGenres, setSelectedGenres}) => {
   return (
     <div className='genresRow'>
         {checkbox}
-        {/* {selectedGenres && selectedGenres.map((genre) => (
-            <Chip 
-            key={genre.id}
-            label={genre.name} 
-            clickable
-            onDelete={() => handleRemoveGenres(genre)}
-            style={{backgroundColor: "crimson"}}
-        />
-        ))}
-        {genres && genres.map((genre) => (
-            <Chip 
-                key={genre.id}
-                label={genre.name} 
-                clickable
-                onClick={() => handleAddGenres(genre)}
-            />
-        ))}
-        <div className="mobileGenres">
-        {genres && genres.map((genre) => (
-            <Chip 
-                key={genre.id}
-                label={genre.name} 
-                clickable
-                onClick={() => handleAddGenres(genre)}
-            />
-        ))}
-        </div> */}
     </div>
   )
 }
