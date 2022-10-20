@@ -112,12 +112,20 @@ const Overview = () => {
           window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
         };
 
+        const movieName = (selectedCard) =>{
+          if(selectedCard){
+            let name = selectedCard.original_title || selectedCard.original_name
+            return name;
+          }
+        }
+
+
         const MovieButtons = () => {
           if(content !== "person"){
             return (
               <>
                 <button className='videoBtn' onClick={() => setPlayTrailer(true)}>Watch Trailer</button> 
-                  <a className='videoBtn downloadBtn' href={`https://www.google.com/search?q=www.sabishare.com/file/${selectedCard.original_title || selectedCard.original_name}-netnaija-mp4`} target="_blank" rel="noopener noreferrer">Download</a>
+                <a className='videoBtn downloadBtn' href={`https://www.google.com/search?q=sabishare.com/file/${selectedCard.id}-${movieName(selectedCard)}-netnaija-mkv`} target="_blank" rel="noopener noreferrer">Download</a>
               </>
             )
           }
