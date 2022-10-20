@@ -4,9 +4,11 @@ import { useQuery } from "@tanstack/react-query";
 import { API_KEY } from "./URL";
 import { Link } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
+import { GrFormNext, GrFormPrevious } from 'react-icons/gr'
 import Spinner from "../Spinner/Spinner";
 import ErrorIcon from "../ErrorIcon/ErrorIcon";
 import Genres from "../Genres/Genres";
+import GenresIDs from "../Genres/GenresIDs";
 import RenderMovies from "./RenderMovies/RenderMovies";
 import PaginationButton from "../PaginationButton/PaginationButton";
 
@@ -18,6 +20,7 @@ const GetMovieContent = ({ content, contentTitle, filter }) => {
   const [searchKeyword, setSearchKeyword] = useState("")
   const [genres, setGenres] = useState([])
   const [selectedGenres, setSelectedGenres] = useState([])
+  // const genresId = GenresIDs(selectedGenres);
 
   if(selectedGenres.length >= 3){
     selectedGenres.splice(0,selectedGenres.length)
