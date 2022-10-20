@@ -8,7 +8,7 @@ const RecommendedCard = ({title, wallpaper}) => {
     <Link to={`/overview`} className="cardLinks">
     <div className='RecommendedMovieCard'>
     <div className='recommendedPosterBox'>
-      <img className='poster' src={ wallpaper ? API_IMG+wallpaper : unavailable} alt={title} />
+      <img className={wallpaper ? 'poster' : "noWallpaper"} src={API_IMG+wallpaper} alt={title} />
       <div className='overview'><p>{title}</p></div>
     </div>
   </div>
