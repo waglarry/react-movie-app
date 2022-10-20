@@ -36,6 +36,7 @@ const Footer = () => {
                         <li><a className='footerLinks' target="_blank" href="https://t.me/joinchat/uqaW_ETwe1g1MDZk" rel="noopener noreferrer">Telegram</a></li>
                         <li><a className='footerLinks' target="_blank" href="https://instagram.com/iamkofi.emma?igshid=YmMyMTA2M2Y=" rel="noopener noreferrer">Instagram</a></li>
                         <li><a className='footerLinks' target="_blank" href="https://twitter.com/kofi_waga?s=21" rel="noopener noreferrer">Twitter</a></li>
+                        <li><a className='footerLinks' target="_blank" href="https://www.youtube.com/channel/UCfv4d_WUwM0dLfrFJnLGYBg" rel="noopener noreferrer">YouTube</a></li>
                     </ul>
                 </div>
                 </div>
