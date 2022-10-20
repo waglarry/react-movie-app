@@ -16,7 +16,6 @@ import { TbFaceIdError } from "react-icons/tb"
 
 const Overview = () => {
       const [movies, setMovies] = useState({});
-      const [movieFilter, setMovieFilter] = useState("popular");
       const [selectedCard, setSelectedCard] = useState([])
       const [playTrailer, setPlayTrailer] = useState(false)
       const [currentPageNumber, setCurrentPageNumber] = useState(1);
@@ -26,7 +25,7 @@ const Overview = () => {
 
         const fetchMovies = async () => {
            try {
-              const { data } = await axios.get(`https://api.themoviedb.org/3/${content}/${movieFilter}?api_key=${API_KEY}&language=en-US&page=${currentPageNumber}`);
+              const { data } = await axios.get(`https://api.themoviedb.org/3/${content}/popular?api_key=${API_KEY}&language=en-US&page=${currentPageNumber}`);
               setMovies(data);
               await selectCard(data.results[0]);
            } catch (error) {
@@ -187,18 +186,6 @@ const Overview = () => {
             </div>
         </div>
         <div className="mainContentBox">
-          <div style={{
-            display: "flex",
-            flexDirection: "column",
-            position: "sticky",
-            left: "0"
-          }}>
-            <p>a</p>
-            <p>a</p>
-            <p>a</p>
-            <p>a</p>
-            <p>a</p>
-          </div>
     <div className="contentBox">
       {movies.results &&
         movies.results.map((movie) => (

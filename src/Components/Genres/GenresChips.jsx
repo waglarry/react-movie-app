@@ -1,28 +1,27 @@
-import React, { Component,useEffect, useState, PropTypes } from 'react';
+import React, {useState} from 'react'
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 
 const GenresChips = ({key, addGenres, removeGenres, label, genre}) => {
-  const [isChecked, setIsChecked] = useState(false)
+    const [isChecked, setIsChecked] = useState(false)
 
-
-  const toggleCheckboxChange = ({handleCheckboxChange, label}) => {
-
-    setIsChecked(!isChecked)
-
-    handleCheckboxChange(label);
-  }
+    const handleChange = (event) => {
+        setIsChecked(event.target.checked);
+        isChecked ? addGenres(genre) : removeGenres(genre);
+    };
 
   return (
-    <div className="checkbox">
-    <label>
-      <input
-          type="checkbox"
-          value={label}
-          checked={isChecked}
-          onChange={toggleCheckboxChange}
-      />
-      {label}
-    </label>
-  </div>
+    <FormGroup>
+    <FormControlLabel control={
+            <Checkbox
+            
+            checked={isChecked}
+            onChange={handleChange}
+            // inputProps={{ 'aria-label': 'controlled' }}
+        />
+    } label={label} />
+  </FormGroup>
   )
 }
 
