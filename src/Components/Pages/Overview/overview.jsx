@@ -12,6 +12,7 @@ import { MdOutlineHowToVote, MdOutlineTagFaces } from 'react-icons/md'
 import { TbMessageLanguage } from 'react-icons/tb'
 import ReadMore from '../../ReadMore/ReadMore';
 import OverviewPeopleCard from '../../Cards/OverviewPeopleCard/OverviewPeopleCard';
+import { TbFaceIdError } from "react-icons/tb"
 
 const Overview = () => {
       const [movies, setMovies] = useState({});
@@ -50,26 +51,38 @@ const Overview = () => {
 
         const renderTrailer = (selectedCard) => {
           const trailer = selectedCard.videos.results.find((vid) => vid.name === "Official Trailer")
-          const key = trailer ? trailer.key : selectedCard.videos.results[0].key
+          
+          if(trailer){
+            const key = trailer ? trailer.key : selectedCard.videos.results[0].key
 
-          return (
-            <div className="VideoContainer">
-              <YouTube 
-              videoId={key}
-              className={'youtubeContainer'}
-              iframeClassName={'iframeContainer'}
-              title={'WagaTrendz'}
-              opts={{
-                width: "100%",
-                height: "100%",
-                playerVars: {
-                  autoplay: 1,
-                  // controls: 0
-                }
-              }}
-            />
-            </div>
-          )
+            return (
+              <div className="VideoContainer">
+                <YouTube 
+                videoId={key}
+                className={'youtubeContainer'}
+                iframeClassName={'iframeContainer'}
+                title={'WagaTrendz'}
+                opts={{
+                  width: "100%",
+                  height: "100%",
+                  playerVars: {
+                    autoplay: 1,
+                    // controls: 0
+                  }
+                }}
+              />
+              </div>
+            )
+          }else{
+            return (
+              <div style={{
+                padding: "20%",
+                background: "rgba(204, 204, 204, 0.37)",
+              }}>
+                <p style={{fontSize: "2.5rem", display: "flex", justifyContent: "center", alignItems: "center"}}><TbFaceIdError />Video not available.</p>
+              </div>
+            )
+          }
         }
     
          useEffect(() => {
@@ -104,7 +117,7 @@ const Overview = () => {
             return (
               <>
                 <button className='videoBtn' onClick={() => setPlayTrailer(true)}>Watch Trailer</button> 
-                  <a className='videoBtn downloadBtn' href={`https://www.google.com/search?q=https://www.sabishare.com/file/${selectedCard.original_title || selectedCard.original_name}-netnaija-mp4`} target="_blank" rel="noopener noreferrer">Download</a>
+                  <a className='videoBtn downloadBtn' href={`https://www.google.com/search?q=www.sabishare.com/file/${selectedCard.original_title || selectedCard.original_name}-netnaija-mp4`} target="_blank" rel="noopener noreferrer">Download</a>
               </>
             )
           }
