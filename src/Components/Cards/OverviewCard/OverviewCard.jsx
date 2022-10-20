@@ -11,11 +11,11 @@ const OverviewCard = ({movie, selectCard}) => {
   <div className='movieCard'>
     <div className='posterBox' onClick={setOverviewContent}>
       <img className='poster' src={movie ? API_IMG+movie.poster_path  : unavailable} alt={movie.title || movie.name ? movie.title || movie.name : ""} />
-      <span className='rate'>Rated - {movie ? movie.vote_average.toFixed(1) : ""}</span>
+      <span className='rate'>Rated - {movie.vote_average ? movie.vote_average.toFixed(1) : ""}</span>
     </div>
     <div className='details'>
-      <h4 className={movie.title.length > 28 ? 'smallTitle' : 'title'}>{movie.title || movie.name ? movie.title || movie.name : ""}</h4>
-      <span className='date'>Released: {movie.moviefirst_air_date || movie.release_date || movie.known_for_department ? movie.first_air_date || movie.release_date || movie.known_for_department : ""}</span>
+      <h4 className='title'>{movie ? movie.title || movie.name : ""}</h4>
+      <span className='date'>Released: {movie.first_air_date || movie.release_date || movie.known_for_department ? movie.first_air_date || movie.release_date || movie.known_for_department : ""}</span>
     </div>
   </div>
   )
