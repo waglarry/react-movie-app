@@ -13,6 +13,8 @@ import { TbMessageLanguage } from 'react-icons/tb'
 import ReadMore from '../../ReadMore/ReadMore';
 import OverviewPeopleCard from '../../Cards/OverviewPeopleCard/OverviewPeopleCard';
 import { TbFaceIdError } from "react-icons/tb"
+import Genres from '../../Genres/Genres';
+import { color } from '@mui/system';
 
 const Overview = () => {
       const [movies, setMovies] = useState({});
@@ -23,14 +25,19 @@ const Overview = () => {
       const [isDisabled, setDisabled] = useState(false);
       const [searchKeyword, setSearchKeyword] = useState("")
       const [content, setContent] = useState('movie')
+      const [selectedGenres, setSelectedGenres] = useState([])
+
+    if(selectedGenres.length > 1){
+      selectedGenres.splice(0,selectedGenres.length)
+    }
 
         const fetchMovies = async () => {
            try {
-              const { data } = await axios.get(`https://api.themoviedb.org/3/${content}/${movieFilter}?api_key=${API_KEY}&language=en-US&page=${currentPageNumber}`);
+              const { data } = await axios.get(`https://api.themoviedb.org/3/${content}/${movieFilter}?api_key=${API_KEY}&language=en-US&page=${currentPageNumber}&with_genres=${selectedGenres}`);
               setMovies(data);
               await selectCard(data.results[0]);
            } catch (error) {
-             console.log(error)
+             console.log("")
            }
          }
 
@@ -39,7 +46,7 @@ const Overview = () => {
             const { data } = await axios.get(`https://api.themoviedb.org/3/${content}/${id}?api_key=${API_KEY}&append_to_response=videos`);
             return data
           } catch (error) {
-            console.log(error)
+            console.log("")
           }
         }
 
@@ -88,7 +95,7 @@ const Overview = () => {
     
          useEffect(() => {
             fetchMovies();
-         }, [currentPageNumber, content, movieFilter])
+         }, [currentPageNumber, content, movieFilter, selectedGenres])
 
          const searchMovie = async (event) =>{
           if(event.key==="Enter"){
@@ -133,8 +140,6 @@ const Overview = () => {
           }
         }
 
-        console.log(selectedCard.release_date ? selectedCard.release_date.slice(0, 4) : "no")
-
         const downloadBtns = useRef()
 
         const showDownloadBtns = () => {
@@ -170,8 +175,13 @@ const Overview = () => {
           if(content !== "person"){
             return (
               <>
-                 <button onClick={() => setMovieFilter('popular')} id={movieFilter === "popular" ? "activeContent" : ""} className="switchContentBtn">Popular</button>
+              <div style={{width: "80%"}}>
+                <Genres setSelectedGenres={setSelectedGenres}/>
+              </div>
+                <div className="overviewFilterBtns">
+                <button onClick={() => setMovieFilter('popular')} id={movieFilter === "popular" ? "activeContent" : ""} className="switchContentBtn">Popular</button>
                 <button onClick={() => setMovieFilter('top_rated')} id={movieFilter === "top_rated" ? "activeContent" : ""} className="switchContentBtn">Top Rated</button>
+                </div>
               </>
             )
           }
@@ -233,13 +243,19 @@ const Overview = () => {
         </div>
         <div style={{
             display: "flex",
-            justifyContent: "center",
+            justifyContent: "space-between",
             alignItems: "center",
             position: "sticky",
             top: "13%",
-            width: "100%",
+            width: "80%",
+            margin: "0 10%",
             zIndex: "999",
-            marginBottom: "1rem"
+            marginBottom: "1rem",
+            background: "#333",
+            padding: ".5rem 1rem",
+            borderRadius: "1rem",
+            height: "4rem",
+            color: "#fff"
           }}>
               {MovieFilterButtons()}
           
