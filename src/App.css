@@ -339,6 +339,9 @@ body.dark {
     .ControlsTopDiv{
         padding: 1rem 2rem;
     }
+    .ShowfilterText{
+        display: none;
+    }
     .genresRow{
         display: none;
     }
