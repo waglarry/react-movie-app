@@ -26,9 +26,6 @@ body.dark {
     --background-color: var(--dark);
     --color: var(--text-light-color)
 }
-.navLogo span{
-    color: var(--color);
-}
 .ToggleBox{
     border: .1rem solid var(--color);
     background: var(--background-color);
