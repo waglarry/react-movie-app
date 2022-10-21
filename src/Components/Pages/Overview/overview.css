@@ -225,11 +225,20 @@
     }
     .search:focus-within input{
         width: 18.5rem;
-      }
-      .overviewSearchInput{
-        width: 19.5rem;
-        transition: width .5s;
-      }
+    }
+    .overviewSearchInput{
+    width: 19.5rem;
+    transition: width .5s;
+    }
+    .overviewFilterBtns{
+        margin-left: 1rem;
+        display: flex;
+        flex-direction: column;
+        width: 40%;
+    }
+    .overviewFilterBtns .switchContentBtn{
+        border-radius: .3rem;
+    }
     .VideoContainer{
         height: 50vh;
         width: 100%;
