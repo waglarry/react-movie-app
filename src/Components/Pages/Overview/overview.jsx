@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import { API_BGImage, API_IMG, API_KEY } from '../../API/URL';
 import axios from 'axios';
 import OverviewCard from '../../Cards/OverviewCard/OverviewCard';
@@ -16,6 +16,7 @@ import { TbFaceIdError } from "react-icons/tb"
 
 const Overview = () => {
       const [movies, setMovies] = useState({});
+      const [movieFilter, setMovieFilter] = useState("popular");
       const [selectedCard, setSelectedCard] = useState([])
       const [playTrailer, setPlayTrailer] = useState(false)
       const [currentPageNumber, setCurrentPageNumber] = useState(1);
@@ -25,7 +26,7 @@ const Overview = () => {
 
         const fetchMovies = async () => {
            try {
-              const { data } = await axios.get(`https://api.themoviedb.org/3/${content}/popular?api_key=${API_KEY}&language=en-US&page=${currentPageNumber}`);
+              const { data } = await axios.get(`https://api.themoviedb.org/3/${content}/${movieFilter}?api_key=${API_KEY}&language=en-US&page=${currentPageNumber}`);
               setMovies(data);
               await selectCard(data.results[0]);
            } catch (error) {
@@ -87,7 +88,7 @@ const Overview = () => {
     
          useEffect(() => {
             fetchMovies();
-         }, [currentPageNumber, content])
+         }, [currentPageNumber, content, movieFilter])
 
          const searchMovie = async (event) =>{
           if(event.key==="Enter"){
@@ -112,20 +113,65 @@ const Overview = () => {
           window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
         };
 
-        const movieName = (selectedCard) =>{
+        const SabishareMovieTitle = (selectedCard) =>{
           if(selectedCard){
             let name = selectedCard.original_title || selectedCard.original_name
             return name;
           }
         }
+        const localServerMovieTite = (selectedCard) =>{
+          if(selectedCard){
+            let name = selectedCard.original_title ? selectedCard.original_title.split(" ").join(".") : selectedCard.original_title || selectedCard.original_name ? selectedCard.original_name.split(" ").join(".") : selectedCard.original_name
+            return name;
+          }
+        }
 
+        const localServerMovieYear = (selectedCard) =>{
+          if(selectedCard){
+            let year = selectedCard.release_date ? selectedCard.release_date.slice(0, 4)  : ""
+            return year;
+          }
+        }
+
+        console.log(selectedCard.release_date ? selectedCard.release_date.slice(0, 4) : "no")
+
+        const downloadBtns = useRef()
+
+        const showDownloadBtns = () => {
+          downloadBtns.current.style.marginTop = "0"
+          downloadBtns.current.style.visibility = "visible"
+          downloadBtns.current.style.opacity = "1"
+        }
 
         const MovieButtons = () => {
           if(content !== "person"){
             return (
               <>
                 <button className='videoBtn' onClick={() => setPlayTrailer(true)}>Watch Trailer</button> 
-                <a className='videoBtn downloadBtn' href={`https://www.google.com/search?q=sabishare.com/file/${selectedCard.id}-${movieName(selectedCard)}-netnaija-mkv`} target="_blank" rel="noopener noreferrer">Download</a>
+                <button className='videoBtn downloadBtn' onClick={showDownloadBtns}>Download</button>
+                <div ref={downloadBtns} style={{ marginTop: "-3.5rem", visibility: "hidden", opacity: "0", scrollBehavior: "smooth"}}>
+                  <br />
+                  <p>
+                  <a style={{color: "crimson"}}
+                    href={`https://www.google.com/search?q=sabishare.com/file/${selectedCard.id}-${SabishareMovieTitle(selectedCard)}-netnaija-mkv`} 
+                    target="_blank" rel="noopener noreferrer">Download from Sabishare.com</a>
+                  </p>
+                  <p>
+                  <a style={{color: "crimson"}}
+                    href={`http://dl6.sermovie.xyz/${content === "tv" ? "Series" : "Movie"}/${localServerMovieYear(selectedCard)}/${localServerMovieTite(selectedCard)}.${localServerMovieYear(selectedCard)}`} 
+                    target="_blank" rel="noopener noreferrer">Download from a local server</a>
+                  </p>
+                </div>
+              </>
+            )
+          }
+        }
+        const MovieFilterButtons = () => {
+          if(content !== "person"){
+            return (
+              <>
+                 <button onClick={() => setMovieFilter('popular')} id={movieFilter === "popular" ? "activeContent" : ""} className="switchContentBtn">Popular</button>
+                <button onClick={() => setMovieFilter('top_rated')} id={movieFilter === "top_rated" ? "activeContent" : ""} className="switchContentBtn">Top Rated</button>
               </>
             )
           }
@@ -139,9 +185,9 @@ const Overview = () => {
             <div className="heroContentBox" id={playTrailer ? "hideContent" : ""}>
             <div className="overViewTopBar">
             <div className="switchContent">
-              <button onClick={() => setContent('movie')} id={content === "movie" ? "activeContetnt" : ""} className="switchContentBtn">Movies</button>
-              <button onClick={() => setContent('tv')} id={content === "tv" ? "activeContetnt" : ""} className="switchContentBtn">Series</button>
-              <button onClick={() => setContent('person')} id={content === "person" ? "activeContetnt" : ""} className="switchContentBtn">People</button>
+              <button onClick={() => setContent('movie')} id={content === "movie" ? "activeContent" : ""} className="switchContentBtn">Movies</button>
+              <button onClick={() => setContent('tv')} id={content === "tv" ? "activeContent" : ""} className="switchContentBtn">Series</button>
+              <button onClick={() => setContent('person')} id={content === "person" ? "activeContent" : ""} className="switchContentBtn">People</button>
             </div>
             <form className="search"
               onSubmit={(event) => {
@@ -185,6 +231,19 @@ const Overview = () => {
             </div>
             </div>
         </div>
+        <div style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            position: "sticky",
+            top: "13%",
+            width: "100%",
+            zIndex: "999",
+            marginBottom: "1rem"
+          }}>
+              {MovieFilterButtons()}
+          
+          </div>
         <div className="mainContentBox">
     <div className="contentBox">
       {movies.results &&
