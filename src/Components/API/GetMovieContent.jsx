@@ -69,7 +69,7 @@ const GetMovieContent = ({ content, contentTitle, filter }) => {
         const {data} = await Axios.get(`https://api.themoviedb.org/3/search/${content}?api_key=${API_KEY}&query=${searchKeyword}`)
         setMovies(data)
       } catch (error) {
-        console.log(error);
+        console.log("");
       }
     }
   }

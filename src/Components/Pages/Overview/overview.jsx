@@ -105,7 +105,7 @@ const Overview = () => {
               await selectCard(data.results[0]);
               return setMovies(data)
             } catch (error) {
-              console.log(error);
+              console.log("");
             }
           }
         }
