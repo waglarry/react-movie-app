@@ -16,10 +16,9 @@ const GetMovieContent = ({ content, contentTitle, filter }) => {
   const [movieFilter, setMovieFilter] = useState("popular");
   const [movies, setMovies] = useState({});
   const [searchKeyword, setSearchKeyword] = useState("")
-  const [genres, setGenres] = useState([])
   const [selectedGenres, setSelectedGenres] = useState([])
 
-  if(selectedGenres.length >= 3){
+  if(selectedGenres.length > 2){
     selectedGenres.splice(0,selectedGenres.length)
   }
 
@@ -124,8 +123,7 @@ const GetMovieContent = ({ content, contentTitle, filter }) => {
       </div>
       <div className="ControlsTopDiv">
         <div className="genresDiv">
-          <span>Filter By Genres</span>
-          <Genres genres={genres} setGenres={setGenres} selectedGenres={selectedGenres} setSelectedGenres={setSelectedGenres} />
+          <Genres setSelectedGenres={setSelectedGenres} />
         </div>
         <div className="topButtons">
         <button
