@@ -295,7 +295,13 @@ body.dark {
 .noBackgroundImage{
     padding: 20rem;
 }
-
+.movieCard .details .title{
+    font-size: .7rem;
+    font-family: 'Poppins', sans-serif;
+}
+.smallTitle{
+    font-size: .441rem;
+}
 @media only screen and (min-width:321px) and (max-width:768px){
     header .navBar{
         background: var(--background-color);
