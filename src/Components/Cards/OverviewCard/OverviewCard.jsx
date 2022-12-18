@@ -14,7 +14,7 @@ const OverviewCard = ({movie, selectCard}) => {
       <span className='rate'>Rated - {movie.vote_average ? movie.vote_average.toFixed(1) : ""}</span>
     </div>
     <div className='details'>
-      <h4 className='title'>{movie ? movie.title || movie.name : ""}</h4>
+      <h4 className={title.length > 28 ? 'smallTitle' : 'title'}>{movie ? movie.title || movie.name : ""}</h4>
       <span className='date'>Released: {movie.first_air_date || movie.release_date || movie.known_for_department ? movie.first_air_date || movie.release_date || movie.known_for_department : ""}</span>
     </div>
   </div>
