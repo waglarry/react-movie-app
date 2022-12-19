@@ -4,19 +4,6 @@ import './Footer.css'
 
 const Footer = () => {
   return (
-    <>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8350565651888273"
-     crossorigin="anonymous"></script>
-    <!-- general example ad -->
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-8350565651888273"
-         data-ad-slot="6294321356"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
     <div>
         <footer>
             <div className="footerContainer">
@@ -59,7 +46,6 @@ const Footer = () => {
         </div>
         </footer>
     </div>
-  </>
   )
 }
 
