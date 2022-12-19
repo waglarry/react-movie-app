@@ -1,4 +1,0 @@
-This is a Brave Rewards publisher verification file.
-
-Domain: waghub.netlify.app
-Token: ce77929428c4ee1b076e77906177a9c7e59b9ffa54bad8231ea104ab4371b30b
