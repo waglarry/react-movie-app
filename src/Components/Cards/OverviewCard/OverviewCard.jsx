@@ -1,4 +1,5 @@
 import React from 'react'
+import './MovieCard.css'
 import { API_IMG, unavailable } from '../../API/URL'
 
 const OverviewCard = ({movie, selectCard}) => {
