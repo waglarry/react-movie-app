@@ -9,9 +9,13 @@ const Home = () => {
     <div>
       <HomePage />
       <HomeScollMovies content={'movie'} filter={'popular'} contentTilte={'Popular'} subContentTilte={'Best Popular Movies'} />
+      <GoogleAds slot="5497875310" />
       <HomeScollMovies content={'movie'} filter={'top_rated'} contentTilte={'Top Rated'} subContentTilte={'Rate from IMDB'}/>
+      <GoogleAds slot="5497875310" />
       <HomeScollMovies content={'tv'} filter={'popular'} contentTilte={'Tv Series'} subContentTilte={'Catching Tv Shows'} />
+      <GoogleAds slot="5497875310" />
       <GetRecommendedMovieContent />
+      <GoogleAds slot="5497875310" />
       <Footer />
     </div>
   )
