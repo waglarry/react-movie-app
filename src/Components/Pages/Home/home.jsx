@@ -1,8 +1,8 @@
 import React from 'react'
 import GetRecommendedMovieContent from '../../API/HomeMovieContent/GetRecommendedMovieContent'
 import HomeScollMovies from '../../API/HomeMovieContent/HomeScollMovies'
-import Footer from '../../Footer/Footer'
-import GoogleAds from '../GoogleAds'
+import Footer from '../../Footer/Footer';
+import GoogleAds from '../../GoogleAds';
 import HomePage from '../TopMainPages/HomePage/HomePage'
 
 const Home = () => {
