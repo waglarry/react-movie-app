@@ -12,6 +12,7 @@ const Movies = () => {
       <GoogleAds slot="5497875310" />
       <GoogleAds slot="1424221759" />
       <Footer />
+        <GoogleAds slot="5497875310" />
     </div>
   )
 }
