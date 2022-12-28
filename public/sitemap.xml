@@ -10,43 +10,6 @@
 <url>
   <loc>https://waghub.netlify.app/</loc>
   <lastmod>2022-12-28T11:03:33+00:00</lastmod>
-  <priority>0.9</priority>
-</url>
-
-<url>
-  <loc>https://waghub.netlify.app/movies</loc>
-  <lastmod>2022-12-28T11:03:33+00:00</lastmod>
-  <priority>0.7</priority>
-</url>
-
-<url>
-  <loc>https://waghub.netlify.app/tvshows</loc>
-  <lastmod>2022-12-28T11:03:33+00:00</lastmod>
-  <priority>0.7</priority>
-</url>
-
-<url>
-  <loc>https://waghub.netlify.app/people</loc>
-  <lastmod>2022-12-28T11:03:33+00:00</lastmod>
-  <priority>0.7</priority>
-</url>
-
-<url>
-  <loc>https://waghub.netlify.app/overview</loc>
-  <lastmod>2022-12-28T11:03:33+00:00</lastmod>
-  <priority>0.8</priority>
-</url>
-
-<url>
-  <loc>https://waghub.netlify.app/howToDownload</loc>
-  <lastmod>2022-12-28T11:03:33+00:00</lastmod>
-  <priority>0.8</priority>
-</url>
-
-<url>
-  <loc>https://waghub.netlify.app/howToWatchTrailer</loc>
-  <lastmod>2022-12-28T11:03:33+00:00</lastmod>
-  <priority>0.8</priority>
 </url>
 
 
