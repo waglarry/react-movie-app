@@ -162,7 +162,7 @@ const Overview = () => {
                     href={`https://www.google.com/search?q=sabishare.com/file/${selectedCard.id}-${SabishareMovieTitle(selectedCard)}-netnaija-mkv`} 
                     target="_blank" rel="noopener noreferrer">Download from Sabishare.com</a>
                   </p>
-                  <p style={{fontSize: "0.5rem"}}>NB: The movie is only available to download, if you should see a 'sabishare.com' link and the title of the movie leading in the google search result.</p>
+                  <p style={{fontSize: "0.9rem"}}>NB: The movie is only available to download, if you should see a 'sabishare.com' link and the title of the movie leading in the google search result.</p>
                 </div>
               </>
             )
