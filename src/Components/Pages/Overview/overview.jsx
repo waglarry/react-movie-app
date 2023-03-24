@@ -7,7 +7,6 @@ import YouTube from 'react-youtube';
 import { FaSearch } from 'react-icons/fa'
 import PaginationButton from '../../PaginationButton/PaginationButton';
 import Footer from '../../Footer/Footer';
-import GoogleAds from '../../GoogleAds';
 import { AiTwotoneStar } from 'react-icons/ai'
 import { MdOutlineHowToVote, MdOutlineTagFaces } from 'react-icons/md'
 import { TbMessageLanguage } from 'react-icons/tb'
@@ -15,7 +14,6 @@ import ReadMore from '../../ReadMore/ReadMore';
 import OverviewPeopleCard from '../../Cards/OverviewPeopleCard/OverviewPeopleCard';
 import { TbFaceIdError } from "react-icons/tb"
 import Genres from '../../Genres/Genres';
-import { color } from '@mui/system';
 
 const Overview = () => {
       const [movies, setMovies] = useState({});
@@ -284,7 +282,6 @@ const Overview = () => {
           movies={movies}
           setDisabled={setDisabled}
         />
-        <GoogleAds slot="5497875310" />
         <Footer />
     </>
   )

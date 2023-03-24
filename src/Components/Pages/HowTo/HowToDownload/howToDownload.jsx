@@ -1,6 +1,5 @@
 import React from 'react'
 import Footer from '../../../Footer/Footer'
-import GoogleAds from '../../../GoogleAds';
 import '../../HowTo/HowToStyleSheet.css'
 
 const HowToDownload = () => {
@@ -16,28 +15,24 @@ const HowToDownload = () => {
                     <img src="/HowToImages/downloadStep0.png" alt="Overview Link" />
                 </div>
             </div>
-          <GoogleAds slot="8185642045" />
             <div className='stepsDiv'>
                 <p className='stepText'>Step 2: Click on the download button of your selected movie.</p>
                 <div className='stepImageBox'>
                     <img src="/HowToImages/downloadStep1.png" alt="Download Button Image" />
                 </div>
             </div>
-          <GoogleAds slot="5497875310" />
             <div className='stepsDiv'>
                 <p className='stepText'>Step 3: Select the first Sabishare link from google search results.</p>
                 <div className='stepImageBox'>
                     <img src="/HowToImages/downloadStep2.png" alt="Google page with search results" />
                 </div>
             </div>
-          <GoogleAds slot="5497875310" />
             <div className='stepsDiv'>
                 <p className='stepText'>Step 4: From Sabishare page, click on the download button.</p>
                 <div className='stepImageBox'>
                     <img src="/HowToImages/downloadStep3.png" alt="Sabishare Page Image" />
                 </div>
             </div>
-          <GoogleAds slot="1424221759" />
             <div className='stepsDiv'>
                 <p className='stepText'>Step 5: Success! Your file is being downloaded.</p>
                 <div className='stepImageBox'>
@@ -45,7 +40,6 @@ const HowToDownload = () => {
                 </div>
             </div>
         </div>
-        <GoogleAds slot="8185642045" />
         <Footer />
     </>
   )
