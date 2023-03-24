@@ -40,9 +40,9 @@ const Navbar = () => {
     <>
       <header className={stickyClass}>
       <button className='navBtn' onClick={showNavbar}>
-            <FaBars />
+          <FaBars />
         </button>
-        <Logo className="logo"/>
+          <Logo className="logo"/>
         <nav className='navBar' ref={navRef}>
           <NavLinks showNavbar={showNavbar} />
         </nav>

@@ -40,31 +40,33 @@ const Genres = ({ setSelectedGenres}) => {
         )
       };
 
-      const NavLinkStyle = ({isActive}) =>{
+      const activeButton = ({isActive}) =>{
         return {
           color: isActive ? 'crimson' : '#ccc',
         }
       }
 
-      const checkbox = genres && genres.map((genre) => (
-        <FormControlLabel
-        key={genre.id}
-        label={genre.name}
-        checked={NavLinkStyle}
-        control={
-          <Checkbox
-            id={genre.id}
-            onChange={handleCheckboxChange}
-            sx={{
-                color: 'crimson',
-                '&.Mui-checked': {
-                  color: 'crimson',
-                },
-              }}
+      const checkbox =
+        genres &&
+        genres.map((genre) => (
+          <FormControlLabel
+            key={genre.id}
+            label={genre.name}
+            // checked={activeButton}
+            control={
+              <Checkbox
+                id={genre.id}
+                onChange={handleCheckboxChange}
+                sx={{
+                  color: "crimson",
+                  "&.Mui-checked": {
+                    color: "crimson",
+                  },
+                }}
+              />
+            }
           />
-        }
-      />
-      ))
+        ));
 
       const [genreId, setgenreId] = useState("")
 
