@@ -24,15 +24,7 @@ body.light {
 }
 body.dark {
     --background-color: var(--dark);
-    --color: var(--text-light-color)
-}
-.ToggleBox{
-    border: .1rem solid var(--color);
-    background: var(--background-color);
-}
-.toggleText{
-    color: var(--color);
-    padding: .2rem;
+    --color: var(--text-light-color);
 }
 .cardLinks{
     text-decoration: none;
