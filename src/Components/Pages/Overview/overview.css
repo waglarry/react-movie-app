@@ -17,6 +17,7 @@
     display: flex;
     justify-content: space-between;
     padding: 1rem 0;
+    max-width: 100%;
 }
 .heroPoster .poster{
     width: 250px;
@@ -26,7 +27,6 @@
     padding: 2rem;
     margin-left: 1rem;
     color: #fff;
-    min-width: 80%;
     background: rgba(0,0,0,0.4);
     max-height: 375px;
     overflow-y: scroll;
@@ -81,8 +81,7 @@
     outline: none;
   }
   .overviewSearchInput{
-    width: 0;
-    transition: width .5s;
+    width: 17.5rem;
   }
   .overviewSearchBtn{
     width: 1.563rem;
@@ -90,9 +89,6 @@
     display: grid;
     place-items: center;
     cursor: pointer;
-  }
-  .search:focus-within input{
-    width: 17.5rem;
   }
   ::placeholder{
     color: inherit;
