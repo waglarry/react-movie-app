@@ -1,14 +1,10 @@
 import React from 'react'
-import GetPeopleContent from '../../API/GetPeopleContent'
-import Footer from '../../Footer/Footer'
+import Overview from '../Overview/overview';
 
 const people = () => {
   return (
-    <div>
-        <GetPeopleContent content={'person'} contentTitle={'People'} filter={['Popular','Latest']} />
-        <Footer />
-    </div>
-  )
+    <Overview content={'person'} />
+  );
 }
 
 export default people

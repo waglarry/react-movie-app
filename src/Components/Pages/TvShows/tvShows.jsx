@@ -1,14 +1,10 @@
 import React from 'react'
-import GetMovieContent from '../../API/GetMovieContent'
-import Footer from '../../Footer/Footer'
+import Overview from '../Overview/overview';
 
 const tvShows = () => {
   return (
-    <div>
-      <GetMovieContent content={'tv'} contentTitle={'Tv Shows'} filter={['Popular','Airing Today', 'On Tv', 'Top Rated']} />
-      <Footer />
-    </div>
-  )
+    <Overview content={'tv'} />
+  );
 }
 
 export default tvShows

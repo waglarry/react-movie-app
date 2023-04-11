@@ -1,14 +1,10 @@
 import React from 'react'
-import GetMovieContent from '../../API/GetMovieContent'
-import Footer from '../../Footer/Footer'
+import Overview from '../Overview/overview';
 
 const Movies = () => {
   return (
-    <div>
-      <GetMovieContent content={'movie'} contentTitle={'Movies'} filter={['Popular','Now Playing', 'Upcoming', 'Top Rated']} />
-      <Footer />
-    </div>
-  )
+    <Overview content={'movie'} />
+  );
 }
 
 export default Movies
