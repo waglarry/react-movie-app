@@ -15,7 +15,7 @@ import OverviewPeopleCard from "../../Cards/OverviewPeopleCard/OverviewPeopleCar
 import { TbFaceIdError } from "react-icons/tb";
 import Genres from "../../Genres/Genres";
 
-const Overview = () => {
+const Overview = ({ content }) => {
   const [movies, setMovies] = useState({});
   const [movieFilter, setMovieFilter] = useState("popular");
   const [selectedCard, setSelectedCard] = useState([]);
@@ -23,12 +23,12 @@ const Overview = () => {
   const [currentPageNumber, setCurrentPageNumber] = useState(1);
   const [isDisabled, setDisabled] = useState(false);
   const [searchKeyword, setSearchKeyword] = useState("");
-  const [content, setContent] = useState("movie");
   const [selectedGenres, setSelectedGenres] = useState([]);
 
   if (selectedGenres.length > 1) {
     selectedGenres.splice(0, selectedGenres.length);
   }
+
 
   const fetchMovies = async () => {
     try {
@@ -38,11 +38,13 @@ const Overview = () => {
       setMovies(data);
       await selectCard(data.results[0]);
     } catch (error) {
-      console.log("");
+      alert(
+        `${error.message}. Please check your internet connection and try again!`
+      );
     }
   };
 
-  const fetchMovie = async (id) => {
+  const fetchMovieById = async (id) => {
     try {
       const { data } = await axios.get(
         `https://api.themoviedb.org/3/${content}/${id}?api_key=${API_KEY}&append_to_response=videos`
@@ -53,9 +55,10 @@ const Overview = () => {
     }
   };
 
+
   const selectCard = async (movie) => {
     setPlayTrailer(false);
-    const data = await fetchMovie(movie.id);
+    const data = await fetchMovieById(movie.id);
     setSelectedCard(data);
   };
 
@@ -123,7 +126,7 @@ const Overview = () => {
         await selectCard(data.results[0]);
         return setMovies(data);
       } catch (error) {
-        console.log("");
+        alert(`${searchKeyword} was not found!`)
       }
     }
   };
@@ -142,25 +145,6 @@ const Overview = () => {
     if (selectedCard) {
       let name = selectedCard.original_title || selectedCard.original_name;
       return name;
-    }
-  };
-  const localServerMovieTite = (selectedCard) => {
-    if (selectedCard) {
-      let name = selectedCard.original_title
-        ? selectedCard.original_title.split(" ").join(".")
-        : selectedCard.original_title || selectedCard.original_name
-        ? selectedCard.original_name.split(" ").join(".")
-        : selectedCard.original_name;
-      return name;
-    }
-  };
-
-  const localServerMovieYear = (selectedCard) => {
-    if (selectedCard) {
-      let year = selectedCard.release_date
-        ? selectedCard.release_date.slice(0, 4)
-        : "";
-      return year;
     }
   };
 
@@ -218,24 +202,8 @@ const Overview = () => {
     if (content !== "person") {
       return (
         <>
-          <div style={{ width: "80%" }}>
+          <div style={{ maxWidth: "100%" }}>
             <Genres setSelectedGenres={setSelectedGenres} />
-          </div>
-          <div className="overviewFilterBtns">
-            <button
-              onClick={() => setMovieFilter("popular")}
-              id={movieFilter === "popular" ? "activeContent" : ""}
-              className="switchContentBtn"
-            >
-              Popular
-            </button>
-            <button
-              onClick={() => setMovieFilter("top_rated")}
-              id={movieFilter === "top_rated" ? "activeContent" : ""}
-              className="switchContentBtn"
-            >
-              Top Rated
-            </button>
           </div>
         </>
       );
@@ -267,27 +235,20 @@ const Overview = () => {
           : null}
         <div className="heroContentBox" id={playTrailer ? "hideContent" : ""}>
           <div className="overViewTopBar">
-            <div className="switchContent">
+            <div className="overviewFilterBtns">
               <button
-                onClick={() => setContent("movie")}
-                id={content === "movie" ? "activeContent" : ""}
+                onClick={() => setMovieFilter("popular")}
+                id={movieFilter === "popular" ? "activeContent" : ""}
                 className="switchContentBtn"
               >
-                Movies
+                Popular
               </button>
               <button
-                onClick={() => setContent("tv")}
-                id={content === "tv" ? "activeContent" : ""}
+                onClick={() => setMovieFilter("top_rated")}
+                id={movieFilter === "top_rated" ? "activeContent" : ""}
                 className="switchContentBtn"
               >
-                Series
-              </button>
-              <button
-                onClick={() => setContent("person")}
-                id={content === "person" ? "activeContent" : ""}
-                className="switchContentBtn"
-              >
-                People
+                Top Rated
               </button>
             </div>
             <form
@@ -299,7 +260,7 @@ const Overview = () => {
               <input
                 type="text"
                 className="overviewSearchInput"
-                placeholder="Movies, Tv Shows, People..."
+                placeholder={`Search for your favorite ${content === 'tv' ? 'tv show' : content}...`}
                 onChange={(e) => {
                   setSearchKeyword(e.target.value);
                 }}
