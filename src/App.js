@@ -31,7 +31,6 @@ function App() {
                     <Route path='/movies' element={<Movies />} />
                     <Route path='/tvShows' element={<TvShows />} />
                     <Route path='/people' element={<People />} />
-                    <Route path='/overview' element={<Overview />} />
                     <Route path='/howToDownload' element={<HowToDownload />} />
                     <Route path='/howToWatchTrailer' element={<HowToWatchTrailer />} />
                     <Route path='*' element={<Error />} />
