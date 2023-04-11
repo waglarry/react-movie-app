@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { API_IMG, unavailable } from '../../API/URL'
+import { API_IMG } from '../../API/URL'
 import './RecommendedCard.css'
 
 const RecommendedCard = ({title, wallpaper}) => {
   return (
-    <Link to={`/overview`} className="cardLinks">
+    <Link to={`/movies`} className="cardLinks">
     <div className='RecommendedMovieCard'>
     <div className='recommendedPosterBox'>
       <img className={wallpaper ? 'poster' : "noWallpaper"} src={API_IMG+wallpaper} alt={title} />

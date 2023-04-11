@@ -20,7 +20,6 @@ const Footer = () => {
                         <li><Link className='footerLinks' to='/movies'>Movies</Link></li>
                         <li><Link className='footerLinks' to='/tvshows'>Tv Shows</Link></li>
                         <li><Link className='footerLinks' to='/people'>People</Link></li>
-                        <li><Link className='footerLinks' to='/overview'>Overview</Link></li>
                     </ul>
                 </div>
                 <div className="howTo">
