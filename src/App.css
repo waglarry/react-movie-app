@@ -345,6 +345,8 @@ body.dark {
     }
     .mobileGenres{
         display: block;
+        width: 20rem;
+        max-width: 100%;
     }
     .posterImageOverlay{
         position: relative;
