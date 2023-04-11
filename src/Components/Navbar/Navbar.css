@@ -41,11 +41,11 @@ header .navBtn{
     header{
         padding: 1rem;
     }
-    header .searchBtn{
-        visibility: hidden;
-        opacity: 0;
-        font-size: 1.5rem;
+    header .switchBtn {
+        width: 3rem;
+        margin-right: -.5rem;
     }
+
     header .navBtn{
         visibility: visible;
         opacity: 1;
@@ -56,14 +56,15 @@ header .navBtn{
         position: fixed;
         top: 0;
         left: 0;
-        height: 100%;
+        height: 40vh;
         width: 100%;
-        display: grid;
-        align-items: center;
-        justify-content: center;
+        display: flex;
+        padding: 6rem 2rem;
+        float: left;
         transition: .75s;
-        transform: translateX(-100vw);
+        transform: translateY(-70vh);
         z-index: 999;
+        background-color: #222;
       }
 
       header .reponsiveNav{
