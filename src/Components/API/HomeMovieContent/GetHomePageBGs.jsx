@@ -53,9 +53,6 @@ const GetHomePageBGs = () => {
                       <p className="movieType"><span className="detailTitl">Rated: </span> {movie ? movie.vote_average : ""}</p>
                       <p className="movieType"><span className="detailTitl">Movie Type: </span> {movie ? movie.media_type === "movie" ? "Movie" : "Tv Series" : ""}</p>
                       <p className="posterImagePopulartity"><span className="detailTitl">Popularity: </span> {movie ? movie.popularity : ""}</p>
-                      {/* <p className="posterImageRating"><span className="detailTitle">Rated: </span> {movie ? movie.vote_average : ""}</p>
-                      <p className="posterImagePopulartity"><span className="detailTitle">Popularity: </span> {movie ? movie.popularity : ""}</p>
-                      <p className="posterImageLanguage"><span className="detailTitle">Language: </span> {movie ? (movie.original_language === "en" ? "English" : "") : ""}</p> */}
                     </div>
                     <p className="posterImageOverview"><span>Overview</span> <br />{movie ? movie.overview : ""}</p>
                   </div>
