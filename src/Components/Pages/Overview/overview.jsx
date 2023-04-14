@@ -261,6 +261,7 @@ const Overview = ({ content }) => {
               </div>
               <form
                 className="search"
+                id="search"
                 onSubmit={(event) => {
                   event.preventDefault();
                 }}
@@ -297,7 +298,7 @@ const Overview = ({ content }) => {
                   }
                 />
               </div>
-              <div className="heroContent">
+              <div className="heroContent" id="heroContent">
                 <h2>
                   {selectedCard.title ||
                   selectedCard.original_title ||

@@ -26,8 +26,6 @@
 .heroContent{
     padding: 2rem;
     margin-left: 1rem;
-    color: #fff;
-    background: rgba(0,0,0,0.4);
     max-height: 375px;
     overflow-y: scroll;
     border-radius: 1rem;
@@ -52,6 +50,7 @@
     border: none;
     outline: none;
     padding: .5rem;
+    color: #222;
 }
 .switchContentBtn:first-child{
     border-radius:  .5rem 0 0 .5rem;
@@ -68,8 +67,6 @@
 }
 .search{
     padding: .5rem .8rem;
-    color: #222;
-    background: rgba(204, 204, 204, 0.57);
     border-radius: .5rem;
     display: flex;
     align-items: center;
@@ -157,9 +154,6 @@
 .overviewTitle{
     color: crimson;
     font-weight: 900;
-}
-.overviewText{
-    color: #fff;
 }
 .overviewInfo{
     margin-top: 1rem;
