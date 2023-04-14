@@ -428,7 +428,18 @@ const Overview = ({ content }) => {
           </div>
         </div>
       ) : (
-        <h1>No movies</h1>
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            zIndex: "999",
+          }}
+        >
+          <Spinner />
+        </div>
       )}
       <div
         style={{
@@ -439,7 +450,7 @@ const Overview = ({ content }) => {
           top: "13%",
           width: "80%",
           margin: "0 10%",
-          zIndex: "999",
+          zIndex: "2",
           marginBottom: "1rem",
           background: "#333",
           padding: ".5rem 1rem",
