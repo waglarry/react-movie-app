@@ -14,6 +14,7 @@ import ReadMore from "../../ReadMore/ReadMore";
 import OverviewPeopleCard from "../../Cards/OverviewPeopleCard/OverviewPeopleCard";
 import { TbFaceIdError } from "react-icons/tb";
 import Genres from "../../Genres/Genres";
+import Spinner from "../../Spinner/Spinner";
 
 const Overview = ({ content }) => {
   const [movies, setMovies] = useState({});
@@ -126,7 +127,13 @@ const Overview = ({ content }) => {
         await selectCard(data.results[0]);
         return setMovies(data);
       } catch (error) {
-        alert(`${searchKeyword} was not found!`)
+        if (error.message === "Network Error") {
+          alert(
+            `${error.message}. Please check your internet connection and try again!`
+          );
+        }else{
+          alert(`${searchKeyword} was not found!`)
+        }
       }
     }
   };
@@ -212,206 +219,217 @@ const Overview = ({ content }) => {
 
   return (
     <>
-      <div
-        className="hero"
-        style={{
-          backgroundImage: `url('${API_BGImage}${
-            selectedCard
-              ? selectedCard.backdrop_path || selectedCard.profile_path
-              : ""
-          }')`,
-        }}
-      >
-        {playTrailer ? (
-          <button
-            className="VideoCloseBtn"
-            onClick={() => setPlayTrailer(false)}
-          >
-            X
-          </button>
-        ) : null}
-        {selectedCard.videos && playTrailer
-          ? renderTrailer(selectedCard)
-          : null}
-        <div className="heroContentBox" id={playTrailer ? "hideContent" : ""}>
-          <div className="overViewTopBar">
-            <div className="overviewFilterBtns">
-              <button
-                onClick={() => setMovieFilter("popular")}
-                id={movieFilter === "popular" ? "activeContent" : ""}
-                className="switchContentBtn"
-              >
-                Popular
-              </button>
-              <button
-                onClick={() => setMovieFilter("top_rated")}
-                id={movieFilter === "top_rated" ? "activeContent" : ""}
-                className="switchContentBtn"
-              >
-                Top Rated
-              </button>
-            </div>
-            <form
-              className="search"
-              onSubmit={(event) => {
-                event.preventDefault();
-              }}
+      {movies.results ? (
+        <div
+          className="hero"
+          style={{
+            backgroundImage: `url('${API_BGImage}${
+              selectedCard
+                ? selectedCard.backdrop_path || selectedCard.profile_path
+                : ""
+            }')`,
+          }}
+        >
+          {playTrailer ? (
+            <button
+              className="VideoCloseBtn"
+              onClick={() => setPlayTrailer(false)}
             >
-              <input
-                type="text"
-                className="overviewSearchInput"
-                placeholder={`Search for your favorite ${content === 'tv' ? 'tv show' : content}...`}
-                onChange={(e) => {
-                  setSearchKeyword(e.target.value);
+              X
+            </button>
+          ) : null}
+          {selectedCard.videos && playTrailer
+            ? renderTrailer(selectedCard)
+            : null}
+          <div className="heroContentBox" id={playTrailer ? "hideContent" : ""}>
+            <div className="overViewTopBar">
+              <div className="overviewFilterBtns">
+                <button
+                  onClick={() => setMovieFilter("popular")}
+                  id={movieFilter === "popular" ? "activeContent" : ""}
+                  className="switchContentBtn"
+                >
+                  Popular
+                </button>
+                <button
+                  onClick={() => setMovieFilter("top_rated")}
+                  id={movieFilter === "top_rated" ? "activeContent" : ""}
+                  className="switchContentBtn"
+                >
+                  Top Rated
+                </button>
+              </div>
+              <form
+                className="search"
+                onSubmit={(event) => {
+                  event.preventDefault();
                 }}
-                value={searchKeyword}
-                onKeyPress={searchMovie}
-              />
-              <button type="button" className="overviewSearchBtn">
-                <FaSearch />
-              </button>
-            </form>
-          </div>
-          <div className="heroContentDetails">
-            <div className="heroPoster">
-              <img
-                className="poster"
-                src={`${API_IMG}${
-                  selectedCard.poster_path || selectedCard.profile_path
-                }`}
-                alt={
-                  selectedCard.title ||
-                  selectedCard.original_title ||
-                  selectedCard.original_name ||
-                  selectedCard.name
-                }
-              />
+              >
+                <input
+                  type="text"
+                  className="overviewSearchInput"
+                  placeholder={`Search for your favorite ${
+                    content === "tv" ? "tv show" : content
+                  }...`}
+                  onChange={(e) => {
+                    setSearchKeyword(e.target.value);
+                  }}
+                  value={searchKeyword}
+                  onKeyPress={searchMovie}
+                />
+                <button type="button" className="overviewSearchBtn">
+                  <FaSearch />
+                </button>
+              </form>
             </div>
-            <div className="heroContent">
-              <h2>
-                {selectedCard.title ||
-                selectedCard.original_title ||
-                selectedCard.original_name ||
-                selectedCard.name
-                  ? selectedCard.title ||
+            <div className="heroContentDetails">
+              <div className="heroPoster">
+                <img
+                  className="poster"
+                  src={`${API_IMG}${
+                    selectedCard.poster_path || selectedCard.profile_path
+                  }`}
+                  alt={
+                    selectedCard.title ||
                     selectedCard.original_title ||
                     selectedCard.original_name ||
                     selectedCard.name
-                  : ""}
-              </h2>
-              <p style={{ color: "#ccc" }}>
-                {selectedCard.tagline ? selectedCard.tagline : ""}
-              </p>
-              {MovieButtons()}
-
-              <div className="overviewInfo">
-                <p className="date">
-                  {content !== "person" ? "Release Date: " : "Birthday: "}{" "}
-                  {selectedCard.release_date ||
-                  selectedCard.first_air_date ||
-                  selectedCard.birthday
-                    ? selectedCard.release_date ||
-                      selectedCard.first_air_date ||
-                      selectedCard.birthday
+                  }
+                />
+              </div>
+              <div className="heroContent">
+                <h2>
+                  {selectedCard.title ||
+                  selectedCard.original_title ||
+                  selectedCard.original_name ||
+                  selectedCard.name
+                    ? selectedCard.title ||
+                      selectedCard.original_title ||
+                      selectedCard.original_name ||
+                      selectedCard.name
                     : ""}
+                </h2>
+                <p style={{ color: "#ccc" }}>
+                  {selectedCard.tagline ? selectedCard.tagline : ""}
                 </p>
-                <p className="overviewText">
-                  <p className="overviewTitle">
-                    {content !== "person" ? "Overview" : "Biography"}
-                  </p>
-                  <ReadMore>
-                    {selectedCard.overview || selectedCard.biography
-                      ? selectedCard.overview || selectedCard.biography
+                {MovieButtons()}
+
+                <div className="overviewInfo">
+                  <p className="date">
+                    {content !== "person" ? "Release Date: " : "Birthday: "}{" "}
+                    {selectedCard.release_date ||
+                    selectedCard.first_air_date ||
+                    selectedCard.birthday
+                      ? selectedCard.release_date ||
+                        selectedCard.first_air_date ||
+                        selectedCard.birthday
                       : ""}
-                  </ReadMore>
-                </p>
-                <div className="otherOverviewInfo">
-                  <div className="right-col">
-                    <p>
-                      <MdOutlineTagFaces /> Popularity:{" "}
-                      <span>
-                        {selectedCard.popularity ? selectedCard.popularity : ""}
-                      </span>
+                  </p>
+                  <p className="overviewText">
+                    <p className="overviewTitle">
+                      {content !== "person" ? "Overview" : "Biography"}
                     </p>
-                    <p>
-                      <AiTwotoneStar />{" "}
-                      {content !== "person" ? "Rated: " : "Known for: "}{" "}
-                      <span>
-                        {selectedCard.vote_average ||
-                        selectedCard.known_for_department
-                          ? selectedCard.vote_average ||
-                            selectedCard.known_for_department
-                          : ""}
-                      </span>
-                    </p>
-                    <p>
-                      <MdOutlineHowToVote />{" "}
-                      {content !== "person"
-                        ? "Vote Count: "
-                        : "Place of Birth: "}{" "}
-                      <span>
-                        {selectedCard.vote_count || selectedCard.place_of_birth
-                          ? selectedCard.vote_count ||
-                            selectedCard.place_of_birth
-                          : ""}
-                      </span>
-                    </p>
-                    <p>
-                      <TbMessageLanguage />{" "}
-                      {content === "person" ? "" : "Language: "}{" "}
-                      <span>
-                        {selectedCard.original_language
-                          ? selectedCard.original_language
-                            ? selectedCard.original_language === "en"
-                              ? "English"
-                              : selectedCard.original_language
-                            : "No language found"
-                          : ""}
-                      </span>
-                    </p>
-                    <p>
-                      {content !== "tv" ? "" : "Country: "}{" "}
-                      <span>
-                        {selectedCard.origin_country
-                          ? selectedCard.origin_country
-                          : ""}
-                      </span>
-                    </p>
-                  </div>
-                  <div className="left-col">
-                    <p>
-                      {content === "person" ? "" : "Status: "}{" "}
-                      <span>
-                        {selectedCard.status ? selectedCard.status : ""}
-                      </span>
-                    </p>
-                    <p>
-                      {content !== "tv" ? "" : "Type: "}{" "}
-                      <span>{selectedCard.type ? selectedCard.type : ""}</span>
-                    </p>
-                    <p>
-                      {content !== "tv" ? "" : "Number of Seasons: "}{" "}
-                      <span>
-                        {selectedCard.number_of_seasons
-                          ? selectedCard.number_of_seasons
-                          : ""}
-                      </span>
-                    </p>
-                    <p>
-                      {content !== "tv" ? "" : "Number of Episodes: "}{" "}
-                      <span>
-                        {selectedCard.number_of_episodes
-                          ? selectedCard.number_of_episodes
-                          : ""}
-                      </span>
-                    </p>
+                    <ReadMore>
+                      {selectedCard.overview || selectedCard.biography
+                        ? selectedCard.overview || selectedCard.biography
+                        : ""}
+                    </ReadMore>
+                  </p>
+                  <div className="otherOverviewInfo">
+                    <div className="right-col">
+                      <p>
+                        <MdOutlineTagFaces /> Popularity:{" "}
+                        <span>
+                          {selectedCard.popularity
+                            ? selectedCard.popularity
+                            : ""}
+                        </span>
+                      </p>
+                      <p>
+                        <AiTwotoneStar />{" "}
+                        {content !== "person" ? "Rated: " : "Known for: "}{" "}
+                        <span>
+                          {selectedCard.vote_average ||
+                          selectedCard.known_for_department
+                            ? selectedCard.vote_average ||
+                              selectedCard.known_for_department
+                            : ""}
+                        </span>
+                      </p>
+                      <p>
+                        <MdOutlineHowToVote />{" "}
+                        {content !== "person"
+                          ? "Vote Count: "
+                          : "Place of Birth: "}{" "}
+                        <span>
+                          {selectedCard.vote_count ||
+                          selectedCard.place_of_birth
+                            ? selectedCard.vote_count ||
+                              selectedCard.place_of_birth
+                            : ""}
+                        </span>
+                      </p>
+                      <p>
+                        <TbMessageLanguage />{" "}
+                        {content === "person" ? "" : "Language: "}{" "}
+                        <span>
+                          {selectedCard.original_language
+                            ? selectedCard.original_language
+                              ? selectedCard.original_language === "en"
+                                ? "English"
+                                : selectedCard.original_language
+                              : "No language found"
+                            : ""}
+                        </span>
+                      </p>
+                      <p>
+                        {content !== "tv" ? "" : "Country: "}{" "}
+                        <span>
+                          {selectedCard.origin_country
+                            ? selectedCard.origin_country
+                            : ""}
+                        </span>
+                      </p>
+                    </div>
+                    <div className="left-col">
+                      <p>
+                        {content === "person" ? "" : "Status: "}{" "}
+                        <span>
+                          {selectedCard.status ? selectedCard.status : ""}
+                        </span>
+                      </p>
+                      <p>
+                        {content !== "tv" ? "" : "Type: "}{" "}
+                        <span>
+                          {selectedCard.type ? selectedCard.type : ""}
+                        </span>
+                      </p>
+                      <p>
+                        {content !== "tv" ? "" : "Number of Seasons: "}{" "}
+                        <span>
+                          {selectedCard.number_of_seasons
+                            ? selectedCard.number_of_seasons
+                            : ""}
+                        </span>
+                      </p>
+                      <p>
+                        {content !== "tv" ? "" : "Number of Episodes: "}{" "}
+                        <span>
+                          {selectedCard.number_of_episodes
+                            ? selectedCard.number_of_episodes
+                            : ""}
+                        </span>
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      ) : (
+        <h1>No movies</h1>
+      )}
       <div
         style={{
           display: "flex",
@@ -452,6 +470,7 @@ const Overview = ({ content }) => {
             )}
         </div>
       </div>
+
       <PaginationButton
         previousPage={previousPage}
         nextPage={nextPage}
