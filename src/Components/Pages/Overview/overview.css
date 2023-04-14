@@ -78,7 +78,7 @@
     outline: none;
   }
   .overviewSearchInput{
-    width: 17.5rem;
+    width: 19rem;
   }
   .overviewSearchBtn{
     width: 1.563rem;
@@ -188,7 +188,7 @@
         padding-top: 0;
     }
     .heroPoster .poster{
-        width: 150px;
+        width: 200px;
     }
     .heroContentBox{
         padding: 8% 5%;
