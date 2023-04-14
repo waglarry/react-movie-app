@@ -32,6 +32,7 @@ footer{
 .Links{
     list-style: none;
     padding-bottom: .7rem;
+    line-height: 1.5rem;
 }
 .footerLinks{
     color: #fff;
